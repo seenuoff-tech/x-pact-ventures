@@ -9,7 +9,6 @@ import ProductCarousel from "../components/ProductCarousel";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 const COUNTRIES = ["US", "UAE", "China", "South Korea", "Germany", "UK", "Italy"];
 
 const Home: React.FC = () => {
@@ -29,7 +28,6 @@ const Home: React.FC = () => {
     const section = boatSectionRef.current;
     if (!boat || !section) return;
 
-    // Set initial centered state — GSAP owns the transform, no CSS conflict
     gsap.set(boat, { xPercent: -50, y: 0 });
 
     const st = ScrollTrigger.create({
@@ -38,7 +36,6 @@ const Home: React.FC = () => {
       end: "bottom top",
       scrub: 1,
       onUpdate: (self) => {
-        // Keep xPercent locked at -50 always, only move y
         gsap.set(boat, {
           y: -self.progress * window.innerHeight * 1.2,
           xPercent: -50,
@@ -50,37 +47,18 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div>
-
+    <div className="overflow-x-hidden">
       {/* ── HERO SECTION ─────────────────────────────────────────── */}
-      <section
-        style={{
-          height: "100vh",
-          display: "flex",
-          background: "#000000",
-          overflow: "hidden",
-          position: "relative",
-          fontFamily: "'Poppins', sans-serif",
-        }}
-      >
-        {/* LEFT 70% — 3D Globe */}
-        <div style={{ width: "70%", height: "100%", position: "relative" }}>
-          {/* Subtle radial gradient spotlight behind globe */}
+      <section className="relative flex flex-col lg:flex-row min-h-screen bg-black overflow-hidden font-['Poppins']">
+        {/* LEFT/TOP — 3D Globe */}
+        <div className="w-full lg:w-[70%] h-[50vh] lg:h-screen relative order-1">
           <div
+            className="absolute inset-0 z-[1] pointer-events-none"
             style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "radial-gradient(ellipse 55% 55% at 50% 50%, rgba(24,80,255,0.13) 0%, transparent 70%)",
-              pointerEvents: "none",
-              zIndex: 1,
+              background: "radial-gradient(ellipse 55% 55% at 50% 50%, rgba(24,80,255,0.13) 0%, transparent 70%)"
             }}
           />
-
-          <Canvas
-            camera={{ position: [0, 0, 6], fov: 42 }}
-            style={{ width: "100%", height: "100%" }}
-          >
+          <Canvas camera={{ position: [0, 0, 6], fov: 42 }} className="w-full h-full">
             <ambientLight intensity={1.2} />
             <directionalLight position={[5, 3, 5]} intensity={2.2} />
             <pointLight position={[-6, -3, -4]} intensity={1.0} color="#2255ff" />
@@ -90,93 +68,37 @@ const Home: React.FC = () => {
           </Canvas>
         </div>
 
-        {/* Vertical divider line */}
-        <div
-          style={{
-            position: "absolute",
-            left: "70%",
-            top: "15%",
-            height: "70%",
-            width: "1px",
-            background:
-              "linear-gradient(to bottom, transparent, rgba(243,205,0,0.25) 30%, rgba(243,205,0,0.25) 70%, transparent)",
-            zIndex: 10,
-          }}
-        />
+        {/* Vertical divider line - Desktop only */}
+        <div className="hidden lg:block absolute left-[70%] top-[15%] h-[70%] w-[1px] z-10 bg-gradient-to-b from-transparent via-yellow-400/25 to-transparent" />
 
-        {/* RIGHT 30% — Export destination */}
-        <div
-          style={{
-            width: "30%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            background: "transparent",
-            gap: "16px",
-          }}
-        >
-          {/* Label */}
+        {/* RIGHT/BOTTOM — Export destination */}
+        <div className="w-full lg:w-[30%] h-[40vh] lg:h-screen flex flex-col justify-center items-center bg-transparent gap-4 order-2 pb-12 lg:pb-0">
           <motion.p
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            style={{
-              color: "#c8a800",
-              fontSize: "13px",
-              fontWeight: 500,
-              letterSpacing: "6px",
-              textTransform: "uppercase",
-              margin: 0,
-              opacity: 0.85,
-            }}
+            className="text-[#c8a800] text-[10px] md:text-[13px] font-medium tracking-[4px] md:tracking-[8px] uppercase m-0 opacity-85"
           >
             WE EXPORT TO
           </motion.p>
 
-          {/* Thin gold accent line */}
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            style={{
-              width: "36px",
-              height: "1.5px",
-              background: "#F3CD00",
-              borderRadius: "2px",
-            }}
+            className="w-8 md:w-12 h-[1.5px] bg-[#F3CD00] rounded-full"
           />
 
-          {/* Animated country name */}
-          <div
-            style={{
-              height: "90px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              overflow: "hidden",
-            }}
-          >
+          <div className="relative h-20 md:h-32 flex items-center justify-center w-full px-4">
             <AnimatePresence mode="wait">
               <motion.h1
                 key={COUNTRIES[index]}
-                initial={{ opacity: 0, y: 28, filter: "blur(4px)" }}
+                initial={{ opacity: 0, y: 15, filter: "blur(8px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -22, filter: "blur(4px)" }}
-                transition={{
-                  duration: 0.55,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
+                exit={{ opacity: 0, y: -15, filter: "blur(8px)" }}
+                transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+                className="absolute text-center text-white font-extrabold tracking-tighter m-0 whitespace-nowrap"
                 style={{
-                  color: "#FFD700",
-                  fontSize: "clamp(38px, 4.5vw, 62px)",
-                  fontWeight: 800,
-                  letterSpacing: "-1px",
-                  margin: 0,
-                  textAlign: "center",
-                  lineHeight: 1,
-                  whiteSpace: "nowrap",
+                  fontSize: "clamp(32px, 8vw, 64px)",
+                  textShadow: "0 0 30px rgba(243,205,0,0.3)"
                 }}
               >
                 {COUNTRIES[index]}
@@ -184,214 +106,65 @@ const Home: React.FC = () => {
             </AnimatePresence>
           </div>
 
-          {/* Subtle dot indicator */}
-          <div style={{ display: "flex", gap: "8px", marginTop: "8px" }}>
-            {COUNTRIES.map((_, i) => (
-              <div
-                key={i}
-                style={{
-                  width: i === index ? "20px" : "6px",
-                  height: "6px",
-                  borderRadius: "3px",
-                  background: i === index ? "#FFD700" : "rgba(255,215,0,0.25)",
-                  transition: "all 0.4s ease",
-                }}
-              />
-            ))}
+          <div className="w-24 md:w-32 h-1 bg-white/10 rounded-full mt-4 overflow-hidden">
+            <motion.div
+              key={index}
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 2.2, ease: "linear" }}
+              className="h-full bg-[#F3CD00] origin-left"
+            />
           </div>
         </div>
       </section>
 
-      {/* Boat Section */}
+      {/* ── BOAT SECTION (WHY US) ────────────────────────────────── */}
       <section
         ref={boatSectionRef}
-        style={{
-          height: "110vh", // Reduced from 200vh to move next section up
-          background: "#fff",
-          position: "relative",
-          overflow: "hidden",
-          width: "100%"
-        }}
+        className="relative min-h-[100vh] lg:min-h-[120vh] bg-white overflow-hidden py-20"
       >
-        {/* Why Us Split Heading */}
-        <div
-          style={{
-            position: "sticky",
-            top: 0,
-            zIndex: 10,
-            pointerEvents: "none",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            paddingTop: "40px", // Reduced from 80px/160px
-          }}
-        >
-          {/* Left Side — Why + Points */}
-          <div
-            style={{
-              flex: 1,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-end",
-              paddingRight: "clamp(40px, 8vw, 120px)",
-              gap: "24px",
-            }}
-          >
-            <span
-              style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: "96px",
-                fontWeight: 800,
-                color: "#F3CD00",
-                lineHeight: 1,
-                letterSpacing: "1px",
-                margin: 0,
-                padding: 0,
-              }}
-            >
+        <div className="sticky top-0 z-10 pointer-events-none flex flex-col lg:flex-row items-center justify-center pt-20 lg:pt-32 px-6 max-w-7xl mx-auto">
+          {/* Left Side — "Why" + Points */}
+          <div className="w-full lg:flex-1 flex flex-col items-center lg:items-end text-center lg:text-right lg:pr-20 gap-8 mb-12 lg:mb-0">
+            <span className="text-7xl md:text-8xl lg:text-[100px] font-black text-[#F3CD00] leading-none tracking-tight">
               Why
             </span>
-            <ul
-              style={{
-                listStyle: "none",
-                margin: 0,
-                padding: 0,
-                display: "flex",
-                flexDirection: "column",
-                gap: "12px",
-                textAlign: "right",
-                marginRight: "60px",
-              }}
-            >
-              {[
-                "Extensive Marketing Language",
-                "Commitment to Quality",
-                "Streamlined Processes",
-                "24/7 Support",
-              ].map((point) => (
-                <li
-                  key={point}
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: "28px",
-                    fontWeight: 300,
-                    color: "#000",
-                    lineHeight: 1.8,
-                    paddingRight: "120px",
-                  }}
-                >
+            <ul className="list-none m-0 p-0 space-y-4 md:space-y-6">
+              {["Global Reach", "Quality Assured", "Direct Sourcing"].map((point, i) => (
+                <li key={i} className="text-black text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-wide opacity-80">
                   {point}
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Right Side — Us + Points */}
-          <div
-            style={{
-              flex: 1,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              paddingLeft: "clamp(40px, 8vw, 120px)",
-              gap: "24px",
-            }}
-          >
-            <span
-              style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: "96px",
-                fontWeight: 800,
-                color: "#F3CD00",
-                lineHeight: 1,
-                letterSpacing: "1px",
-                margin: 0,
-                padding: 0,
-              }}
-            >
-              Us !
+          {/* Right Side — "Us" */}
+          <div className="w-full lg:flex-1 flex justify-center lg:justify-start lg:pl-20">
+            <span className="text-7xl md:text-8xl lg:text-[100px] font-black text-black leading-none tracking-tight">
+              Us
             </span>
-            <ul
-              style={{
-                listStyle: "none",
-                margin: 0,
-                padding: 0,
-                display: "flex",
-                flexDirection: "column",
-                gap: "12px",
-                textAlign: "left",
-                marginLeft: "90px",
-              }}
-            >
-              {[
-                "Strong Network",
-                "Competitive Pricing",
-                "Personalized Service",
-                "End-to-End Solutions",
-              ].map((point) => (
-                <li
-                  key={point}
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: "28px",
-                    fontWeight: 300,
-                    color: "#000",
-                    lineHeight: 1.8,
-                    paddingLeft: "120px",
-                  }}
-                >
-                  {point}
-                </li>
-              ))}
-            </ul>
           </div>
-
         </div>
 
+        {/* Animated Boat */}
         <img
           ref={boatRef}
           src="/boat.png"
-          alt="boat"
-          onLoad={() => ScrollTrigger.refresh()}
-          style={{
-            position: "absolute",
-            left: "50%",
-            bottom: "-10%",
-            /* No CSS transform here — GSAP owns xPercent & y entirely */
-            height: "95vh",
-            width: "auto",
-            willChange: "transform",
-            zIndex: 5,
-          }}
+          alt="Cargo Boat"
+          className="absolute left-1/2 -translate-x-1/2 w-[70vw] md:w-[50vw] lg:w-[35vw] max-w-2xl h-auto z-20 pointer-events-none transition-transform duration-75"
+          style={{ bottom: "-10%" }}
         />
       </section>
 
-
-      {/* Sourcing Products Section */}
-      <section
-        style={{
-          background: "#F3CD00",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "25px 0",
-        }}
-      >
-        <h1 style={{
-          fontFamily: "'Poppins', sans-serif",
-          fontSize: "35px", // Adjusted size
-          fontWeight: 800,
-          color: "#000",
-          textAlign: "center",
-          letterSpacing: "4px", // Added spacing to match screenshot
-          textTransform: "uppercase" // ALL CAPS
-        }}>
-          Sourcing Products
-        </h1>
+      {/* ── PRODUCT CAROUSEL ────────────────────────────────────── */}
+      <section className="bg-white py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6 mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black uppercase tracking-tighter">
+            Our <span className="text-[#F3CD00]">Premium</span> Range
+          </h2>
+        </div>
+        <ProductCarousel />
       </section>
-
-      <ProductCarousel />
-
     </div>
   );
 };
