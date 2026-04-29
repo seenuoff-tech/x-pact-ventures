@@ -37,7 +37,7 @@ const Home: React.FC = () => {
       scrub: 1,
       onUpdate: (self) => {
         const isMobile = window.innerWidth < 768;
-        const travelFactor = isMobile ? 0.75 : 1.2;
+        const travelFactor = isMobile ? 0.5 : 1.2;
         gsap.set(boat, {
           y: -self.progress * window.innerHeight * travelFactor,
           xPercent: -50,
@@ -127,13 +127,13 @@ const Home: React.FC = () => {
       >
         <div className="sticky top-0 z-10 pointer-events-none flex flex-col lg:flex-row items-center justify-center pt-20 lg:pt-32 px-6 max-w-7xl mx-auto">
           {/* Left Side — "Why" + Points */}
-          <div className="w-full lg:flex-1 flex flex-col items-center lg:items-end text-center lg:text-right lg:pr-20 gap-8 mb-12 lg:mb-0">
-            <span className="text-7xl md:text-8xl lg:text-[100px] font-black text-[#F3CD00] leading-none tracking-tight">
+          <div className="w-full lg:flex-1 flex flex-col items-center lg:items-end text-center lg:text-right lg:pr-20 gap-6 lg:gap-8 mb-8 lg:mb-0">
+            <span className="text-6xl md:text-8xl lg:text-[100px] font-black text-[#F3CD00] leading-none tracking-tight">
               Why
             </span>
-            <ul className="list-none m-0 p-0 space-y-4 md:space-y-6">
+            <ul className="list-none m-0 p-0 space-y-3 md:space-y-6">
               {["Global Reach", "Quality Assured", "Direct Sourcing"].map((point, i) => (
-                <li key={i} className="text-black text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-wide opacity-80">
+                <li key={i} className="text-black text-lg md:text-2xl lg:text-3xl font-bold uppercase tracking-wide opacity-80">
                   {point}
                 </li>
               ))}
@@ -142,7 +142,7 @@ const Home: React.FC = () => {
 
           {/* Right Side — "Us" */}
           <div className="w-full lg:flex-1 flex justify-center lg:justify-start lg:pl-20">
-            <span className="text-7xl md:text-8xl lg:text-[100px] font-black text-black leading-none tracking-tight">
+            <span className="text-6xl md:text-8xl lg:text-[100px] font-black text-black leading-none tracking-tight">
               Us
             </span>
           </div>
@@ -153,8 +153,8 @@ const Home: React.FC = () => {
           ref={boatRef}
           src="/boat.png"
           alt="Cargo Boat"
-          className="absolute left-1/2 -translate-x-1/2 w-[70vw] md:w-[50vw] lg:w-[35vw] max-w-2xl h-auto z-20 pointer-events-none transition-transform duration-75"
-          style={{ bottom: "-10%" }}
+          className="absolute left-1/2 -translate-x-1/2 w-[85vw] md:w-[50vw] lg:w-[35vw] max-w-2xl h-auto z-20 pointer-events-none transition-transform duration-75"
+          style={{ bottom: "-5%" }}
         />
       </section>
 

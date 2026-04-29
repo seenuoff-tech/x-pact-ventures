@@ -82,7 +82,7 @@ const Header: React.FC = () => {
                 to={link.to} 
                 onClick={toggleMenu}
                 className={({ isActive }) => 
-                  `text-2xl font-bold tracking-tight transition-colors ${isActive ? 'text-[#F3CD00]' : 'text-gray-900'}`
+                  `text-lg font-bold tracking-tight transition-colors ${isActive ? 'text-[#F3CD00]' : 'text-gray-900'}`
                 }
               >
                 {link.label}
