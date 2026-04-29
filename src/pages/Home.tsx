@@ -28,24 +28,27 @@ const Home: React.FC = () => {
     const section = boatSectionRef.current;
     if (!boat || !section) return;
 
-    gsap.set(boat, { xPercent: -50, y: 0 });
+    const isMobile = window.innerWidth < 768;
+    const travelY = isMobile ? "-40vh" : "-100vh";
 
-    const st = ScrollTrigger.create({
-      trigger: section,
-      start: "top bottom",
-      end: "bottom top",
-      scrub: 1,
-      onUpdate: (self) => {
-        const isMobile = window.innerWidth < 768;
-        const travelFactor = isMobile ? 0.5 : 1.2;
-        gsap.set(boat, {
-          y: -self.progress * window.innerHeight * travelFactor,
-          xPercent: -50,
-        });
-      },
-    });
+    const anim = gsap.fromTo(boat, 
+      { y: "20vh", xPercent: -50 },
+      {
+        y: travelY,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.5,
+        }
+      }
+    );
 
-    return () => st.kill();
+    return () => {
+      anim.kill();
+      ScrollTrigger.getAll().forEach(st => st.kill());
+    };
   }, []);
 
   return (
