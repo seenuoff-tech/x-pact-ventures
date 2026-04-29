@@ -36,8 +36,10 @@ const Home: React.FC = () => {
       end: "bottom top",
       scrub: 1,
       onUpdate: (self) => {
+        const isMobile = window.innerWidth < 768;
+        const travelFactor = isMobile ? 0.75 : 1.2;
         gsap.set(boat, {
-          y: -self.progress * window.innerHeight * 1.2,
+          y: -self.progress * window.innerHeight * travelFactor,
           xPercent: -50,
         });
       },
