@@ -29,7 +29,7 @@ const Home: React.FC = () => {
     if (!boat || !section) return;
 
     const isMobile = window.innerWidth < 768;
-    const travelY = isMobile ? "-40vh" : "-100vh";
+    const travelY = isMobile ? "-30vh" : "-100vh";
 
     const anim = gsap.fromTo(boat, 
       { y: "20vh", xPercent: -50 },
@@ -40,21 +40,34 @@ const Home: React.FC = () => {
           trigger: section,
           start: "top bottom",
           end: "bottom top",
-          scrub: 0.5,
+          scrub: 0.8,
         }
       }
     );
 
     return () => {
       anim.kill();
-      ScrollTrigger.getAll().forEach(st => st.kill());
     };
   }, []);
 
+  const leftPoints = [
+    "Extensive Marketing Language",
+    "Commitment to Quality",
+    "Streamlined Processes",
+    "24/7 Support"
+  ];
+
+  const rightPoints = [
+    "Strong Network",
+    "Competitive Pricing",
+    "Personalized Service",
+    "End-to-End Solutions"
+  ];
+
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden font-sans">
       {/* ── HERO SECTION ─────────────────────────────────────────── */}
-      <section className="relative flex flex-col lg:flex-row min-h-screen bg-black overflow-hidden font-['Poppins']">
+      <section className="relative flex flex-col lg:flex-row min-h-screen bg-black overflow-hidden">
         {/* LEFT/TOP — 3D Globe */}
         <div className="w-full lg:w-[70%] h-[50vh] lg:h-screen relative order-1">
           <div
@@ -123,46 +136,56 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ── BOAT SECTION (WHY US) ────────────────────────────────── */}
+      {/* ── WHY US SECTION (MATCHING SCREENSHOT) ────────────────── */}
       <section
         ref={boatSectionRef}
-        className="relative min-h-[100vh] lg:min-h-[120vh] bg-white overflow-hidden py-20 font-sans"
+        className="relative min-h-[120vh] bg-white overflow-hidden py-24 md:py-32"
       >
-        <div className="sticky top-0 z-10 pointer-events-none flex flex-col lg:flex-row items-center justify-center pt-20 lg:pt-32 px-6 max-w-7xl mx-auto">
-          {/* Left Side — "Why" + Points */}
-          <div className="w-full lg:flex-1 flex flex-col items-center lg:items-end text-center lg:text-right lg:pr-20 gap-6 lg:gap-8 mb-8 lg:mb-0">
-            <span className="text-6xl md:text-8xl lg:text-[100px] font-black text-[#F3CD00] leading-none tracking-tight uppercase">
+        <div className="sticky top-0 z-10 flex flex-col items-center pt-12 md:pt-20 px-4">
+          {/* Main Titles */}
+          <div className="flex justify-between items-start w-full max-w-7xl px-6 md:px-12 mb-12">
+            <h2 className="text-5xl md:text-8xl lg:text-[110px] font-black text-[#F3CD00] leading-none tracking-tight">
               Why
-            </span>
-            <ul className="list-none m-0 p-0 space-y-3 md:space-y-6">
-              {["Global Reach", "Quality Assured", "Direct Sourcing"].map((point, i) => (
-                <li key={i} className="text-black text-lg md:text-2xl lg:text-3xl font-black uppercase tracking-wide opacity-90">
+            </h2>
+            <h2 className="text-5xl md:text-8xl lg:text-[110px] font-black text-[#F3CD00] leading-none tracking-tight">
+              Us !
+            </h2>
+          </div>
+
+          {/* Points Layout */}
+          <div className="grid grid-cols-2 w-full max-w-7xl px-4 md:px-12 gap-8 md:gap-32 z-30">
+            {/* Left Points */}
+            <ul className="space-y-4 md:space-y-10 text-right">
+              {leftPoints.map((point, i) => (
+                <li key={i} className="text-black text-sm md:text-xl lg:text-2xl font-black uppercase tracking-tight leading-tight">
+                  {point}
+                </li>
+              ))}
+            </ul>
+
+            {/* Right Points */}
+            <ul className="space-y-4 md:space-y-10 text-left">
+              {rightPoints.map((point, i) => (
+                <li key={i} className="text-black text-sm md:text-xl lg:text-2xl font-black uppercase tracking-tight leading-tight">
                   {point}
                 </li>
               ))}
             </ul>
           </div>
-
-          {/* Right Side — "Us" */}
-          <div className="w-full lg:flex-1 flex justify-center lg:justify-start lg:pl-20">
-            <span className="text-6xl md:text-8xl lg:text-[100px] font-black text-black leading-none tracking-tight uppercase">
-              Us
-            </span>
-          </div>
         </div>
 
-        {/* Animated Boat */}
+        {/* Animated Boat/Cargo - Central Column Feel */}
         <img
           ref={boatRef}
           src="/boat.png"
           alt="Cargo Boat"
-          className="absolute left-1/2 -translate-x-1/2 w-[85vw] md:w-[50vw] lg:w-[35vw] max-w-2xl h-auto z-20 pointer-events-none transition-transform duration-75"
-          style={{ bottom: "-5%" }}
+          className="absolute left-1/2 -translate-x-1/2 w-[90vw] md:w-[60vw] lg:w-[40vw] max-w-3xl h-auto z-20 pointer-events-none transition-transform duration-75"
+          style={{ bottom: "-10%" }}
         />
       </section>
 
       {/* ── PRODUCT CAROUSEL ────────────────────────────────────── */}
-      <section className="bg-white py-20 lg:py-32">
+      <section className="bg-white py-20 lg:py-32 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black uppercase tracking-tighter">
             Our <span className="text-[#F3CD00]">Premium</span> Range
