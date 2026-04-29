@@ -126,17 +126,17 @@ const Home: React.FC = () => {
       {/* ── BOAT SECTION (WHY US) ────────────────────────────────── */}
       <section
         ref={boatSectionRef}
-        className="relative min-h-[100vh] lg:min-h-[120vh] bg-white overflow-hidden py-20"
+        className="relative min-h-[100vh] lg:min-h-[120vh] bg-white overflow-hidden py-20 font-sans"
       >
         <div className="sticky top-0 z-10 pointer-events-none flex flex-col lg:flex-row items-center justify-center pt-20 lg:pt-32 px-6 max-w-7xl mx-auto">
           {/* Left Side — "Why" + Points */}
           <div className="w-full lg:flex-1 flex flex-col items-center lg:items-end text-center lg:text-right lg:pr-20 gap-6 lg:gap-8 mb-8 lg:mb-0">
-            <span className="text-6xl md:text-8xl lg:text-[100px] font-black text-[#F3CD00] leading-none tracking-tight">
+            <span className="text-6xl md:text-8xl lg:text-[100px] font-black text-[#F3CD00] leading-none tracking-tight uppercase">
               Why
             </span>
             <ul className="list-none m-0 p-0 space-y-3 md:space-y-6">
               {["Global Reach", "Quality Assured", "Direct Sourcing"].map((point, i) => (
-                <li key={i} className="text-black text-lg md:text-2xl lg:text-3xl font-bold uppercase tracking-wide opacity-80">
+                <li key={i} className="text-black text-lg md:text-2xl lg:text-3xl font-black uppercase tracking-wide opacity-90">
                   {point}
                 </li>
               ))}
@@ -145,7 +145,7 @@ const Home: React.FC = () => {
 
           {/* Right Side — "Us" */}
           <div className="w-full lg:flex-1 flex justify-center lg:justify-start lg:pl-20">
-            <span className="text-6xl md:text-8xl lg:text-[100px] font-black text-black leading-none tracking-tight">
+            <span className="text-6xl md:text-8xl lg:text-[100px] font-black text-black leading-none tracking-tight uppercase">
               Us
             </span>
           </div>
