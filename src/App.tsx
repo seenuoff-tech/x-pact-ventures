@@ -5,8 +5,8 @@
 
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Home from './pages/Home.tsx';
-import Header from './components/Header.tsx';
+import Home from './pages/Home';
+import Header from './components/Header';
 
 export default function App() {
   return (
