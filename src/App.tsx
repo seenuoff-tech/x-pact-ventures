@@ -1,26 +1,27 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import About from './pages/About';
+import Products from './pages/Products';
+import Contact from './pages/Contact';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <>
-      <h1 style={{ position: 'fixed', top: 0, left: 0, zIndex: 9999, color: 'red' }}>TEST RENDER</h1>
-      <Router>
-        <div className="flex flex-col min-h-screen bg-white">
-          <Header />
-          <main className="flex-grow">
-            <Home />
-          </main>
-        </div>
-      </Router>
-    </>
+    <Router>
+      <div className="flex flex-col min-h-screen bg-white">
+        <Header />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
-
