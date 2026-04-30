@@ -149,7 +149,7 @@ const Home: React.FC = () => {
       <section
         ref={boatSectionRef}
         style={{
-          height: "130vh",
+          height: "110vh",
           background: "#fff",
           position: "relative",
           overflow: "hidden",
@@ -175,7 +175,7 @@ const Home: React.FC = () => {
             </span>
             <ul ref={leftListRef} style={{ listStyle: "none", margin: 0, padding: 0, textAlign: "right" }}>
               {["Extensive Marketing Language", "Commitment to Quality", "Streamlined Processes", "24/7 Support"].map((point) => (
-                <li key={point} style={{ fontSize: "clamp(12px, 2vw, 24px)", fontWeight: 900, color: "#000", lineHeight: 1.8, textTransform: "uppercase", marginBottom: "48px" }}>
+                <li key={point} style={{ fontSize: "clamp(12px, 2vw, 24px)", fontWeight: 900, color: "#000", lineHeight: 1.8, textTransform: "uppercase", marginBottom: "24px" }}>
                   {point}
                 </li>
               ))}
@@ -189,7 +189,7 @@ const Home: React.FC = () => {
             </span>
             <ul ref={rightListRef} style={{ listStyle: "none", margin: 0, padding: 0, textAlign: "left" }}>
               {["Strong Network", "Competitive Pricing", "Personalized Service", "End-to-End Solutions"].map((point) => (
-                <li key={point} style={{ fontSize: "clamp(12px, 2vw, 24px)", fontWeight: 900, color: "#000", lineHeight: 1.8, textTransform: "uppercase", marginBottom: "48px" }}>
+                <li key={point} style={{ fontSize: "clamp(12px, 2vw, 24px)", fontWeight: 900, color: "#000", lineHeight: 1.8, textTransform: "uppercase", marginBottom: "24px" }}>
                   {point}
                 </li>
               ))}
