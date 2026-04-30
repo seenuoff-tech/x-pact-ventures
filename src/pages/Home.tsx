@@ -28,22 +28,19 @@ const Home: React.FC = () => {
     const section = boatSectionRef.current;
     if (!boat || !section) return;
 
-    const isMobile = window.innerWidth < 768;
-    const travelY = isMobile ? "-30vh" : "-100vh";
+    // Force horizontal centering and start position
+    gsap.set(boat, { xPercent: -50, y: "10vh" });
 
-    const anim = gsap.fromTo(boat, 
-      { y: "20vh", xPercent: -50 },
-      {
-        y: travelY,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 0.8,
-        }
+    const anim = gsap.to(boat, {
+      y: "-110vh",
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 0.6,
       }
-    );
+    });
 
     return () => {
       anim.kill();
@@ -136,37 +133,37 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ── WHY US SECTION (MATCHING SCREENSHOT) ────────────────── */}
+      {/* ── WHY US SECTION (EXACT MATCH) ────────────────────────── */}
       <section
         ref={boatSectionRef}
-        className="relative min-h-[120vh] bg-white overflow-hidden py-24 md:py-32"
+        className="relative h-[120vh] bg-white overflow-hidden font-sans"
       >
-        <div className="sticky top-0 z-10 flex flex-col items-center pt-12 md:pt-20 px-4">
-          {/* Main Titles */}
-          <div className="flex justify-between items-start w-full max-w-7xl px-6 md:px-12 mb-12">
-            <h2 className="text-5xl md:text-8xl lg:text-[110px] font-black text-[#F3CD00] leading-none tracking-tight">
+        <div className="sticky top-0 h-screen z-10 flex flex-col items-center justify-center px-4">
+          {/* Main Titles - Strictly Side-by-Side */}
+          <div className="flex justify-between items-center w-full max-w-7xl px-4 md:px-12 mb-12 lg:mb-20">
+            <h2 className="text-4xl md:text-8xl lg:text-[110px] font-black text-[#F3CD00] leading-none tracking-tight uppercase">
               Why
             </h2>
-            <h2 className="text-5xl md:text-8xl lg:text-[110px] font-black text-[#F3CD00] leading-none tracking-tight">
+            <h2 className="text-4xl md:text-8xl lg:text-[110px] font-black text-[#F3CD00] leading-none tracking-tight uppercase">
               Us !
             </h2>
           </div>
 
-          {/* Points Layout */}
-          <div className="grid grid-cols-2 w-full max-w-7xl px-4 md:px-12 gap-8 md:gap-32 z-30">
+          {/* Points Layout - Strictly Split Grid */}
+          <div className="grid grid-cols-2 w-full max-w-7xl px-2 md:px-12 gap-4 md:gap-32 z-30">
             {/* Left Points */}
-            <ul className="space-y-4 md:space-y-10 text-right">
+            <ul className="space-y-4 md:space-y-12 text-right">
               {leftPoints.map((point, i) => (
-                <li key={i} className="text-black text-sm md:text-xl lg:text-2xl font-black uppercase tracking-tight leading-tight">
+                <li key={i} className="text-black text-[9px] sm:text-xs md:text-xl lg:text-2xl font-black uppercase tracking-tight leading-tight">
                   {point}
                 </li>
               ))}
             </ul>
 
             {/* Right Points */}
-            <ul className="space-y-4 md:space-y-10 text-left">
+            <ul className="space-y-4 md:space-y-12 text-left">
               {rightPoints.map((point, i) => (
-                <li key={i} className="text-black text-sm md:text-xl lg:text-2xl font-black uppercase tracking-tight leading-tight">
+                <li key={i} className="text-black text-[9px] sm:text-xs md:text-xl lg:text-2xl font-black uppercase tracking-tight leading-tight">
                   {point}
                 </li>
               ))}
@@ -174,13 +171,13 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        {/* Animated Boat/Cargo - Central Column Feel */}
+        {/* Animated Boat/Cargo - Central Column */}
         <img
           ref={boatRef}
           src="/boat.png"
           alt="Cargo Boat"
-          className="absolute left-1/2 -translate-x-1/2 w-[90vw] md:w-[60vw] lg:w-[40vw] max-w-3xl h-auto z-20 pointer-events-none transition-transform duration-75"
-          style={{ bottom: "-10%" }}
+          className="absolute left-1/2 -translate-x-1/2 w-[75vw] md:w-[60vw] lg:w-[40vw] max-w-3xl h-auto z-20 pointer-events-none"
+          style={{ bottom: "0%" }}
         />
       </section>
 

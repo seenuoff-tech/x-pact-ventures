@@ -22,8 +22,8 @@ export default function BoatScrollSection() {
 
     tl.fromTo(
       boatRef.current,
-      { y: 300 },
-      { y: -400, ease: "none" },
+      { y: 300, xPercent: -50 },
+      { y: -400, xPercent: -50, ease: "none" },
       0
     );
 
@@ -67,6 +67,8 @@ export default function BoatScrollSection() {
         src="/boat.png"
         style={{
           position: "absolute",
+          left: "50%",
+          transform: "translateX(-50%)",
           width: "180px",
         }}
       />
