@@ -58,20 +58,20 @@ const Home: React.FC = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: boatSectionRef.current,
-          start: "top 40%",
-          end: "bottom 40%",
+          start: "top 30%",
+          end: "bottom 80%", // Tightened end to make points appear sooner
           scrub: 1,
         }
       });
 
-      // Animate points one by one as we scroll
+      // Animate points one by one quickly as we scroll
       [...leftPoints, ...rightPoints].forEach((point, i) => {
         tl.from(point, {
           opacity: 0,
           y: -50,
-          duration: 0.5,
+          duration: 0.3, // Faster individual duration
           ease: "power2.out"
-        }, i * 0.2); // Sequential delay in scrub
+        }, i * 0.1); // Closer intervals so all 8 show up earlier
       });
     }
   }, []);
