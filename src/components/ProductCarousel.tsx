@@ -3,12 +3,14 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
 const products = [
-  { id: 1, name: 'Cashews', image: '/products/cashews.png' },
-  { id: 2, name: 'Millets', image: '/products/millets.png' },
-  { id: 3, name: 'Nuts', image: '/products/nuts.png' },
-  { id: 4, name: 'Rice', image: '/products/rice.png' },
-  { id: 5, name: 'Cashews', image: '/products/cashews.png' }, // Repeat for carousel effect
-  { id: 6, name: 'Millets', image: '/products/millets.png' },
+  { id: 1, name: 'Premium Cashews', image: '/products/cashews.png' },
+  { id: 2, name: 'Organic Millets', image: '/products/millets.png' },
+  { id: 3, name: 'Indian Spices', image: '/products/spices.png' },
+  { id: 4, name: 'Coir Products', image: '/products/coir.png' },
+  { id: 5, name: 'Premium Cashews', image: '/products/cashews.png' },
+  { id: 6, name: 'Organic Millets', image: '/products/millets.png' },
+  { id: 7, name: 'Indian Spices', image: '/products/spices.png' },
+  { id: 8, name: 'Coir Products', image: '/products/coir.png' },
 ];
 
 const ProductCarousel: React.FC = () => {

@@ -55,17 +55,23 @@ const Home: React.FC = () => {
     const rightPoints = rightListRef.current?.querySelectorAll("li");
 
     if (leftPoints && rightPoints) {
-      gsap.from([leftPoints, rightPoints], {
-        opacity: 0,
-        y: -50,
-        stagger: 0.15,
-        duration: 1,
-        ease: "power2.out",
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: boatSectionRef.current,
-          start: "top 60%",
-          toggleActions: "play none none reverse"
+          start: "top 40%",
+          end: "bottom 40%",
+          scrub: 1,
         }
+      });
+
+      // Animate points one by one as we scroll
+      [...leftPoints, ...rightPoints].forEach((point, i) => {
+        tl.from(point, {
+          opacity: 0,
+          y: -50,
+          duration: 0.5,
+          ease: "power2.out"
+        }, i * 0.2); // Sequential delay in scrub
       });
     }
   }, []);
@@ -169,7 +175,7 @@ const Home: React.FC = () => {
             </span>
             <ul ref={leftListRef} style={{ listStyle: "none", margin: 0, padding: 0, textAlign: "right" }}>
               {["Extensive Marketing Language", "Commitment to Quality", "Streamlined Processes", "24/7 Support"].map((point) => (
-                <li key={point} style={{ fontSize: "clamp(12px, 2vw, 24px)", fontWeight: 800, color: "#000", lineHeight: 1.8, textTransform: "uppercase" }}>
+                <li key={point} style={{ fontSize: "clamp(12px, 2vw, 24px)", fontWeight: 900, color: "#000", lineHeight: 1.8, textTransform: "uppercase", marginBottom: "48px" }}>
                   {point}
                 </li>
               ))}
@@ -183,7 +189,7 @@ const Home: React.FC = () => {
             </span>
             <ul ref={rightListRef} style={{ listStyle: "none", margin: 0, padding: 0, textAlign: "left" }}>
               {["Strong Network", "Competitive Pricing", "Personalized Service", "End-to-End Solutions"].map((point) => (
-                <li key={point} style={{ fontSize: "clamp(12px, 2vw, 24px)", fontWeight: 800, color: "#000", lineHeight: 1.8, textTransform: "uppercase" }}>
+                <li key={point} style={{ fontSize: "clamp(12px, 2vw, 24px)", fontWeight: 900, color: "#000", lineHeight: 1.8, textTransform: "uppercase", marginBottom: "48px" }}>
                   {point}
                 </li>
               ))}
