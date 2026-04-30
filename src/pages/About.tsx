@@ -28,12 +28,7 @@ const About: React.FC = () => {
                 style={{ backgroundColor: '#FEF6D5' }}
               >
                 <p 
-                  className="text-xl md:text-2xl leading-[1.6] font-medium relative z-10"
-                  style={{ 
-                    fontFamily: '"Times New Roman", Times, serif', 
-                    color: '#000000',
-                    textAlign: 'justify'
-                  }}
+                  className="text-xl md:text-2xl leading-[1.6] font-medium relative z-10 text-gray-900"
                 >
                   <span className="text-[#F3CD00] font-extrabold italic mr-2">Pact Ventures</span> 
                   is a dynamic export-import company based in Tamil Nadu, South India. We specialize in exporting high-quality agricultural products by collaborating with local farmers and trusted international traders, delivering the richness of Indian products to global markets. At the same time, we import high-demand products from around the world to meet the evolving needs of the Indian market. Our mission is to build sustainable trade relationships that empower communities and ensure the seamless flow of quality goods across borders.
