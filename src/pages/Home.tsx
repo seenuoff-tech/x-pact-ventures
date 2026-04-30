@@ -28,22 +28,26 @@ const Home: React.FC = () => {
     const section = boatSectionRef.current;
     if (!boat || !section) return;
 
-    // Force horizontal centering and start position
-    gsap.set(boat, { xPercent: -50, y: "10vh" });
-
-    const anim = gsap.to(boat, {
-      y: "-110vh",
-      ease: "none",
+    // PINNED BOAT ANIMATION
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 0.6,
-      }
+        start: "top top",
+        end: "+=150%", // Pins for 1.5x the height
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+      },
     });
 
+    tl.fromTo(
+      boat,
+      { y: "50vh", xPercent: -50 },
+      { y: "-60vh", xPercent: -50, ease: "none" }
+    );
+
     return () => {
-      anim.kill();
+      ScrollTrigger.getAll().forEach((st) => st.kill());
     };
   }, []);
 
@@ -65,7 +69,6 @@ const Home: React.FC = () => {
     <div className="overflow-x-hidden font-sans">
       {/* ── HERO SECTION ─────────────────────────────────────────── */}
       <section className="relative flex flex-col lg:flex-row min-h-screen bg-black overflow-hidden">
-        {/* LEFT/TOP — 3D Globe */}
         <div className="w-full lg:w-[70%] h-[50vh] lg:h-screen relative order-1">
           <div
             className="absolute inset-0 z-[1] pointer-events-none"
@@ -83,10 +86,8 @@ const Home: React.FC = () => {
           </Canvas>
         </div>
 
-        {/* Vertical divider line - Desktop only */}
         <div className="hidden lg:block absolute left-[70%] top-[15%] h-[70%] w-[1px] z-10 bg-gradient-to-b from-transparent via-yellow-400/25 to-transparent" />
 
-        {/* RIGHT/BOTTOM — Export destination */}
         <div className="w-full lg:w-[30%] h-[40vh] lg:h-screen flex flex-col justify-center items-center bg-transparent gap-4 order-2 pb-12 lg:pb-0">
           <motion.p
             initial={{ opacity: 0, y: -12 }}
@@ -133,14 +134,14 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ── WHY US SECTION (EXACT MATCH) ────────────────────────── */}
+      {/* ── WHY US SECTION (PINNED & MATCHING SCREENSHOT) ───────── */}
       <section
         ref={boatSectionRef}
-        className="relative h-[120vh] bg-white overflow-hidden font-sans"
+        className="relative h-screen bg-white overflow-hidden flex flex-col items-center justify-center"
       >
-        <div className="sticky top-0 h-screen z-10 flex flex-col items-center justify-center px-4">
-          {/* Main Titles - Strictly Side-by-Side */}
-          <div className="flex justify-between items-center w-full max-w-7xl px-4 md:px-12 mb-12 lg:mb-20">
+        <div className="z-30 w-full flex flex-col items-center">
+          {/* Main Titles */}
+          <div className="flex justify-between items-center w-full max-w-7xl px-4 md:px-12 mb-12">
             <h2 className="text-4xl md:text-8xl lg:text-[110px] font-black text-[#F3CD00] leading-none tracking-tight uppercase">
               Why
             </h2>
@@ -149,9 +150,8 @@ const Home: React.FC = () => {
             </h2>
           </div>
 
-          {/* Points Layout - Strictly Split Grid */}
-          <div className="grid grid-cols-2 w-full max-w-7xl px-2 md:px-12 gap-4 md:gap-32 z-30">
-            {/* Left Points */}
+          {/* Points Layout */}
+          <div className="grid grid-cols-2 w-full max-w-7xl px-2 md:px-12 gap-4 md:gap-32">
             <ul className="space-y-4 md:space-y-12 text-right">
               {leftPoints.map((point, i) => (
                 <li key={i} className="text-black text-[9px] sm:text-xs md:text-xl lg:text-2xl font-black uppercase tracking-tight leading-tight">
@@ -159,8 +159,6 @@ const Home: React.FC = () => {
                 </li>
               ))}
             </ul>
-
-            {/* Right Points */}
             <ul className="space-y-4 md:space-y-12 text-left">
               {rightPoints.map((point, i) => (
                 <li key={i} className="text-black text-[9px] sm:text-xs md:text-xl lg:text-2xl font-black uppercase tracking-tight leading-tight">
@@ -171,12 +169,12 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        {/* Animated Boat/Cargo - Central Column */}
+        {/* Animated Boat - Central Column */}
         <img
           ref={boatRef}
           src="/boat.png"
           alt="Cargo Boat"
-          className="absolute left-1/2 -translate-x-1/2 w-[75vw] md:w-[60vw] lg:w-[40vw] max-w-3xl h-auto z-20 pointer-events-none"
+          className="absolute left-1/2 -translate-x-1/2 w-[80vw] md:w-[60vw] lg:w-[40vw] max-w-3xl h-auto z-20 pointer-events-none"
           style={{ bottom: "0%" }}
         />
       </section>
