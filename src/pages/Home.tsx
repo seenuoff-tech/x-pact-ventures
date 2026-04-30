@@ -28,47 +28,30 @@ const Home: React.FC = () => {
     const section = boatSectionRef.current;
     if (!boat || !section) return;
 
-    // PINNED BOAT ANIMATION - Increased height/duration
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: "+=300%", // Increased from 150% for a longer scroll
-        scrub: 1.5, // Slightly smoother scrub for longer distance
-        pin: true,
-        anticipatePin: 1,
+    // Set initial centered state — GSAP owns the transform, no CSS conflict
+    gsap.set(boat, { xPercent: -50, y: 0 });
+
+    const st = ScrollTrigger.create({
+      trigger: section,
+      start: "top bottom",
+      end: "bottom top",
+      scrub: 1,
+      onUpdate: (self) => {
+        // Keep xPercent locked at -50 always, only move y
+        gsap.set(boat, {
+          y: -self.progress * window.innerHeight * 1.2,
+          xPercent: -50,
+        });
       },
     });
 
-    tl.fromTo(
-      boat,
-      { y: "80vh", xPercent: -50 },
-      { y: "-150vh", xPercent: -50, ease: "none" }
-    );
-
-    return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
-    };
+    return () => st.kill();
   }, []);
 
-  const leftPoints = [
-    "Extensive Marketing Language",
-    "Commitment to Quality",
-    "Streamlined Processes",
-    "24/7 Support"
-  ];
-
-  const rightPoints = [
-    "Strong Network",
-    "Competitive Pricing",
-    "Personalized Service",
-    "End-to-End Solutions"
-  ];
-
   return (
-    <div className="overflow-x-hidden font-sans">
+    <div className="overflow-x-hidden font-sans bg-white">
       {/* ── HERO SECTION ─────────────────────────────────────────── */}
-      <section className="relative flex flex-col lg:flex-row min-h-screen bg-black overflow-hidden">
+      <section className="relative flex flex-col lg:flex-row h-screen bg-black overflow-hidden">
         <div className="w-full lg:w-[70%] h-[50vh] lg:h-screen relative order-1">
           <div
             className="absolute inset-0 z-[1] pointer-events-none"
@@ -92,7 +75,7 @@ const Home: React.FC = () => {
           <motion.p
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[#c8a800] text-[10px] md:text-[13px] font-medium tracking-[4px] md:tracking-[8px] uppercase m-0 opacity-85"
+            className="text-[#c8a800] text-[13px] font-medium tracking-[6px] uppercase m-0 opacity-85"
           >
             WE EXPORT TO
           </motion.p>
@@ -100,10 +83,10 @@ const Home: React.FC = () => {
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            className="w-8 md:w-12 h-[1.5px] bg-[#F3CD00] rounded-full"
+            className="w-10 h-[1.5px] bg-[#F3CD00] rounded-full"
           />
 
-          <div className="relative h-20 md:h-32 flex items-center justify-center w-full px-4">
+          <div className="relative h-24 md:h-32 flex items-center justify-center w-full px-4">
             <AnimatePresence mode="wait">
               <motion.h1
                 key={COUNTRIES[index]}
@@ -134,34 +117,51 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ── WHY US SECTION (PINNED & MATCHING SCREENSHOT) ───────── */}
+      {/* ── BOAT SECTION (RESTORED TO YESTERDAY MORNING STATE) ──── */}
       <section
         ref={boatSectionRef}
-        className="relative h-screen bg-white overflow-hidden flex flex-col items-center justify-center"
+        style={{
+          height: "110vh",
+          background: "#fff",
+          position: "relative",
+          overflow: "hidden",
+          width: "100%"
+        }}
       >
-        <div className="z-30 w-full flex flex-col items-center">
-          {/* Main Titles */}
-          <div className="flex justify-between items-center w-full max-w-7xl px-4 md:px-12 mb-12">
-            <h2 className="text-4xl md:text-8xl lg:text-[110px] font-black text-[#F3CD00] leading-none tracking-tight uppercase">
+        <div
+          style={{
+            position: "sticky",
+            top: 0,
+            zIndex: 10,
+            pointerEvents: "none",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingTop: "40px",
+          }}
+        >
+          {/* Left Side */}
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-end", paddingRight: "clamp(40px, 8vw, 120px)", gap: "24px" }}>
+            <span style={{ fontSize: "clamp(48px, 8vw, 96px)", fontWeight: 800, color: "#F3CD00", lineHeight: 1, letterSpacing: "1px", margin: 0 }}>
               Why
-            </h2>
-            <h2 className="text-4xl md:text-8xl lg:text-[110px] font-black text-[#F3CD00] leading-none tracking-tight uppercase">
-              Us !
-            </h2>
-          </div>
-
-          {/* Points Layout */}
-          <div className="grid grid-cols-2 w-full max-w-7xl px-2 md:px-12 gap-4 md:gap-32">
-            <ul className="space-y-4 md:space-y-12 text-right">
-              {leftPoints.map((point, i) => (
-                <li key={i} className="text-black text-[9px] sm:text-xs md:text-xl lg:text-2xl font-black uppercase tracking-tight leading-tight">
+            </span>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0, textAlign: "right" }}>
+              {["Extensive Marketing Language", "Commitment to Quality", "Streamlined Processes", "24/7 Support"].map((point) => (
+                <li key={point} style={{ fontSize: "clamp(12px, 2vw, 24px)", fontWeight: 800, color: "#000", lineHeight: 1.8, textTransform: "uppercase" }}>
                   {point}
                 </li>
               ))}
             </ul>
-            <ul className="space-y-4 md:space-y-12 text-left">
-              {rightPoints.map((point, i) => (
-                <li key={i} className="text-black text-[9px] sm:text-xs md:text-xl lg:text-2xl font-black uppercase tracking-tight leading-tight">
+          </div>
+
+          {/* Right Side */}
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-start", paddingLeft: "clamp(40px, 8vw, 120px)", gap: "24px" }}>
+            <span style={{ fontSize: "clamp(48px, 8vw, 96px)", fontWeight: 800, color: "#F3CD00", lineHeight: 1, letterSpacing: "1px", margin: 0 }}>
+              Us !
+            </span>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0, textAlign: "left" }}>
+              {["Strong Network", "Competitive Pricing", "Personalized Service", "End-to-End Solutions"].map((point) => (
+                <li key={point} style={{ fontSize: "clamp(12px, 2vw, 24px)", fontWeight: 800, color: "#000", lineHeight: 1.8, textTransform: "uppercase" }}>
                   {point}
                 </li>
               ))}
@@ -169,25 +169,31 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        {/* Animated Boat - Central Column */}
         <img
           ref={boatRef}
           src="/boat.png"
-          alt="Cargo Boat"
-          className="absolute left-1/2 -translate-x-1/2 w-[80vw] md:w-[60vw] lg:w-[40vw] max-w-3xl h-auto z-20 pointer-events-none"
-          style={{ bottom: "0%" }}
+          alt="boat"
+          onLoad={() => ScrollTrigger.refresh()}
+          style={{
+            position: "absolute",
+            left: "50%",
+            bottom: "-10%",
+            height: "95vh",
+            width: "auto",
+            willChange: "transform",
+            zIndex: 5,
+          }}
         />
       </section>
 
-      {/* ── PRODUCT CAROUSEL ────────────────────────────────────── */}
-      <section className="bg-white py-20 lg:py-32 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black uppercase tracking-tighter">
-            Our <span className="text-[#F3CD00]">Premium</span> Range
-          </h2>
-        </div>
-        <ProductCarousel />
+      {/* Sourcing Products Divider */}
+      <section className="bg-[#F3CD00] py-6 flex justify-center items-center">
+        <h1 className="text-2xl md:text-4xl font-black text-black text-center tracking-[4px] uppercase">
+          Sourcing Products
+        </h1>
       </section>
+
+      <ProductCarousel />
     </div>
   );
 };
