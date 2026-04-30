@@ -28,13 +28,13 @@ const Home: React.FC = () => {
     const section = boatSectionRef.current;
     if (!boat || !section) return;
 
-    // PINNED BOAT ANIMATION
+    // PINNED BOAT ANIMATION - Increased height/duration
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: "+=150%", // Pins for 1.5x the height
-        scrub: 1,
+        end: "+=300%", // Increased from 150% for a longer scroll
+        scrub: 1.5, // Slightly smoother scrub for longer distance
         pin: true,
         anticipatePin: 1,
       },
@@ -42,8 +42,8 @@ const Home: React.FC = () => {
 
     tl.fromTo(
       boat,
-      { y: "50vh", xPercent: -50 },
-      { y: "-60vh", xPercent: -50, ease: "none" }
+      { y: "80vh", xPercent: -50 },
+      { y: "-150vh", xPercent: -50, ease: "none" }
     );
 
     return () => {
