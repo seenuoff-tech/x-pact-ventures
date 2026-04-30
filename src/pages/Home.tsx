@@ -14,6 +14,8 @@ const COUNTRIES = ["US", "UAE", "China", "South Korea", "Germany", "UK", "Italy"
 const Home: React.FC = () => {
   const boatRef = useRef<HTMLImageElement | null>(null);
   const boatSectionRef = useRef<HTMLElement | null>(null);
+  const leftListRef = useRef<HTMLUListElement>(null);
+  const rightListRef = useRef<HTMLUListElement>(null);
   const [index, setIndex] = React.useState(0);
 
   useEffect(() => {
@@ -46,6 +48,26 @@ const Home: React.FC = () => {
     });
 
     return () => st.kill();
+  }, []);
+
+  useEffect(() => {
+    const leftPoints = leftListRef.current?.querySelectorAll("li");
+    const rightPoints = rightListRef.current?.querySelectorAll("li");
+
+    if (leftPoints && rightPoints) {
+      gsap.from([leftPoints, rightPoints], {
+        opacity: 0,
+        y: -50,
+        stagger: 0.15,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: boatSectionRef.current,
+          start: "top 60%",
+          toggleActions: "play none none reverse"
+        }
+      });
+    }
   }, []);
 
   return (
@@ -121,7 +143,7 @@ const Home: React.FC = () => {
       <section
         ref={boatSectionRef}
         style={{
-          height: "110vh",
+          height: "130vh",
           background: "#fff",
           position: "relative",
           overflow: "hidden",
@@ -137,7 +159,7 @@ const Home: React.FC = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            paddingTop: "40px",
+            paddingTop: "60px",
           }}
         >
           {/* Left Side */}
@@ -145,7 +167,7 @@ const Home: React.FC = () => {
             <span style={{ fontSize: "clamp(48px, 8vw, 96px)", fontWeight: 800, color: "#F3CD00", lineHeight: 1, letterSpacing: "1px", margin: 0 }}>
               Why
             </span>
-            <ul style={{ listStyle: "none", margin: 0, padding: 0, textAlign: "right" }}>
+            <ul ref={leftListRef} style={{ listStyle: "none", margin: 0, padding: 0, textAlign: "right" }}>
               {["Extensive Marketing Language", "Commitment to Quality", "Streamlined Processes", "24/7 Support"].map((point) => (
                 <li key={point} style={{ fontSize: "clamp(12px, 2vw, 24px)", fontWeight: 800, color: "#000", lineHeight: 1.8, textTransform: "uppercase" }}>
                   {point}
@@ -159,7 +181,7 @@ const Home: React.FC = () => {
             <span style={{ fontSize: "clamp(48px, 8vw, 96px)", fontWeight: 800, color: "#F3CD00", lineHeight: 1, letterSpacing: "1px", margin: 0 }}>
               Us !
             </span>
-            <ul style={{ listStyle: "none", margin: 0, padding: 0, textAlign: "left" }}>
+            <ul ref={rightListRef} style={{ listStyle: "none", margin: 0, padding: 0, textAlign: "left" }}>
               {["Strong Network", "Competitive Pricing", "Personalized Service", "End-to-End Solutions"].map((point) => (
                 <li key={point} style={{ fontSize: "clamp(12px, 2vw, 24px)", fontWeight: 800, color: "#000", lineHeight: 1.8, textTransform: "uppercase" }}>
                   {point}
