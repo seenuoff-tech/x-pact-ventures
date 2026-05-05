@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
             &copy; 2026 X Pact Ventures. All rights reserved.
           </p>
 
-          {/* Social Icons - Center */}
+          {/* Social Icons - Right */}
           <div className="flex space-x-8">
             <a href="#" className="text-black hover:scale-125 transition-transform duration-200">
               <Linkedin size={20} strokeWidth={2.5} />
@@ -19,11 +19,6 @@ const Footer: React.FC = () => {
               <Twitter size={20} strokeWidth={2.5} />
             </a>
           </div>
-
-          {/* Developed By - Right */}
-          <p className="text-[12px] md:text-sm font-bold uppercase tracking-wider">
-            Developed by <span className="underline decoration-black/40">skeneticdigital</span>
-          </p>
         </div>
       </div>
     </footer>
