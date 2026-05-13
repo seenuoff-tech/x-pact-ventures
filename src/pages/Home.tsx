@@ -4,8 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Canvas } from "@react-three/fiber";
 import { AnimatePresence, motion } from "framer-motion";
 import Glob from "../components/Glob";
-import BoatScroll from "../components/BoatScroll";
-import ExtrudedGlobe from "../components/ExtrudedGlobe";
+import FeatureShowcase from "../components/FeatureShowcase";
 import SourcingProducts from "../components/SourcingProducts";
 
 
@@ -14,10 +13,6 @@ gsap.registerPlugin(ScrollTrigger);
 const COUNTRIES = ["US", "UAE", "China", "South Korea", "Germany", "UK", "Italy"];
 
 const Home: React.FC = () => {
-  const boatRef = useRef<HTMLImageElement | null>(null);
-  const boatSectionRef = useRef<HTMLElement | null>(null);
-  const leftListRef = useRef<HTMLUListElement>(null);
-  const rightListRef = useRef<HTMLUListElement>(null);
   const [index, setIndex] = React.useState(0);
 
   useEffect(() => {
@@ -27,56 +22,7 @@ const Home: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    const boat = boatRef.current;
-    const section = boatSectionRef.current;
-    if (!boat || !section) return;
 
-    // Set initial centered state — GSAP owns the transform, no CSS conflict
-    gsap.set(boat, { xPercent: -50, y: 0 });
-
-    const st = ScrollTrigger.create({
-      trigger: section,
-      start: "top bottom",
-      end: "bottom top",
-      scrub: 1,
-      onUpdate: (self) => {
-        // Keep xPercent locked at -50 always, only move y
-        gsap.set(boat, {
-          y: -self.progress * window.innerHeight * 1.2,
-          xPercent: -50,
-        });
-      },
-    });
-
-    return () => st.kill();
-  }, []);
-
-  useEffect(() => {
-    const leftPoints = leftListRef.current?.querySelectorAll("li");
-    const rightPoints = rightListRef.current?.querySelectorAll("li");
-
-    if (leftPoints && rightPoints) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: boatSectionRef.current,
-          start: "top 30%",
-          end: "bottom 80%", // Tightened end to make points appear sooner
-          scrub: 1,
-        }
-      });
-
-      // Animate points one by one quickly as we scroll
-      [...leftPoints, ...rightPoints].forEach((point, i) => {
-        tl.from(point, {
-          opacity: 0,
-          y: -50,
-          duration: 0.3, // Faster individual duration
-          ease: "power2.out"
-        }, i * 0.1); // Closer intervals so all 8 show up earlier
-      });
-    }
-  }, []);
 
   return (
     <div className="overflow-x-hidden font-sans bg-white">
@@ -143,7 +89,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <BoatScroll />
+      <FeatureShowcase />
 
       {/* Sourcing Products Heading */}
       <section className="bg-[#F3CD00] py-6 flex justify-center items-center">

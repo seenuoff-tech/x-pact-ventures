@@ -128,7 +128,7 @@ const BoatScroll: React.FC = () => {
 
       <img
         ref={boatRef}
-        src="/boat.png"
+        src="/ship.png"
         alt="Premium Boat"
         className="boat-image"
         onLoad={() => ScrollTrigger.refresh()}

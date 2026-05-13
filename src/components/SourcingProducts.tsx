@@ -94,7 +94,7 @@ export default function SourcingProducts() {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top top",
-        end: `+=${total * 100}%`,
+        end: `+=${total * 50}%`,
         pin: true,
         scrub: 1.2,
         anticipatePin: 1,
