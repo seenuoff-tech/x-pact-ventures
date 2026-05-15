@@ -10,6 +10,8 @@ const FeatureShowcase: React.FC = () => {
   const leftContentRef = useRef<HTMLDivElement>(null);
   const rightContentRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
+  const whyRef = useRef<HTMLSpanElement>(null);
+  const usRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     if (!containerRef.current || !imageBoxRef.current || !leftContentRef.current || !rightContentRef.current) return;
@@ -33,12 +35,25 @@ const FeatureShowcase: React.FC = () => {
         ease: 'none',
       }, 0);
 
-      // 📝 Text fade out
+      // 📝 Text animation: Why from left, Us from right
+      tl.fromTo(whyRef.current, 
+        { x: -150, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.2, ease: 'power2.out' },
+        0
+      );
+      
+      tl.fromTo(usRef.current, 
+        { x: 150, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.2, ease: 'power2.out' },
+        0
+      );
+
+      // 📝 Text fade out (happens after they come together)
       tl.to(textRef.current, {
         opacity: 0,
         ease: 'none',
-        duration: 0.2 // Fades out relatively quickly during the scroll
-      }, 0);
+        duration: 0.2 
+      }, 0.2);
 
       // ⬅️ Left content
       tl.to(leftContentRef.current, {
@@ -89,10 +104,12 @@ const FeatureShowcase: React.FC = () => {
           />
           <h2 
             ref={textRef}
-            className="absolute text-white text-6xl md:text-[100px] font-black uppercase tracking-tighter z-10 drop-shadow-2xl"
+            className="absolute text-white text-6xl md:text-[100px] font-black uppercase tracking-[0.2em] z-10 drop-shadow-2xl flex items-center"
             style={{ textShadow: '0 4px 30px rgba(0,0,0,0.6)' }}
           >
-            Why Us
+            <span ref={whyRef} className="inline-block">Why</span>
+            <span className="inline-block w-[0.3em]" /> {/* Custom space */}
+            <span ref={usRef} className="inline-block">Us</span>
           </h2>
         </div>
 

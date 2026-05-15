@@ -33,7 +33,14 @@ const Contact: React.FC = () => {
           </div>
           <div>
             <h3 className="text-xl font-bold mb-2">Office</h3>
-            <p className="text-gray-600 text-lg">123 Export Avenue, Global Trade Center<br/>City, Country</p>
+            <p className="text-gray-600 text-lg">
+              X PACT VENTURES PRIVATE LIMITED <br />
+              4/203/A WARD 4 WEST STREET, KADANERI, <br />
+              AYAN KARISALKULAM, <br />
+              VIRUDHUNAGAR 626149 <br />
+              TAMIL NADU, <br />
+              INDIA
+            </p>
           </div>
           <div className="pt-4 flex space-x-4">
             <div className="w-10 h-10 bg-[#F3CD00] rounded-full flex items-center justify-center font-bold">In</div>

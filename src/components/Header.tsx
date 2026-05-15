@@ -11,17 +11,17 @@ const Header: React.FC = () => {
     { to: "/", label: "Home" },
     { to: "/about", label: "About" },
     { to: "/products", label: "Product" },
-    { to: "/contact", label: "Shop" },
+    { to: "/contact", label: "contact" },
   ];
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 w-full">
-        <div className="flex justify-between items-center bg-white px-6 md:px-12 py-4 border-b border-gray-100 shadow-sm">
+      <header className="fixed top-10 left-0 right-0 z-50 flex justify-center px-4">
+        <div className="flex justify-between items-center bg-white px-6 md:px-12 py-3 rounded-full border border-gray-100 shadow-[0_8px_32px_rgba(0,0,0,0.1)] w-full max-w-7xl transition-all duration-300">
           {/* Logo - Left Side */}
           <div className="flex items-center">
             <NavLink to="/">
-              <img src="/xpack logo.png" alt="X Pact Ventures Logo" className="h-16 md:h-24 object-contain" />
+              <img src="/xpack logo.png" alt="X Pact Ventures Logo" className="h-10 md:h-14 object-contain" />
             </NavLink>
           </div>
 
@@ -30,11 +30,11 @@ const Header: React.FC = () => {
             {/* Navigation Links - Hidden on mobile */}
             <nav className="hidden sm:flex space-x-6 md:space-x-10 items-center">
               {navLinks.map((link) => (
-                <NavLink 
-                  key={link.to} 
-                  to={link.to} 
-                  className={({ isActive }) => 
-                    `text-sm md:text-lg font-semibold transition-colors ${isActive ? 'text-[#F3CD00]' : 'text-gray-800 hover:text-black'}`
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  className={({ isActive }) =>
+                    `text-sm md:text-base font-bold uppercase tracking-wider transition-colors ${isActive ? 'text-[#F3CD00]' : 'text-gray-900 hover:text-[#F3CD00]'}`
                   }
                 >
                   {link.label}
@@ -43,24 +43,24 @@ const Header: React.FC = () => {
             </nav>
 
             {/* Hamburger Menu - Visible only on mobile */}
-            <button 
+            <button
               onClick={toggleMenu}
-              className="sm:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
+              className="sm:hidden p-2 hover:bg-white/50 rounded-full transition-colors"
             >
-              <Menu size={20} className="text-gray-800" />
+              <Menu size={20} className="text-gray-900" />
             </button>
           </div>
         </div>
       </header>
 
       {/* Mobile Sidebar Overlay */}
-      <div 
+      <div
         className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         onClick={toggleMenu}
       />
-      
+
       {/* Mobile Sidebar */}
-      <div 
+      <div
         className={`fixed top-0 left-0 h-full w-[280px] bg-white z-[101] shadow-2xl transform transition-transform duration-300 ease-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <div className="p-8 flex flex-col h-full">
@@ -75,11 +75,11 @@ const Header: React.FC = () => {
 
           <nav className="flex flex-col space-y-6">
             {navLinks.map((link) => (
-              <NavLink 
-                key={link.to} 
-                to={link.to} 
+              <NavLink
+                key={link.to}
+                to={link.to}
                 onClick={toggleMenu}
-                className={({ isActive }) => 
+                className={({ isActive }) =>
                   `text-lg font-bold tracking-tight transition-colors ${isActive ? 'text-[#F3CD00]' : 'text-gray-900'}`
                 }
               >

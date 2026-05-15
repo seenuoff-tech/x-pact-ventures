@@ -30,7 +30,7 @@ const Home: React.FC = () => {
       <section className="relative flex flex-col lg:flex-row h-screen bg-black overflow-hidden">
         
         {/* Left Side: Globe */}
-        <div className="w-full lg:w-[60%] h-[50vh] lg:h-screen relative flex items-center justify-center z-0 order-1">
+        <div className="w-full lg:w-[60%] h-[50vh] lg:h-screen relative flex items-center justify-center z-0 order-1 pt-24 md:pt-32">
           <div
             className="absolute inset-0 z-[1] pointer-events-none"
             style={{
