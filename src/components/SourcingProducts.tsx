@@ -41,7 +41,7 @@ const cards: Card[] = [
     title: "Spices",
     content:
       "Authentic, aromatic spices handpicked and processed to preserve their natural flavor, color, and quality.",
-    video: "/videos/service.mp4",
+    video: "/videos/spices.mp4",
   },
   {
     tag: "Agro Exports",
