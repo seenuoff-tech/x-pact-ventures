@@ -87,7 +87,7 @@ export default function SourcingProducts() {
       gsap.set(card, {
         y: i === 0 ? 0 : "100%",
         scale: i === 0 ? 1 : 0.92,
-        opacity: 1,
+        opacity: i === 0 ? 1 : 0,
         zIndex: i + 1,   // each card sits ON TOP of the previous
       });
     });
@@ -110,7 +110,7 @@ export default function SourcingProducts() {
 
       // Push previous card back, bring new card up
       tl.to(prev, { scale: 0.88, duration: 1 }, offset);
-      tl.to(card, { y: "0%", scale: 1, duration: 1 }, offset);
+      tl.to(card, { y: "0%", scale: 1, opacity: 1, duration: 1 }, offset);
     });
 
     return () => {
