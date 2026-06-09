@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Lenis from "lenis";
+import { Volume2, VolumeX } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./SourcingProducts.css";
@@ -68,6 +69,7 @@ const cards: Card[] = [
 export default function SourcingProducts() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
+  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -129,19 +131,31 @@ export default function SourcingProducts() {
               }}
               className="stack-card"
             >
+              {/* Floating Sound Toggle Button */}
+              <button
+                className="sound-toggle-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsMuted(!isMuted);
+                }}
+                aria-label={isMuted ? "Unmute video" : "Mute video"}
+              >
+                {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+              </button>
+
+              {/* Background Video */}
+              <div className="card-media">
+                <video autoPlay loop muted={isMuted} playsInline>
+                  <source src={card.video} type="video/mp4" />
+                </video>
+              </div>
+
               {/* LEFT — content */}
               <div className="card-content">
                 <div className="card-pill">{card.tag}</div>
                 <h3>{card.title}</h3>
                 <p>{card.content}</p>
                 <button className="card-btn">Know More →</button>
-              </div>
-
-              {/* RIGHT — video */}
-              <div className="card-media">
-                <video autoPlay loop muted playsInline>
-                  <source src={card.video} type="video/mp4" />
-                </video>
               </div>
             </div>
           ))}

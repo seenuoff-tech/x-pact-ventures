@@ -28,8 +28,9 @@
   inset: 0;
   width: 100%;
   height: 500px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-radius: 20px;
   overflow: hidden;
   background: #000000;
@@ -40,11 +41,15 @@
 
 /* ── left content ── */
 .card-content {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: clamp(32px, 5vw, 72px);
   gap: 20px;
+  max-width: 650px;
+  box-sizing: border-box;
 }
 
 .card-pill {
@@ -106,13 +111,22 @@
   transform: translateY(-2px);
 }
 
-/* ── right video ── */
+/* ── background video ── */
 .card-media {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  padding: 20px;
-  box-sizing: border-box;
+  z-index: 1;
+}
+
+.card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: 2;
 }
 
 .card-media video,
@@ -121,7 +135,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 12px;
 }
 
 .card-media-placeholder {
@@ -139,6 +152,30 @@
   font-size: 48px;
 }
 
+/* ── sound toggle ── */
+.sound-toggle-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.sound-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
 /* ── responsive ── */
 @media (max-width: 900px) {
   .stack-wrapper {
@@ -147,11 +184,26 @@
   }
 
   .stack-card {
-    grid-template-columns: 1fr;
     height: auto;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .card-content {
+    max-width: 100%;
+    padding: 48px 24px;
   }
 
   .card-media {
-    height: 220px;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .card-media::after {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.6) 100%);
   }
 }
