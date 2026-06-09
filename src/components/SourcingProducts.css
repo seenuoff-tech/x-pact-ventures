@@ -111,6 +111,8 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .card-media video,
@@ -119,6 +121,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 12px;
 }
 
 .card-media-placeholder {

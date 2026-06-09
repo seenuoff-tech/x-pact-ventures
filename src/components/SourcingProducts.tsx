@@ -61,7 +61,7 @@ const cards: Card[] = [
     title: "Briquette Products",
     content:
       "High-efficiency, eco-friendly briquettes serving as a sustainable alternative energy source for industries.",
-    video: "/videos/service.mp4",
+    video: "/videos/Briquettes.mp4",
   },
 ];
 
