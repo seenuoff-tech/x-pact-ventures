@@ -3,7 +3,7 @@ import Globe from 'react-globe.gl';
 import './Glob.css';
 
 const Glob = () => {
-  const globeEl = useRef<any>();
+  const globeEl = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [countries, setCountries] = useState({ features: [] });

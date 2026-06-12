@@ -16,7 +16,10 @@ const FeatureShowcase: React.FC = () => {
   useEffect(() => {
     if (!containerRef.current || !imageBoxRef.current || !leftContentRef.current || !rightContentRef.current) return;
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    // 🖥️ Desktop / Large Screen Layout (1024px and above)
+    mm.add("(min-width: 1024px)", () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -24,13 +27,14 @@ const FeatureShowcase: React.FC = () => {
           end: '+=200%',
           scrub: 1,
           pin: true,
+          invalidateOnRefresh: true,
         },
       });
 
-      // 🚤 Boat/Image zoom out to specific size
+      // 🚤 Boat/Image zooms out and centers
       tl.to(imageBoxRef.current, {
-        width: '539px',
-        height: '565px',
+        width: () => window.innerWidth >= 1280 ? '539px' : '35vw',
+        height: () => window.innerHeight >= 940 ? '565px' : '60vh',
         borderRadius: '20px',
         ease: 'none',
       }, 0);
@@ -55,47 +59,88 @@ const FeatureShowcase: React.FC = () => {
         duration: 0.2 
       }, 0.2);
 
-      // ⬅️ Left content
-      tl.to(leftContentRef.current, {
-        x: 100,
-        opacity: 1,
-        ease: 'none',
-      }, 0.3);
+      // ⬅️ Left content slides in from left
+      tl.fromTo(leftContentRef.current, 
+        { x: -80, opacity: 0 },
+        { x: 0, opacity: 1, ease: 'none' },
+        0.3
+      );
 
-      // ➡️ Right content
-      tl.to(rightContentRef.current, {
-        x: -100,
-        opacity: 1,
-        ease: 'none',
-      }, 0.3);
-    }, containerRef);
+      // ➡️ Right content slides in from right
+      tl.fromTo(rightContentRef.current, 
+        { x: 80, opacity: 0 },
+        { x: 0, opacity: 1, ease: 'none' },
+        0.3
+      );
+    });
 
-    return () => ctx.revert();
+    // 📱 Mobile / Tablet Layout (below 1024px)
+    mm.add("(max-width: 1023px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: '+=200%',
+          scrub: 1,
+          pin: true,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      // 🚤 Boat/Image zooms out to a smaller centered block
+      tl.to(imageBoxRef.current, {
+        width: '80vw',
+        height: '30vh',
+        borderRadius: '15px',
+        ease: 'none',
+      }, 0);
+
+      // 📝 Text animation: Why from left, Us from right
+      tl.fromTo(whyRef.current, 
+        { x: -80, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.2, ease: 'power2.out' },
+        0
+      );
+      
+      tl.fromTo(usRef.current, 
+        { x: 80, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.2, ease: 'power2.out' },
+        0
+      );
+
+      // 📝 Text fade out
+      tl.to(textRef.current, {
+        opacity: 0,
+        ease: 'none',
+        duration: 0.2 
+      }, 0.2);
+
+      // ⬅️ Left content slides down from top
+      tl.fromTo(leftContentRef.current, 
+        { y: -30, opacity: 0 },
+        { y: 0, opacity: 1, ease: 'none' },
+        0.3
+      );
+
+      // ➡️ Right content slides up from bottom
+      tl.fromTo(rightContentRef.current, 
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, ease: 'none' },
+        0.3
+      );
+    });
+
+    return () => mm.revert();
   }, []);
 
   return (
     <section ref={containerRef} className="relative w-full overflow-hidden bg-white">
       <div className="relative w-full h-screen flex items-center justify-center">
         
-        {/* LEFT CONTENT */}
-        <div 
-          ref={leftContentRef}
-          className="absolute left-[5%] top-1/2 -translate-y-1/2 -translate-x-[100px] w-1/4 opacity-0 z-10"
-        >
-          <ul className="space-y-6">
-            {["Extensive Market Knowledge", "Commitment to Quality", "Streamlined Process", "24/7 Support"].map((item) => (
-              <li key={item}>
-                <h3 className="text-lg font-black text-black tracking-tighter uppercase leading-none mb-1">{item}</h3>
-                <div className="w-12 h-1 bg-[#F3CD00]" />
-              </li>
-            ))}
-          </ul>
-        </div>
-
         {/* IMAGE BOX */}
         <div 
           ref={imageBoxRef}
-          className="absolute w-full h-full flex items-center justify-center z-0 overflow-hidden shadow-2xl"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex items-center justify-center z-0 overflow-hidden shadow-2xl"
         >
           <img 
             src="/Ship.png" 
@@ -113,19 +158,42 @@ const FeatureShowcase: React.FC = () => {
           </h2>
         </div>
 
-        {/* RIGHT CONTENT */}
-        <div 
-          ref={rightContentRef}
-          className="absolute right-[5%] top-1/2 -translate-y-1/2 translate-x-[100px] w-1/4 opacity-0 z-10 text-right"
-        >
-          <ul className="space-y-6 flex flex-col items-end">
-            {["Strong Network", "Competitive Pricing", "Personalized Services"].map((item) => (
-              <li key={item} className="flex flex-col items-end">
-                <h3 className="text-lg font-black text-black tracking-tighter uppercase leading-none mb-1 text-right">{item}</h3>
-                <div className="w-12 h-1 bg-[#F3CD00]" />
-              </li>
-            ))}
-          </ul>
+        {/* CONTENT CONTAINER WRAPPER */}
+        <div className="absolute inset-0 max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between py-16 lg:py-0 pointer-events-none z-10">
+          
+          {/* LEFT CONTENT */}
+          <div 
+            ref={leftContentRef}
+            className="w-full lg:w-[280px] xl:w-[320px] max-w-[340px] lg:max-w-none opacity-0 pointer-events-auto"
+          >
+            <ul className="space-y-3 lg:space-y-6 flex flex-col items-center lg:items-start">
+              {["Extensive Market Knowledge", "Commitment to Quality", "Streamlined Process", "24/7 Support"].map((item) => (
+                <li key={item} className="flex flex-col items-center lg:items-start">
+                  <h3 className="text-sm md:text-lg font-black text-black tracking-tighter uppercase leading-none mb-1 text-center lg:text-left">{item}</h3>
+                  <div className="w-12 h-1 bg-[#F3CD00] mx-auto lg:mx-0" />
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* SPACER FOR IMAGE BOX */}
+          <div className="hidden lg:block lg:w-[42vw] xl:w-[600px] shrink-0 pointer-events-none" />
+
+          {/* RIGHT CONTENT */}
+          <div 
+            ref={rightContentRef}
+            className="w-full lg:w-[280px] xl:w-[320px] max-w-[340px] lg:max-w-none opacity-0 pointer-events-auto"
+          >
+            <ul className="space-y-3 lg:space-y-6 flex flex-col items-center lg:items-end">
+              {["Strong Network", "Competitive Pricing", "Personalized Services"].map((item) => (
+                <li key={item} className="flex flex-col items-center lg:items-end">
+                  <h3 className="text-sm md:text-lg font-black text-black tracking-tighter uppercase leading-none mb-1 text-center lg:text-right">{item}</h3>
+                  <div className="w-12 h-1 bg-[#F3CD00] mx-auto lg:ml-auto lg:mr-0" />
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
 
       </div>

@@ -69,7 +69,38 @@ const cards: Card[] = [
 export default function SourcingProducts() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const isMutedRef = useRef(true);
+  const activeIndexRef = useRef(0);
+  
   const [isMuted, setIsMuted] = useState(true);
+
+  // Sync state with ref for event handlers and callbacks
+  useEffect(() => {
+    isMutedRef.current = isMuted;
+  }, [isMuted]);
+
+  // Helper to control video playback and audio dynamically
+  const updateVideos = (activeIndex: number, muted: boolean) => {
+    videoRefs.current.forEach((video, i) => {
+      if (!video) return;
+      if (i === activeIndex) {
+        // Active video: unmute/mute based on user settings, and ensure it plays
+        video.muted = muted;
+        if (video.paused) {
+          video.play().catch(() => {
+            // Browser autoplay restrictions may catch here, which is expected
+          });
+        }
+      } else {
+        // Inactive videos: force mute and pause to save CPU/GPU resources
+        video.muted = true;
+        if (!video.paused) {
+          video.pause();
+        }
+      }
+    });
+  };
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -92,6 +123,9 @@ export default function SourcingProducts() {
       });
     });
 
+    // Initialize video playback states
+    updateVideos(0, isMutedRef.current);
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -100,6 +134,20 @@ export default function SourcingProducts() {
         pin: true,
         scrub: 1.2,
         anticipatePin: 1,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const active = Math.min(
+            Math.round(progress * (total - 1)),
+            total - 1
+          );
+          if (activeIndexRef.current !== active) {
+            activeIndexRef.current = active;
+            // Always reset to muted by default when scrolling to a new card
+            setIsMuted(true);
+            isMutedRef.current = true;
+            updateVideos(active, true);
+          }
+        }
       },
     });
 
@@ -136,7 +184,10 @@ export default function SourcingProducts() {
                 className="sound-toggle-btn"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setIsMuted(!isMuted);
+                  const newMuted = !isMuted;
+                  setIsMuted(newMuted);
+                  isMutedRef.current = newMuted;
+                  updateVideos(activeIndexRef.current, newMuted);
                 }}
                 aria-label={isMuted ? "Unmute video" : "Mute video"}
               >
@@ -145,7 +196,15 @@ export default function SourcingProducts() {
 
               {/* Background Video */}
               <div className="card-media">
-                <video autoPlay loop muted={isMuted} playsInline>
+                <video
+                  ref={(el) => {
+                    videoRefs.current[i] = el;
+                  }}
+                  autoPlay
+                  loop
+                  muted={true}
+                  playsInline
+                >
                   <source src={card.video} type="video/mp4" />
                 </video>
               </div>
