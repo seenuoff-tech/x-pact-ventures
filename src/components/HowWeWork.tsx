@@ -5,11 +5,11 @@ const HowWeWork: React.FC = () => {
     <section className="py-24 bg-white px-6 overflow-hidden relative">
       {/* Vertical Yellow Stripe Background */}
       <div 
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-full md:w-[600px] h-[120%] bg-[#FADE3F] opacity-100 z-0 hidden md:block"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full md:w-[600px] h-[120%] bg-[#F3CD00] opacity-100 z-0 hidden md:block"
       />
       
       {/* Mobile Yellow Background */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[#FADE3F] z-0 md:hidden" />
+      <div className="absolute top-0 left-0 w-full h-full bg-[#F3CD00] z-0 md:hidden" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <h2 
@@ -41,7 +41,7 @@ const HowWeWork: React.FC = () => {
               </div>
 
               <div 
-                className="bg-[#FADE3F] ml-8 md:ml-32 p-10 md:p-16 pt-20 md:pt-28 mt-12 md:mt-16 rounded-[32px] md:rounded-[48px] relative"
+                className="bg-[#F3CD00] ml-8 md:ml-32 p-10 md:p-16 pt-20 md:pt-28 mt-12 md:mt-16 rounded-[32px] md:rounded-[48px] relative"
               >
                 <div className="flex items-start md:pl-28">
                   <p className="text-2xl md:text-[34px] font-medium text-black max-w-lg leading-relaxed" style={{ fontFamily: "'Architects Daughter', cursive" }}>
@@ -104,7 +104,7 @@ const HowWeWork: React.FC = () => {
                 Supply Driven
               </h3>
               <div 
-                className="bg-[#FADE3F] p-10 md:p-14 pt-16 md:pt-20 mt-12 md:mt-16 rounded-[32px] md:rounded-[48px]"
+                className="bg-[#F3CD00] p-10 md:p-14 pt-16 md:pt-20 mt-12 md:mt-16 rounded-[32px] md:rounded-[48px]"
               >
                 <div className="flex items-start gap-6">
                   <div className="pt-2">
@@ -127,7 +127,7 @@ const HowWeWork: React.FC = () => {
             <div 
               className="lg:col-span-4 lg:col-start-1 row-start-1 flex justify-start -mt-16 lg:-mt-24 relative z-20"
             >
-              <div className="w-full max-w-[400px] aspect-[4/3] bg-white border-8 border-[#FADE3F] shadow-2xl flex items-center justify-center rounded-2xl overflow-hidden">
+              <div className="w-full max-w-[400px] aspect-[4/3] bg-white border-8 border-[#F3CD00] shadow-2xl flex items-center justify-center rounded-2xl overflow-hidden">
                  <img src="/left-bot.jpeg" alt="Supply Illustration" className="w-full h-full object-cover" />
               </div>
             </div>

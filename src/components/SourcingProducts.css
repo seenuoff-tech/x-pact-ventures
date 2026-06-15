@@ -107,7 +107,8 @@
 }
 
 .card-btn:hover {
-  background: #F3CD00;
+  background: #F3CD00 !important;
+  color: #0d0d0d !important;
   transform: translateY(-2px);
 }
 

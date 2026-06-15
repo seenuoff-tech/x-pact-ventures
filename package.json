@@ -28,6 +28,7 @@
     "react-dom": "^19.0.0",
     "react-globe.gl": "^2.37.1",
     "react-router-dom": "^7.14.2",
+    "swiper": "^12.2.0",
     "three": "^0.184.0",
     "three-conic-polygon-geometry": "^2.1.2",
     "vite": "^6.2.0"

@@ -29,7 +29,7 @@ const About: React.FC = () => {
             <div className="w-full max-w-2xl">
               <div 
                 className="p-10 md:p-14 rounded-[48px] shadow-sm border border-yellow-100/30 relative overflow-hidden"
-                style={{ backgroundColor: '#FAD02C' }}
+                style={{ backgroundColor: '#F3CD00' }}
               >
                 <p 
                   className="text-xl md:text-2xl leading-[1.6] font-medium relative z-10 text-gray-900"

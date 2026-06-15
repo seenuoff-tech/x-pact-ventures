@@ -1,0 +1,313 @@
+/* Spices timeline page container */
+.spices-page {
+  background-color: #060606;
+  min-height: 100vh;
+  width: 100%;
+  color: #ffffff;
+  padding: 180px 0 80px 0; /* space below navbar increased */
+  position: relative;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Background image overlay of spices */
+.spices-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url('/products/spices.png'); /* fallback or background spices image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15; /* subtle blending background */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spices-container {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header style with Distressed Yellow Box */
+.spices-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.spices-title-box {
+  background-color: #FFE050;
+  color: #000000;
+  font-size: 2.2rem;
+  font-weight: 900;
+  padding: 10px 48px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 32px rgba(255, 224, 80, 0.25);
+  display: inline-block;
+  transform: skewX(-5deg); /* Distressed/stylized offset */
+}
+
+/* Central Timeline Axis (Top connection only) */
+.timeline-axis {
+  position: absolute;
+  top: 190px;
+  height: 80px; /* Short line connecting top-pin to the first node */
+  left: 50%;
+  width: 4px;
+  background: #FFE050;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(255, 224, 80, 0.4);
+}
+
+.top-pin {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: #FFE050;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(255, 224, 80, 0.6);
+}
+
+/* Timeline Layout */
+.timeline-items {
+  position: relative;
+  margin-top: 79px; /* Adjusted to 79px as requested */
+}
+
+.timeline-row {
+  display: flex;
+  position: relative;
+  margin-bottom: 150px; /* Increased vertical spacing between products */
+  width: 100%;
+}
+
+/* Timeline Nodes */
+.timeline-node {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  border: 4px solid #FFE050;
+  background-color: #444444; /* Softened further to #444444 to reduce dark contrast */
+  border-radius: 50%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(255, 224, 80, 0.5);
+}
+
+/* Dynamic Vertical Line segments connecting nodes */
+.timeline-row::after {
+  content: "";
+  position: absolute;
+  top: 18px; /* Starts at the vertical center of the node */
+  bottom: -150px; /* Extends exactly across the 150px gap to connect to the next node */
+  left: 50%;
+  width: 4px;
+  background-color: #FFE050;
+  transform: translateX(-50%);
+  z-index: 1; /* Drawn behind the nodes (z-index: 10) */
+  box-shadow: 0 0 10px rgba(255, 224, 80, 0.4);
+}
+
+/* Hide the vertical line segment below the last row */
+.timeline-row:last-child::after {
+  display: none;
+}
+
+.timeline-node .inner-dot {
+  width: 20px;
+  height: 20px;
+  background-color: #FFE050;
+  border-radius: 50%;
+}
+
+/* Timeline content blocks alignment */
+.timeline-content-block {
+  width: 50%; /* Touch the center line */
+}
+
+/* Horizontal branching lines */
+.spice-branch-line {
+  position: absolute;
+  top: 16px; /* Center with the 36px node */
+  height: 4px;
+  background-color: #FFE050;
+  z-index: 5;
+}
+
+.timeline-row.left .spice-branch-line {
+  left: 60px;
+  right: calc(50% - 10px); /* Align relative to center axis of the timeline-row */
+}
+
+.timeline-row.right .spice-branch-line {
+  left: calc(50% - 10px); /* Align relative to center axis of the timeline-row */
+  right: 60px;
+}
+
+.spice-branch-line .end-dot {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-color: #FFE050;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 224, 80, 0.8);
+}
+
+.timeline-row.left .spice-branch-line .end-dot {
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.timeline-row.right .spice-branch-line .end-dot {
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+/* Align contents left vs right */
+.timeline-row.left {
+  justify-content: flex-start;
+}
+
+.timeline-row.left .timeline-content-block {
+  padding-right: 0;
+}
+
+.timeline-row.left .spice-details {
+  text-align: right;
+  padding-right: 25px;
+}
+
+.timeline-row.right {
+  justify-content: flex-end;
+}
+
+.timeline-row.right .timeline-content-block {
+  padding-left: 0;
+}
+
+.timeline-row.right .spice-details {
+  text-align: left;
+  padding-left: 25px;
+}
+
+/* Details and descriptions */
+.spice-details {
+  margin-top: 35px; /* Push description content below the timeline line */
+}
+
+.spice-title {
+  position: absolute;
+  top: -24px; /* Sit on top of the horizontal line */
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1px;
+  margin: 0;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 6;
+}
+
+.timeline-row.left .spice-title {
+  left: 60px; /* Align above the dot at the left end of the line */
+  text-align: left;
+}
+
+.timeline-row.right .spice-title {
+  right: 60px; /* Align above the dot at the right end of the line */
+  text-align: right;
+}
+
+.spice-details:hover .spice-title {
+  color: #FFE050;
+}
+
+.spice-desc {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 460px;
+  font-weight: 400;
+  text-align: justify; /* Justify text */
+  opacity: 0;
+  max-height: 0;
+  margin: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease, margin 0.4s ease;
+}
+
+.spice-details:hover .spice-desc {
+  opacity: 1;
+  max-height: 300px;
+  margin: 0 0 16px 0;
+}
+
+/* Responsive adjustment */
+@media (max-width: 850px) {
+  .timeline-axis {
+    left: 20px;
+  }
+  
+  .timeline-node {
+    left: 20px;
+  }
+
+  .timeline-row::after {
+    left: 20px; /* Align connection lines to the left nodes */
+  }
+  
+  .timeline-content-block {
+    width: 85%;
+    left: 50px;
+  }
+  
+  .timeline-row.left,
+  .timeline-row.right {
+    justify-content: flex-start;
+  }
+  
+  .timeline-row.left .timeline-content-block,
+  .timeline-row.right .timeline-content-block {
+    padding-left: 20px;
+    padding-right: 0;
+  }
+  
+  .timeline-row.left .spice-details,
+  .timeline-row.right .spice-details {
+    text-align: left;
+    align-items: flex-start;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .spice-branch-line {
+    left: -30px !important;
+    width: 30px !important;
+  }
+  
+  .spice-branch-line .end-dot {
+    display: none;
+  }
+
+  .timeline-row.left .spice-title,
+  .timeline-row.right .spice-title {
+    left: 20px; /* Align text start with the connector line on mobile */
+    right: auto;
+    text-align: left;
+  }
+}

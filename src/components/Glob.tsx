@@ -115,7 +115,7 @@ const Glob = () => {
         polygonCapColor={({ properties }: any) => {
           const iso = properties.ISO_A2;
           return highlightedCountries.includes(iso)
-            ? 'yellow'
+            ? '#F3CD00'
             : showOnlyHighlighted
             ? 'rgba(0,0,0,0)'
             : 'rgb(40, 40, 40)';
@@ -123,7 +123,7 @@ const Glob = () => {
         polygonSideColor={({ properties }: any) => {
           const iso = properties.ISO_A2;
           return highlightedCountries.includes(iso)
-            ? 'rgba(255, 255, 0, 0.5)'
+            ? 'rgba(243, 205, 0, 0.5)'
             : showOnlyHighlighted
             ? 'rgba(0,0,0,0)'
             : 'rgba(40, 40, 40, 0.2)';

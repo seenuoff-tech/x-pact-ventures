@@ -28,13 +28,13 @@ const OurTeam: React.FC = () => {
               transition={{ delay: idx * 0.1 }}
               className="flex flex-col items-center"
             >
-              <div className="w-48 h-48 rounded-full bg-gray-200 mb-6 overflow-hidden border-4 border-[#FAD02C]">
+              <div className="w-48 h-48 rounded-full bg-gray-200 mb-6 overflow-hidden border-4 border-[#F3CD00]">
                  <div className="w-full h-full flex items-center justify-center text-gray-400">
                     <img src="/About.png" alt="X" className="w-12 h-auto opacity-20" />
                  </div>
               </div>
               <h3 className="text-2xl font-bold text-black mb-1">{member.name}</h3>
-              <p className="text-xl font-bold text-[#FAD02C] italic">{member.role}</p>
+              <p className="text-xl font-bold text-[#F3CD00] italic">{member.role}</p>
             </motion.div>
           ))}
         </div>
@@ -42,7 +42,7 @@ const OurTeam: React.FC = () => {
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="mt-32 p-12 bg-[#FAD02C] rounded-[48px] shadow-lg"
+          className="mt-32 p-12 bg-[#F3CD00] rounded-[48px] shadow-lg"
         >
           <h3 className="text-3xl md:text-4xl font-bold text-black mb-6">Let’s Build Global Trade Together</h3>
           <p className="text-xl md:text-2xl font-medium text-black/80 max-w-3xl mx-auto">

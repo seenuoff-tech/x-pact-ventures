@@ -18,7 +18,7 @@ const OurStrength: React.FC = () => {
   };
 
   return (
-    <section className="py-24 bg-[#FADE3F] px-6 overflow-hidden relative">
+    <section className="py-24 bg-[#F3CD00] px-6 overflow-hidden relative">
       <div className="max-w-7xl mx-auto">
         {/* Main Heading */}
         <motion.h2 
