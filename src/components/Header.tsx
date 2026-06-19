@@ -1,9 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      setIsScrolled(currentScrollY > 20);
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -16,12 +39,12 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className="fixed top-10 left-0 right-0 z-50 flex justify-center px-4">
-        <div className="flex justify-between items-center bg-white px-6 md:px-12 py-3 rounded-full border border-gray-100 shadow-[0_8px_32px_rgba(0,0,0,0.1)] w-full max-w-7xl transition-all duration-300">
+      <header className={`fixed top-10 left-0 right-0 z-50 flex justify-center px-4 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-[250%]'}`}>
+        <div className={`flex justify-between items-center px-6 md:px-12 py-3 rounded-full w-full max-w-7xl transition-all duration-300 ${isScrolled ? 'bg-white border border-gray-100 shadow-[0_8px_32px_rgba(0,0,0,0.1)]' : 'bg-transparent'}`}>
           {/* Logo - Left Side */}
           <div className="flex items-center">
             <NavLink to="/">
-              <img src="/xpack logo.png" alt="X Pact Ventures Logo" className="h-10 md:h-14 object-contain" />
+              <img src="/xpackbg.png" alt="X Pact Ventures Logo" className="h-10 md:h-14 object-contain" />
             </NavLink>
           </div>
 
@@ -66,7 +89,7 @@ const Header: React.FC = () => {
         <div className="p-8 flex flex-col h-full">
           <div className="flex justify-between items-center mb-12">
             <NavLink to="/" onClick={toggleMenu}>
-              <img src="/xpack logo.png" alt="X Pact Ventures Logo" className="h-16 object-contain" />
+              <img src="/xpackbg.png" alt="X Pact Ventures Logo" className="h-16 object-contain" />
             </NavLink>
             <button onClick={toggleMenu} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
               <X size={24} className="text-gray-800" />

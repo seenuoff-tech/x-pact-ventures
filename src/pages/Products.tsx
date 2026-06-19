@@ -135,11 +135,9 @@ const Products: React.FC = () => {
       </div>
 
       {/* Carousel Container */}
-      <div 
-        ref={containerRef} 
-        className="carousel-container"
-      >
-        <Swiper
+      <div className="carousel-wrapper" ref={containerRef}>
+        <div className="carousel-container">
+          <Swiper
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
@@ -187,7 +185,8 @@ const Products: React.FC = () => {
               </div>
             </SwiperSlide>
           ))}
-        </Swiper>
+          </Swiper>
+        </div>
       </div>
     </div>
   );
