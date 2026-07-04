@@ -97,11 +97,11 @@
   z-index: 3;
   text-align: left; /* Left align text */
   pointer-events: none;
-  max-width: 600px; /* Restrict width for readability */
+  max-width: 800px; /* Restrict width for readability */
 }
 
 .outline-text {
-  font-size: clamp(3rem, 8vw, 10rem);
+  font-size: clamp(2rem, 5vw, 5.5rem);
   font-weight: 900;
   text-transform: uppercase;
   color: transparent;

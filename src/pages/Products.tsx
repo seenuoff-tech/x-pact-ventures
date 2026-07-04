@@ -17,27 +17,75 @@ interface ProductItem {
 const productList: ProductItem[] = [
   {
     id: 1,
-    name: 'Millets',
-    description: 'Nutrient-rich, sustainable, and wholesome grains sourced directly from local organic farms for global export.',
+    name: 'Millets & Ancient Grains',
+    description: "A premium selection of sustainably sourced, nutrient-dense, and climate-resilient minor millets from South India's prime agricultural clusters.",
     image: '/products/millets.png',
   },
   {
     id: 2,
-    name: 'Spices',
-    description: 'Aromatic, hand-selected spices processed to lock in their natural flavors, colors, and global standard freshness.',
-    image: '/products/spices.png',
+    name: 'Rice Varieties',
+    description: 'An elite range of aged, sortex-cleaned basmati and non-basmati rice, including aromatic, staples, and geographically protected varieties.',
+    image: '/products/millets.png',
   },
   {
     id: 3,
-    name: 'Coir Products',
-    description: 'Eco-friendly and biodegradable coir fiber products crafted for agricultural, industrial, and household applications.',
-    image: '/products/coir.png',
+    name: 'Other Cereals & Grains',
+    description: 'High-yielding, institutional-grade corn and fiber-rich emmer wheat varieties cultivated across traditional Southern dryland belts.',
+    image: '/products/millets.png',
   },
   {
     id: 4,
-    name: 'Cashews',
-    description: 'Premium quality cashew nuts, processed with care under hygienic conditions to deliver rich taste and buttery texture.',
+    name: 'Pulses & Lentils',
+    description: 'Premium, laser-cleaned pulses and split lentils processing high protein yields and uniform cooking consistency for global distribution.',
+    image: '/products/millets.png',
+  },
+  {
+    id: 5,
+    name: 'Oil Seeds',
+    description: 'Strictly calibrated, export-grade seeds offering exceptionally high oil concentration and low moisture profiles for global industrial and culinary demands.',
+    image: '/products/millets.png',
+  },
+  {
+    id: 6,
+    name: 'Nuts & Cocoa Beans',
+    description: 'Premium, globally certified cashew kernels and well-fermented, sun-dried whole cocoa beans sourced from elite peninsular plantations.',
     image: '/products/cashews.png',
+  },
+  {
+    id: 7,
+    name: 'Natural Sweeteners',
+    description: '100% unrefined, chemical-free cane and organic jaggery variants rich in native minerals and optimized for an extended shelf life.',
+    image: '/products/millets.png',
+  },
+  {
+    id: 8,
+    name: 'Spices & Aromatics',
+    description: 'High-purity, laboratory-certified whole and ground southern spices boasting intense volatile oil densities and premium pungency profiles.',
+    image: '/products/spices.png',
+  },
+  {
+    id: 9,
+    name: 'Coconut & Coir Commodities',
+    description: 'Premium, sustainably extracted virgin coconut oils, pasteurized desiccated powders, and high-expansion hydroponic grow-media coir blocks.',
+    image: '/products/coir.png',
+  },
+  {
+    id: 10,
+    name: 'Sustainable Fuel Briquetting',
+    description: 'High-density, low-ash extruded charcoal briquettes engineered for clean, sparkless, and long-lasting commercial heat performance.',
+    image: '/products/coir.png',
+  },
+  {
+    id: 11,
+    name: 'Moringa & Superfood Products',
+    description: 'Pure, nutrient-locked moringa pods, ultra-fine organic leaf powders, and cold-pressed botanical oils processed to rigorous international health standards.',
+    image: '/products/spices.png',
+  },
+  {
+    id: 12,
+    name: 'Eco-Friendly & Compostable Tableware',
+    description: 'A premium collection of microwave-safe, oil-resistant, and 100% compostable dinnerware molded entirely from natural palm sheaths and sugarcane pulp.',
+    image: '/products/coir.png',
   },
 ];
 
@@ -174,9 +222,7 @@ const Products: React.FC = () => {
                     className="read-more-btn"
                     onClick={(e) => {
                       e.stopPropagation();
-                      if (product.name === 'Spices') {
-                        navigate('/products/spices');
-                      }
+                      navigate(`/products/${product.id}`);
                     }}
                   >
                     Read More

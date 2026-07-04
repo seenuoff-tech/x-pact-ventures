@@ -211,8 +211,9 @@
 
 .spice-title {
   position: absolute;
-  top: -24px; /* Sit on top of the horizontal line */
-  font-size: 1.8rem;
+  top: 12px; /* Adjust top position to sit on the line */
+  transform: translateY(-100%); /* Grow upwards if multiple lines */
+  font-size: 1.3rem; /* Slightly smaller to fit long names */
   font-weight: 800;
   color: #ffffff;
   letter-spacing: 1px;
@@ -221,15 +222,18 @@
   cursor: pointer;
   transition: color 0.3s ease;
   z-index: 6;
+  line-height: 1.3;
 }
 
 .timeline-row.left .spice-title {
   left: 60px; /* Align above the dot at the left end of the line */
+  right: calc(50% + 30px); /* Constrain to not cross center axis */
   text-align: left;
 }
 
 .timeline-row.right .spice-title {
   right: 60px; /* Align above the dot at the right end of the line */
+  left: calc(50% + 30px); /* Constrain to not cross center axis */
   text-align: right;
 }
 
@@ -307,7 +311,26 @@
   .timeline-row.left .spice-title,
   .timeline-row.right .spice-title {
     left: 20px; /* Align text start with the connector line on mobile */
-    right: auto;
+    right: 20px; /* Don't overflow the screen */
     text-align: left;
   }
+}
+
+/* Disclaimer Section */
+.category-disclaimer {
+  margin: 80px auto 20px;
+  max-width: 900px;
+  background-color: rgba(255, 224, 80, 0.1);
+  border-left: 4px solid #FFE050;
+  padding: 20px 30px;
+  color: #dddddd;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-style: italic;
+  position: relative;
+  z-index: 10;
+}
+
+.category-disclaimer p {
+  margin: 0;
 }
