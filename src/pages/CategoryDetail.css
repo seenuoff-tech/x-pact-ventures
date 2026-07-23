@@ -7,7 +7,7 @@
   padding: 180px 0 80px 0; /* space below navbar increased */
   position: relative;
   overflow-x: hidden;
-  font-family: 'Inter', sans-serif;
+  font-family: "Outfit", "Inter", sans-serif;
 }
 
 /* Background image overlay of spices */
@@ -237,7 +237,13 @@
   text-align: right;
 }
 
-.spice-details:hover .spice-title {
+@media (hover: hover) {
+  .spice-details:hover .spice-title {
+    color: #FFE050;
+  }
+}
+
+.spice-details.active .spice-title {
   color: #FFE050;
 }
 
@@ -255,29 +261,43 @@
   transition: opacity 0.4s ease, max-height 0.4s ease, margin 0.4s ease;
 }
 
-.spice-details:hover .spice-desc {
+@media (hover: hover) {
+  .spice-details:hover .spice-desc {
+    opacity: 1;
+    max-height: 800px;
+    margin: 0 0 16px 0;
+  }
+}
+
+.spice-details.active .spice-desc {
   opacity: 1;
-  max-height: 300px;
+  max-height: 800px;
   margin: 0 0 16px 0;
 }
 
 /* Responsive adjustment */
 @media (max-width: 850px) {
+  .spices-title-box {
+    font-size: 1.5rem;
+    padding: 10px 24px;
+    text-align: center;
+    max-width: 90%;
+  }
+
   .timeline-axis {
-    left: 20px;
+    left: 30px;
   }
   
   .timeline-node {
-    left: 20px;
+    left: 30px;
   }
 
   .timeline-row::after {
-    left: 20px; /* Align connection lines to the left nodes */
+    left: 30px; /* Align connection lines to the left nodes */
   }
   
   .timeline-content-block {
-    width: 85%;
-    left: 50px;
+    width: 100%;
   }
   
   .timeline-row.left,
@@ -287,8 +307,8 @@
   
   .timeline-row.left .timeline-content-block,
   .timeline-row.right .timeline-content-block {
-    padding-left: 20px;
-    padding-right: 0;
+    padding-left: 70px;
+    padding-right: 20px;
   }
   
   .timeline-row.left .spice-details,
@@ -300,8 +320,9 @@
   }
   
   .spice-branch-line {
-    left: -30px !important;
-    width: 30px !important;
+    left: 48px !important;
+    width: 22px !important;
+    right: auto !important;
   }
   
   .spice-branch-line .end-dot {
@@ -310,9 +331,16 @@
 
   .timeline-row.left .spice-title,
   .timeline-row.right .spice-title {
-    left: 20px; /* Align text start with the connector line on mobile */
+    left: 70px; /* Align text start past the connector line on mobile */
     right: 20px; /* Don't overflow the screen */
     text-align: left;
+    font-size: 1rem;
+  }
+
+  .spice-desc {
+    font-size: 0.85rem;
+    text-align: left;
+    line-height: 1.6;
   }
 }
 
@@ -326,7 +354,8 @@
   color: #dddddd;
   font-size: 1.05rem;
   line-height: 1.6;
-  font-style: italic;
+  text-align: justify;
+  font-family: "Outfit", "Inter", sans-serif;
   position: relative;
   z-index: 10;
 }

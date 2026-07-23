@@ -86,9 +86,11 @@
 }
 
 /* Hover effects for active slide */
-.product-slide:hover .product-image {
-  filter: grayscale(0%);
-  transform: scale(1);
+@media (hover: hover) {
+  .product-slide:hover .product-image {
+    filter: grayscale(0%);
+    transform: scale(1);
+  }
 }
 
 /* Text overlays */
@@ -113,10 +115,12 @@
 }
 
 /* Bold white text on hover */
-.product-slide:hover .outline-text {
-  color: #ffffff;
-  -webkit-text-stroke: 1.5px transparent;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+@media (hover: hover) {
+  .product-slide:hover .outline-text {
+    color: #ffffff;
+    -webkit-text-stroke: 1.5px transparent;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  }
 }
 
 .product-desc {
@@ -129,9 +133,11 @@
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.product-slide:hover .product-desc {
-  opacity: 1;
-  transform: translateY(0);
+@media (hover: hover) {
+  .product-slide:hover .product-desc {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .read-more-btn {
@@ -151,14 +157,36 @@
   transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s, background-color 0.3s ease, color 0.3s ease;
 }
 
-.read-more-btn:hover {
-  background: #ffffff;
-  color: #000000;
+@media (hover: hover) {
+  .read-more-btn:hover {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .product-slide:hover .read-more-btn {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.product-slide:hover .read-more-btn {
-  opacity: 1;
-  transform: translateY(0);
+/* Enable hover states automatically on mobile for the active slide */
+@media (max-width: 768px) {
+  .swiper-slide-active .product-image {
+    filter: grayscale(0%);
+    transform: scale(1);
+  }
+  
+  .swiper-slide-active .outline-text {
+    color: #ffffff;
+    -webkit-text-stroke: 1.5px transparent;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  }
+  
+  .swiper-slide-active .product-desc,
+  .swiper-slide-active .read-more-btn {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Custom Cursor Follower */

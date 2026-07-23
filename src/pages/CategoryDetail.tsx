@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { categoryDetails } from '../data/productsDetails';
 import './CategoryDetail.css';
 
 const CategoryDetail: React.FC = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
+  const [activeItemId, setActiveItemId] = useState<number | null>(null);
 
   // Find the category based on the ID
   const category = categoryDetails.find((c) => c.categoryId === categoryId);
@@ -12,7 +13,12 @@ const CategoryDetail: React.FC = () => {
   useEffect(() => {
     // Scroll to top when page is loaded
     window.scrollTo(0, 0);
+    setActiveItemId(null); // Reset active item on page change
   }, [categoryId]);
+
+  const toggleItem = (id: number) => {
+    setActiveItemId(activeItemId === id ? null : id);
+  };
 
   if (!category) {
     return (
@@ -22,10 +28,30 @@ const CategoryDetail: React.FC = () => {
     );
   }
 
+  const getBackgroundImage = (id: string) => {
+    switch (id) {
+      case 'millets-and-ancient-grains': return '/products/bg_millets.jpg';
+      case 'rice-varieties': return '/products/bg_rice.jpg';
+      case 'other-cereals-and-grains': return '/products/bg_cereals.jpg';
+      case 'pulses-and-lentils': return '/products/bg_pulses.jpg';
+      case 'oil-seeds': return '/products/bg_oil_seeds.jpg';
+      case 'nuts-and-cocoa-beans': return '/products/bg_nuts.jpg';
+      case 'natural-sweeteners': return '/products/bg_sweeteners.jpg';
+      case 'spices-and-aromatics': return '/products/bg_spices.jpg';
+      case 'coconut-and-coir-commodities': return '/products/bg_coconut.jpg';
+      case 'sustainable-fuel-briquetting': return '/products/bg_briquettes.jpg';
+      case 'moringa-and-superfood-products': return '/products/bg_moringa.jpg';
+      case 'eco-friendly-and-compostable-tableware': return '/products/bg_eco.jpg';
+      default: return '/products/spices.png';
+    }
+  };
+
+  const bgImage = getBackgroundImage(category.categoryId);
+
   return (
     <div className="spices-page">
       {/* Background overlay */}
-      <div className="spices-bg-overlay"></div>
+      <div className="spices-bg-overlay" style={{ backgroundImage: `url(${bgImage})` }}></div>
 
       <div className="spices-container">
         {/* Header */}
@@ -56,7 +82,10 @@ const CategoryDetail: React.FC = () => {
                   <div className="end-dot"></div>
                 </div>
 
-                <div className="spice-details">
+                <div 
+                  className={`spice-details ${activeItemId === item.id ? 'active' : ''}`}
+                  onClick={() => toggleItem(item.id)}
+                >
                   <h2 className="spice-title">{item.name}</h2>
                   {item.descriptions.map((desc, index) => (
                     <p key={index} className="spice-desc">

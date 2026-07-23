@@ -20,22 +20,16 @@ const cards: Card[] = [
     title: "Millets",
     content:
       "High-quality, nutrient-rich millets sourced directly from sustainable farms for global export.",
-    video: "/videos/service.mp4",
+    video: "/videos/Millets.mp4",
   },
   {
     tag: "Agro Exports",
     title: "Rice",
     content:
       "Premium varieties of rice, carefully processed and packaged to meet international quality standards.",
-    video: "/videos/service.mp4",
+    video: "/videos/Rice.mp4",
   },
-  {
-    tag: "Agro Exports",
-    title: "Cereals",
-    content:
-      "A wide range of wholesome cereals, ensuring freshness and maximum nutritional value for international markets.",
-    video: "/videos/service.mp4",
-  },
+
   {
     tag: "Agro Exports",
     title: "Spices",
@@ -48,14 +42,14 @@ const cards: Card[] = [
     title: "Coconut Products",
     content:
       "Finest coconut derivatives including oil, water, and desiccated coconut, ethically sourced and processed.",
-    video: "/videos/service.mp4",
+    video: "/videos/_coconut products.mp4",
   },
   {
     tag: "Eco-Friendly",
     title: "Disposable Products",
     content:
       "Sustainable and biodegradable disposable products designed for environmentally conscious consumers globally.",
-    video: "/videos/service.mp4",
+    video: "/videos/Eco Friendly.mp4",
   },
   {
     tag: "Biofuel",

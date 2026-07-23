@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { Swiper as SwiperClass } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel, Keyboard, Autoplay } from 'swiper/modules';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
 import 'swiper/css';
 import './Products.css';
 
 interface ProductItem {
-  id: number;
+  id: string;
   name: string;
   description: string;
   image: string;
@@ -16,73 +16,73 @@ interface ProductItem {
 
 const productList: ProductItem[] = [
   {
-    id: 1,
+    id: 'millets-and-ancient-grains',
     name: 'Millets & Ancient Grains',
     description: "A premium selection of sustainably sourced, nutrient-dense, and climate-resilient minor millets from South India's prime agricultural clusters.",
     image: '/products/millets.png',
   },
   {
-    id: 2,
+    id: 'rice-varieties',
     name: 'Rice Varieties',
     description: 'An elite range of aged, sortex-cleaned basmati and non-basmati rice, including aromatic, staples, and geographically protected varieties.',
     image: '/products/millets.png',
   },
   {
-    id: 3,
+    id: 'other-cereals-and-grains',
     name: 'Other Cereals & Grains',
     description: 'High-yielding, institutional-grade corn and fiber-rich emmer wheat varieties cultivated across traditional Southern dryland belts.',
     image: '/products/millets.png',
   },
   {
-    id: 4,
+    id: 'pulses-and-lentils',
     name: 'Pulses & Lentils',
     description: 'Premium, laser-cleaned pulses and split lentils processing high protein yields and uniform cooking consistency for global distribution.',
     image: '/products/millets.png',
   },
   {
-    id: 5,
+    id: 'oil-seeds',
     name: 'Oil Seeds',
     description: 'Strictly calibrated, export-grade seeds offering exceptionally high oil concentration and low moisture profiles for global industrial and culinary demands.',
     image: '/products/millets.png',
   },
   {
-    id: 6,
+    id: 'nuts-and-cocoa-beans',
     name: 'Nuts & Cocoa Beans',
     description: 'Premium, globally certified cashew kernels and well-fermented, sun-dried whole cocoa beans sourced from elite peninsular plantations.',
     image: '/products/cashews.png',
   },
   {
-    id: 7,
+    id: 'natural-sweeteners',
     name: 'Natural Sweeteners',
     description: '100% unrefined, chemical-free cane and organic jaggery variants rich in native minerals and optimized for an extended shelf life.',
     image: '/products/millets.png',
   },
   {
-    id: 8,
+    id: 'spices-and-aromatics',
     name: 'Spices & Aromatics',
     description: 'High-purity, laboratory-certified whole and ground southern spices boasting intense volatile oil densities and premium pungency profiles.',
     image: '/products/spices.png',
   },
   {
-    id: 9,
+    id: 'coconut-and-coir-commodities',
     name: 'Coconut & Coir Commodities',
     description: 'Premium, sustainably extracted virgin coconut oils, pasteurized desiccated powders, and high-expansion hydroponic grow-media coir blocks.',
     image: '/products/coir.png',
   },
   {
-    id: 10,
+    id: 'sustainable-fuel-briquetting',
     name: 'Sustainable Fuel Briquetting',
     description: 'High-density, low-ash extruded charcoal briquettes engineered for clean, sparkless, and long-lasting commercial heat performance.',
     image: '/products/coir.png',
   },
   {
-    id: 11,
+    id: 'moringa-and-superfood-products',
     name: 'Moringa & Superfood Products',
     description: 'Pure, nutrient-locked moringa pods, ultra-fine organic leaf powders, and cold-pressed botanical oils processed to rigorous international health standards.',
     image: '/products/spices.png',
   },
   {
-    id: 12,
+    id: 'eco-friendly-and-compostable-tableware',
     name: 'Eco-Friendly & Compostable Tableware',
     description: 'A premium collection of microwave-safe, oil-resistant, and 100% compostable dinnerware molded entirely from natural palm sheaths and sugarcane pulp.',
     image: '/products/coir.png',
@@ -97,6 +97,7 @@ const Products: React.FC = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
   const [cursorActive, setCursorActive] = useState(false);
   const [isHoveringImage, setIsHoveringImage] = useState(false);
+  const [isLeftHalf, setIsLeftHalf] = useState(false);
 
   useEffect(() => {
     const cursor = cursorRef.current;
@@ -112,6 +113,7 @@ const Products: React.FC = () => {
     const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      setIsLeftHalf(e.clientX < window.innerWidth / 2);
     };
 
     const onMouseEnterPage = () => {
@@ -170,7 +172,11 @@ const Products: React.FC = () => {
       className="products-page"
       onClick={() => {
         if (swiperRef.current) {
-          swiperRef.current.slideNext();
+          if (isLeftHalf) {
+            swiperRef.current.slidePrev();
+          } else {
+            swiperRef.current.slideNext();
+          }
         }
       }}
     >
@@ -179,7 +185,7 @@ const Products: React.FC = () => {
         ref={cursorRef} 
         className={`custom-cursor ${cursorActive ? 'active' : ''} ${isHoveringImage ? 'cursor-dot' : ''}`}
       >
-        <ArrowRight />
+        {isLeftHalf ? <ArrowLeft /> : <ArrowRight />}
       </div>
 
       {/* Carousel Container */}

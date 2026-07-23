@@ -169,7 +169,7 @@ const FeatureShowcase: React.FC = () => {
             <ul className="space-y-3 lg:space-y-6 flex flex-col items-center lg:items-start">
               {["Extensive Market Knowledge", "Commitment to Quality", "Streamlined Process", "24/7 Support"].map((item) => (
                 <li key={item} className="flex flex-col items-center lg:items-start">
-                  <h3 className="text-sm md:text-lg font-black text-black tracking-tighter uppercase leading-none mb-1 text-center lg:text-left">{item}</h3>
+                  <h3 className="text-sm md:text-lg font-black font-sans text-black tracking-wider uppercase leading-none mb-1 text-center lg:text-left">{item}</h3>
                   <div className="w-12 h-1 bg-[#F3CD00] mx-auto lg:mx-0" />
                 </li>
               ))}
@@ -187,7 +187,7 @@ const FeatureShowcase: React.FC = () => {
             <ul className="space-y-3 lg:space-y-6 flex flex-col items-center lg:items-end">
               {["Strong Network", "Competitive Pricing", "Personalized Services"].map((item) => (
                 <li key={item} className="flex flex-col items-center lg:items-end">
-                  <h3 className="text-sm md:text-lg font-black text-black tracking-tighter uppercase leading-none mb-1 text-center lg:text-right">{item}</h3>
+                  <h3 className="text-sm md:text-lg font-black font-sans text-black tracking-wider uppercase leading-none mb-1 text-center lg:text-right">{item}</h3>
                   <div className="w-12 h-1 bg-[#F3CD00] mx-auto lg:ml-auto lg:mr-0" />
                 </li>
               ))}

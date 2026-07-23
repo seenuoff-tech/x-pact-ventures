@@ -14,7 +14,7 @@ export interface CategoryDetail {
 
 export const categoryDetails: CategoryDetail[] = [
   {
-    categoryId: '1',
+    categoryId: 'millets-and-ancient-grains',
     title: 'Millets & Ancient Grains',
     disclaimer: 'Disclaimer: Product images and specifications represent our premium export grade; natural variations in color and grain size may occur across harvest batches. Sourcing and regional volume metrics are subject to seasonal crop yields and market availability.',
     items: [
@@ -81,7 +81,7 @@ export const categoryDetails: CategoryDetail[] = [
     ],
   },
   {
-    categoryId: '2',
+    categoryId: 'rice-varieties',
     title: 'Rice Varieties',
     disclaimer: 'Disclaimer: Grain length and aging metrics reflect standard specifications at the time of milling and sorting. Actual cooking results and elongation may vary based on water quality, regional storage conditions, and preparation methods.',
     items: [
@@ -138,7 +138,7 @@ export const categoryDetails: CategoryDetail[] = [
     ],
   },
   {
-    categoryId: '3',
+    categoryId: 'other-cereals-and-grains',
     title: 'Other Cereals & Grains',
     disclaimer: 'Disclaimer: Sourcing locations and total regional production metrics are based on seasonal harvesting patterns and market cycles. Moisture parameters and grain profiles are strictly maintained to meet commercial and export specifications.',
     items: [
@@ -165,7 +165,7 @@ export const categoryDetails: CategoryDetail[] = [
     ],
   },
   {
-    categoryId: '4',
+    categoryId: 'pulses-and-lentils',
     title: 'Pulses & Lentils',
     disclaimer: 'Disclaimer: While all items undergo rigorous mechanical sorting and laser cleaning, slight variations in natural seed color and shape may occur across different harvest lots. Cooking times may vary depending on storage duration and localized water hardness.',
     items: [
@@ -252,7 +252,7 @@ export const categoryDetails: CategoryDetail[] = [
     ],
   },
   {
-    categoryId: '5',
+    categoryId: 'oil-seeds',
     title: 'Oil Seeds',
     disclaimer: 'Disclaimer: Oil concentration ranges and FFA profiles represent laboratory test standards at the time of processing. Final quality metrics are subject to natural variations depending on crop seasonal cycles and specific regional sourcing nodes.',
     items: [
@@ -299,7 +299,7 @@ export const categoryDetails: CategoryDetail[] = [
     ],
   },
   {
-    categoryId: '6',
+    categoryId: 'nuts-and-cocoa-beans',
     title: 'Nuts & Cocoa Beans',
     disclaimer: 'Disclaimer: Count sizes, grades, and moisture margins are aligned with international trade specifications at the point of packaging. Natural variations in kernel coloration and flavor profiles can occur due to seasonal climatic changes.',
     items: [
@@ -326,7 +326,7 @@ export const categoryDetails: CategoryDetail[] = [
     ],
   },
   {
-    categoryId: '7',
+    categoryId: 'natural-sweeteners',
     title: 'Natural Sweeteners',
     disclaimer: 'Disclaimer: Being 100% natural and unrefined products, our jaggery variants may exhibit subtle variations in color, texture, and sweetness profile across batches. Product storage longevity is highly dependent on humidity and temperature control post-delivery.',
     items: [
@@ -353,7 +353,7 @@ export const categoryDetails: CategoryDetail[] = [
     ],
   },
   {
-    categoryId: '8',
+    categoryId: 'spices-and-aromatics',
     title: 'Spices & Aromatics',
     disclaimer: 'Disclaimer: Curcumin percentages, ASTA values, and volatile oil concentrations are based on peak-harvest laboratory test metrics and may vary slightly between lots. Ultimate product performance is subject to proper storage away from direct sunlight and moisture.',
     items: [
@@ -420,7 +420,7 @@ export const categoryDetails: CategoryDetail[] = [
     ],
   },
   {
-    categoryId: '9',
+    categoryId: 'coconut-and-coir-commodities',
     title: 'Coconut & Coir Commodities',
     disclaimer: 'Disclaimer: Sourcing data and tri-state production metrics represent regional industry averages and seasonal availability frameworks. Coir EC levels and oil viscosity metrics are verified at processing lines and can shift slightly depending on environmental conditions during transit.',
     items: [
@@ -487,7 +487,7 @@ export const categoryDetails: CategoryDetail[] = [
     ],
   },
   {
-    categoryId: '10',
+    categoryId: 'sustainable-fuel-briquetting',
     title: 'Sustainable Fuel Briquetting',
     disclaimer: 'Disclaimer: Fixed carbon indices, calorific values, and runtime hours are determined under optimized laboratory testing conditions. Actual ignition times and burning performance may vary based on localized airflow, equipment specifications, and ambient humidity.',
     items: [
@@ -514,7 +514,7 @@ export const categoryDetails: CategoryDetail[] = [
     ],
   },
   {
-    categoryId: '11',
+    categoryId: 'moringa-and-superfood-products',
     title: 'Moringa & Superfood Products',
     disclaimer: 'Disclaimer: Nutritive profiles, mesh sizes, and oil characteristics are reflective of standardized export batches, though natural botanical variances can occur. This product is not intended to diagnose, treat, cure, or prevent any health condition; please consult a professional for specialized application.',
     items: [
@@ -561,7 +561,7 @@ export const categoryDetails: CategoryDetail[] = [
     ],
   },
   {
-    categoryId: '12',
+    categoryId: 'eco-friendly-and-compostable-tableware',
     title: 'Eco-Friendly & Compostable Tableware',
     disclaimer: 'Disclaimer: As these products are molded from 100% natural, raw agricultural byproducts, minor variations in texture, color, and natural fiber patterns are normal. Heat resistance and fluid-retention capacities are optimized for temporary commercial catering and food delivery usages.',
     items: [
