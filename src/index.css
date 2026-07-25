@@ -22,6 +22,11 @@
   --color-brand-bg: #ffffff;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 body {
   @apply font-sans bg-brand-bg text-brand-primary antialiased;
 }

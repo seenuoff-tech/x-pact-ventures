@@ -170,7 +170,7 @@
 }
 
 /* Enable hover states automatically on mobile for the active slide */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .swiper-slide-active .product-image {
     filter: grayscale(0%);
     transform: scale(1);

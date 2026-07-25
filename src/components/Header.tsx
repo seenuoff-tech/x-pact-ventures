@@ -52,7 +52,7 @@ const Header: React.FC = () => {
     { to: "/", label: "Home" },
     { to: "/about", label: "About" },
     { to: "/products", label: "Product" },
-    { to: "/contact", label: "contact" },
+    { to: "/contact", label: "Contact" },
   ];
 
   return (

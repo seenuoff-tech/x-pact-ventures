@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { categoryDetails } from '../data/productsDetails';
+import { ArrowLeft } from 'lucide-react';
 import './CategoryDetail.css';
 
 const CategoryDetail: React.FC = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
+  const navigate = useNavigate();
   const [activeItemId, setActiveItemId] = useState<number | null>(null);
 
   // Find the category based on the ID
@@ -56,6 +58,9 @@ const CategoryDetail: React.FC = () => {
       <div className="spices-container">
         {/* Header */}
         <header className="spices-header">
+          <button className="mobile-back-btn" onClick={() => navigate('/products')} aria-label="Go Back">
+            <ArrowLeft size={24} />
+          </button>
           <div className="spices-title-box">
             <span>{category.title}</span>
           </div>

@@ -12,6 +12,7 @@ type Card = {
   title: string;
   content: string;
   video: string;
+  link: string;
 };
 
 const cards: Card[] = [
@@ -21,6 +22,7 @@ const cards: Card[] = [
     content:
       "High-quality, nutrient-rich millets sourced directly from sustainable farms for global export.",
     video: "/videos/Millets.mp4",
+    link: "millets-and-ancient-grains",
   },
   {
     tag: "Agro Exports",
@@ -28,6 +30,7 @@ const cards: Card[] = [
     content:
       "Premium varieties of rice, carefully processed and packaged to meet international quality standards.",
     video: "/videos/Rice.mp4",
+    link: "rice-varieties",
   },
 
   {
@@ -36,6 +39,7 @@ const cards: Card[] = [
     content:
       "Authentic, aromatic spices handpicked and processed to preserve their natural flavor, color, and quality.",
     video: "/videos/spices.mp4",
+    link: "spices-and-aromatics",
   },
   {
     tag: "Agro Exports",
@@ -43,6 +47,7 @@ const cards: Card[] = [
     content:
       "Finest coconut derivatives including oil, water, and desiccated coconut, ethically sourced and processed.",
     video: "/videos/_coconut products.mp4",
+    link: "coconut-and-coir-commodities",
   },
   {
     tag: "Eco-Friendly",
@@ -50,6 +55,7 @@ const cards: Card[] = [
     content:
       "Sustainable and biodegradable disposable products designed for environmentally conscious consumers globally.",
     video: "/videos/Eco Friendly.mp4",
+    link: "eco-friendly-and-compostable-tableware",
   },
   {
     tag: "Biofuel",
@@ -57,10 +63,14 @@ const cards: Card[] = [
     content:
       "High-efficiency, eco-friendly briquettes serving as a sustainable alternative energy source for industries.",
     video: "/videos/Briquettes.mp4",
+    link: "sustainable-fuel-briquetting",
   },
 ];
 
+import { useNavigate } from "react-router-dom";
+
 export default function SourcingProducts() {
+  const navigate = useNavigate();
   const sectionRef = useRef<HTMLElement | null>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
@@ -104,60 +114,63 @@ export default function SourcingProducts() {
     });
     gsap.ticker.lagSmoothing(0);
 
-    const cardEls = cardsRef.current;
+    // Safely get only the actual DOM nodes (protects against React Strict Mode duplicate refs)
+    const cardEls = cardsRef.current.slice(0, cards.length).filter(Boolean);
     const total = cardEls.length;
-
-    // Initial state — card 0 visible, rest stacked below
-    cardEls.forEach((card, i) => {
-      gsap.set(card, {
-        y: i === 0 ? 0 : "100%",
-        scale: i === 0 ? 1 : 0.92,
-        opacity: i === 0 ? 1 : 0,
-        zIndex: i + 1,   // each card sits ON TOP of the previous
-      });
-    });
 
     // Initialize video playback states
     updateVideos(0, isMutedRef.current);
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: `+=${total * 50}%`,
-        pin: true,
-        scrub: 1.2,
-        anticipatePin: 1,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          const active = Math.min(
-            Math.round(progress * (total - 1)),
-            total - 1
-          );
-          if (activeIndexRef.current !== active) {
-            activeIndexRef.current = active;
-            // Always reset to muted by default when scrolling to a new card
-            setIsMuted(true);
-            isMutedRef.current = true;
-            updateVideos(active, true);
+    const ctx = gsap.context(() => {
+      // Initial state — card 0 visible, rest stacked below
+      cardEls.forEach((card, i) => {
+        gsap.set(card, {
+          y: i === 0 ? 0 : "100%",
+          scale: i === 0 ? 1 : 0.92,
+          opacity: i === 0 ? 1 : 0,
+          zIndex: i + 1,   // each card sits ON TOP of the previous
+        });
+      });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: `+=${total * 50}%`,
+          pin: true,
+          scrub: 1.2,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            const active = Math.min(
+              Math.round(progress * (total - 1)),
+              total - 1
+            );
+            if (activeIndexRef.current !== active) {
+              activeIndexRef.current = active;
+              // Always reset to muted by default when scrolling to a new card
+              setIsMuted(true);
+              isMutedRef.current = true;
+              updateVideos(active, true);
+            }
           }
-        }
-      },
-    });
+        },
+      });
 
-    cardEls.forEach((card, i) => {
-      if (i === 0) return;
-      const prev = cardEls[i - 1];
-      const offset = i - 1;
+      cardEls.forEach((card, i) => {
+        if (i === 0) return;
+        const prev = cardEls[i - 1];
+        const offset = i - 1;
 
-      // Push previous card back, bring new card up
-      tl.to(prev, { scale: 0.88, duration: 1 }, offset);
-      tl.to(card, { y: "0%", scale: 1, opacity: 1, duration: 1 }, offset);
-    });
+        // Push previous card back and fade it out, bring new card up
+        tl.to(prev, { scale: 0.88, opacity: 0, duration: 1 }, offset);
+        tl.to(card, { y: "0%", scale: 1, opacity: 1, duration: 1 }, offset);
+      });
+    }, sectionRef);
 
     return () => {
       lenis.destroy();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      ctx.revert();
     };
   }, []);
 
@@ -208,7 +221,9 @@ export default function SourcingProducts() {
                 <div className="card-pill">{card.tag}</div>
                 <h3>{card.title}</h3>
                 <p>{card.content}</p>
-                <button className="card-btn">Know More →</button>
+                <button className="card-btn" onClick={() => navigate('/products', { state: { categoryId: card.link } })}>
+                  Know More →
+                </button>
               </div>
             </div>
           ))}

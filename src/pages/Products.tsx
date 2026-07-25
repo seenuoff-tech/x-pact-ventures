@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Swiper as SwiperClass } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel, Keyboard, Autoplay } from 'swiper/modules';
@@ -91,6 +91,7 @@ const productList: ProductItem[] = [
 
 const Products: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const cursorRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const pageRef = useRef<HTMLDivElement>(null);
@@ -98,6 +99,15 @@ const Products: React.FC = () => {
   const [cursorActive, setCursorActive] = useState(false);
   const [isHoveringImage, setIsHoveringImage] = useState(false);
   const [isLeftHalf, setIsLeftHalf] = useState(false);
+
+  // Determine initial slide index based on categoryId from state
+  const initialSlideIndex = useMemo(() => {
+    if (location.state && location.state.categoryId) {
+      const index = productList.findIndex(p => p.id === location.state.categoryId);
+      return index >= 0 ? index : 0;
+    }
+    return 0;
+  }, [location.state]);
 
   useEffect(() => {
     const cursor = cursorRef.current;
@@ -135,6 +145,8 @@ const Products: React.FC = () => {
     // Smooth cursor follow using lerp
     let animationFrameId: number;
     const updateCursor = () => {
+      if (window.innerWidth < 1024) return; // Disable custom cursor animation on mobile
+      
       // Lerp logic for smooth tracking
       cursorX += (mouseX - cursorX) * 0.15;
       cursorY += (mouseY - cursorY) * 0.15;
@@ -192,6 +204,7 @@ const Products: React.FC = () => {
       <div className="carousel-wrapper" ref={containerRef}>
         <div className="carousel-container">
           <Swiper
+          initialSlide={initialSlideIndex}
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
@@ -217,6 +230,7 @@ const Products: React.FC = () => {
                     src={product.image} 
                     alt={product.name} 
                     className="product-image"
+                    loading="lazy"
                   />
                 </div>
 

@@ -178,23 +178,22 @@
 }
 
 /* ── responsive ── */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
+  .sourcing-left {
+    padding: 24px 16px;
+  }
+
   .stack-wrapper {
-    height: auto;
-    min-height: 480px;
+    height: 500px; /* fixed height for absolute children */
   }
 
   .stack-card {
-    height: auto;
-    min-height: 480px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    height: 500px;
   }
 
   .card-content {
     max-width: 100%;
-    padding: 48px 24px;
+    padding: 32px 20px;
   }
 
   .card-media {

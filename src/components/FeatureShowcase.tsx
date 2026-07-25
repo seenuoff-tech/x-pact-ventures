@@ -72,6 +72,9 @@ const FeatureShowcase: React.FC = () => {
         { x: 0, opacity: 1, ease: 'none' },
         0.3
       );
+
+      // ⏳ Hold the final state before unpinning so text is fully readable
+      tl.to({}, { duration: 0.8 });
     });
 
     // 📱 Mobile / Tablet Layout (below 1024px)
@@ -112,22 +115,25 @@ const FeatureShowcase: React.FC = () => {
       tl.to(textRef.current, {
         opacity: 0,
         ease: 'none',
-        duration: 0.2 
-      }, 0.2);
+        duration: 0.15 
+      }, 0.15);
 
       // ⬅️ Left content slides down from top
       tl.fromTo(leftContentRef.current, 
         { y: -30, opacity: 0 },
         { y: 0, opacity: 1, ease: 'none' },
-        0.3
+        0.2
       );
 
       // ➡️ Right content slides up from bottom
       tl.fromTo(rightContentRef.current, 
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, ease: 'none' },
-        0.3
+        0.2
       );
+
+      // ⏳ Hold the final state before unpinning
+      tl.to({}, { duration: 0.8 });
     });
 
     return () => mm.revert();
