@@ -51,7 +51,7 @@ const HowWeWork: React.FC = () => {
                     viewport={{ once: true }}
                   >
                     <h3 style={{ fontFamily: FONT_HEADING, fontSize: '110px', fontWeight: 400, color: '#000', margin: 0, lineHeight: 0.9 }}>Demand</h3>
-                    <h4 style={{ fontFamily: FONT_SUBHEADING, fontSize: '80px', fontWeight: 400, color: '#F3CD00', margin: 0 }}>Driven</h4>
+                    <h4 style={{ fontFamily: FONT_SUBHEADING, fontSize: '80px', fontWeight: 400, color: '#F3CD00', margin: 0, marginTop: '-15px', position: 'relative', zIndex: 10 }}>Driven</h4>
                   </motion.div>
                   <motion.p
                     initial={{ opacity: 0, x: -30 }}
@@ -184,7 +184,7 @@ const HowWeWork: React.FC = () => {
                 style={{ lineHeight: '0.7', marginBottom: '60px', marginTop: '-60px' }}
               >
                 <h3 style={{ fontFamily: FONT_HEADING, fontSize: 'clamp(80px, 8vw, 130px)', fontWeight: 400, color: '#000', margin: 0 }}>Demand</h3>
-                <h4 style={{ fontFamily: FONT_SUBHEADING, fontSize: 'clamp(42px, 4vw, 64px)', fontWeight: 400, color: '#F3CD00', margin: 0 }}>Driven</h4>
+                <h4 style={{ fontFamily: FONT_SUBHEADING, fontSize: 'clamp(42px, 4vw, 64px)', fontWeight: 400, color: '#F3CD00', margin: 0, marginTop: '-10px', position: 'relative', zIndex: 10 }}>Driven</h4>
               </motion.div>
               <motion.p
                 initial={{ opacity: 0, x: 20 }}

@@ -1,6 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Caveat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Autography';
+  src: url('/fonts/Autography.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bouncy';
+  src: url('/fonts/Bouncy-PERSONAL_USE_ONLY.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 @theme {
   --font-sans: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
   
