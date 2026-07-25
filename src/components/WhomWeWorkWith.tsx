@@ -1,29 +1,35 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import xpactGif from '../assets/Xpact Gif.gif';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const WhomWeWorkWith: React.FC = () => {
+  const isMobile = useIsMobile();
   return (
-    <section className="pt-8 pb-0 px-6 bg-white">
-      <div className="max-w-7xl mx-auto text-center">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-5xl md:text-6xl font-bold mb-16 text-black"
-        >
-          Whom we work with
-        </motion.h2>
+    <section style={{ backgroundColor: '#fff', padding: isMobile ? '40px 0 0' : '60px 0 0' }}>
 
-        <div className="flex justify-center items-center w-full">
-          <motion.img 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            src="/Whom we work with.png" 
-            alt="Whom we work with" 
-            className="w-full max-w-5xl h-auto object-contain"
-          />
-        </div>
+      <h2 style={{
+        fontFamily: 'Montserrat,sans-serif', fontSize: isMobile ? '32px' : '52px', fontWeight: 800,
+        textAlign: 'center', color: '#000', marginBottom: isMobile ? '28px' : '50px', letterSpacing: '-1px',
+      }}>
+        Whom we work with
+      </h2>
+
+      <div style={{
+        display: 'flex', justifyContent: 'center', alignItems: 'center',
+        padding: isMobile ? '0 16px 0' : '0 40px 0',
+      }}>
+        <img 
+          src={xpactGif} 
+          alt="Whom We Work With Flow" 
+          loading="lazy"
+          decoding="async"
+          style={{ 
+            width: '100%', 
+            maxWidth: '1150px', 
+            height: 'auto', 
+            display: 'block' 
+          }} 
+        />
       </div>
     </section>
   );

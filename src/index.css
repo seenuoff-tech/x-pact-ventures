@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Caveat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -31,4 +31,44 @@ body {
 
 .btn-primary {
   @apply px-6 py-2.5 bg-brand-primary text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-200;
+}
+
+:root {
+  --section-bg: #E5E4E2;
+}
+
+.global-content-style {
+  font-family: 'Outfit', Inter, ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
+/* --- MOBILE RESPONSIVENESS HIDE/SHOW --- */
+.mobile-only-view {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
+  .desktop-only-view {
+    display: none !important;
+  }
+
+  .mobile-only-view {
+    display: block !important;
+  }
+
+  .our-strength-section {
+    margin-top: -30px !important;
+  }
+
+  .our-strength-heading {
+    font-size: 36px !important;
+    padding: 10px 0 10px !important;
+  }
+
+  .how-we-work-heading {
+    font-size: 36px !important;
+    padding: 10px 0 10px !important;
+  }
 }
