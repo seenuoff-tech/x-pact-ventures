@@ -11,7 +11,7 @@ const Header: React.FC = () => {
   const [isMobileProductOpen, setIsMobileProductOpen] = useState(false);
   const location = useLocation();
 
-  const isVisible = isScrollVisible || isHoverVisible;
+  const isVisible = isHoverVisible;
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -57,8 +57,8 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className={`fixed top-10 left-0 right-0 z-50 flex justify-center px-4 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-[250%]'}`}>
-        <div className={`flex justify-between items-center px-6 md:px-12 py-3 rounded-full w-full max-w-7xl transition-all duration-300 ${isScrolled ? 'bg-white/60 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)]' : 'bg-transparent'}`}>
+      <header className={`fixed top-4 left-0 right-0 z-50 flex justify-center px-4 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-[250%]'}`}>
+        <div className="flex justify-between items-center px-6 md:px-12 py-3 rounded-full w-full max-w-7xl transition-all duration-300 bg-gray-400/30 backdrop-blur-lg border border-gray-400/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
           {/* Logo - Left Side */}
           <div className="flex items-center">
             <NavLink to="/">

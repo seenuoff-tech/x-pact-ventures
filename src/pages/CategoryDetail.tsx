@@ -102,7 +102,16 @@ const CategoryDetail: React.FC = () => {
         {/* Disclaimer section */}
         {category.disclaimer && (
           <div className="category-disclaimer">
-            <p>{category.disclaimer}</p>
+            <p>
+              {category.disclaimer.startsWith('Disclaimer:') ? (
+                <>
+                  <span style={{ color: '#F3CD00', fontWeight: 'bold' }}>Disclaimer:</span>
+                  {category.disclaimer.substring(11)}
+                </>
+              ) : (
+                category.disclaimer
+              )}
+            </p>
           </div>
         )}
       </div>

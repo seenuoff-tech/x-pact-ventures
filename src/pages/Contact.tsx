@@ -73,7 +73,7 @@ const Contact: React.FC = () => {
           </div>
           <div className="pt-4 flex space-x-4">
             <a href="https://www.linkedin.com/company/x-pact-ventures-private-limited/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-[#F3CD00] rounded-full flex items-center justify-center font-bold text-black transition-transform hover:scale-110">In</a>
-            <div className="w-10 h-10 bg-[#F3CD00] rounded-full flex items-center justify-center font-bold">X</div>
+            <a href="https://x.com/XPACTVENTURES" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-[#F3CD00] rounded-full flex items-center justify-center font-bold text-black transition-transform hover:scale-110">X</a>
           </div>
         </div>
 

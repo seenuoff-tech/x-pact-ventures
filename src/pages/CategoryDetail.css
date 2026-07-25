@@ -19,6 +19,8 @@
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0.15; /* subtle blending background */
+  filter: blur(4px);
+  transform: scale(1.02); /* Prevent blur edges from showing */
   pointer-events: none;
   z-index: 1;
 }
@@ -39,16 +41,15 @@
 }
 
 .spices-title-box {
-  background-color: #FFE050;
+  background-color: #F3CD00;
   color: #000000;
   font-size: 2.2rem;
   font-weight: 900;
   padding: 10px 48px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  box-shadow: 0 8px 32px rgba(255, 224, 80, 0.25);
+  box-shadow: 0 8px 32px rgba(243, 205, 0, 0.25);
   display: inline-block;
-  transform: skewX(-5deg); /* Distressed/stylized offset */
 }
 
 /* Central Timeline Axis (Top connection only) */
@@ -58,9 +59,9 @@
   height: 80px; /* Short line connecting top-pin to the first node */
   left: 50%;
   width: 4px;
-  background: #FFE050;
+  background: #F3CD00;
   transform: translateX(-50%);
-  box-shadow: 0 0 10px rgba(255, 224, 80, 0.4);
+  box-shadow: 0 0 10px rgba(243, 205, 0, 0.4);
 }
 
 .top-pin {
@@ -70,9 +71,9 @@
   transform: translateX(-50%);
   width: 20px;
   height: 20px;
-  background-color: #FFE050;
+  background-color: #F3CD00;
   border-radius: 50%;
-  box-shadow: 0 0 15px rgba(255, 224, 80, 0.6);
+  box-shadow: 0 0 15px rgba(243, 205, 0, 0.6);
 }
 
 /* Timeline Layout */
@@ -96,14 +97,14 @@
   transform: translateX(-50%);
   width: 36px;
   height: 36px;
-  border: 4px solid #FFE050;
+  border: 4px solid #F3CD00;
   background-color: #444444; /* Softened further to #444444 to reduce dark contrast */
   border-radius: 50%;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 12px rgba(255, 224, 80, 0.5);
+  box-shadow: 0 0 12px rgba(243, 205, 0, 0.5);
 }
 
 /* Dynamic Vertical Line segments connecting nodes */
@@ -114,10 +115,10 @@
   bottom: -150px; /* Extends exactly across the 150px gap to connect to the next node */
   left: 50%;
   width: 4px;
-  background-color: #FFE050;
+  background-color: #F3CD00;
   transform: translateX(-50%);
   z-index: 1; /* Drawn behind the nodes (z-index: 10) */
-  box-shadow: 0 0 10px rgba(255, 224, 80, 0.4);
+  box-shadow: 0 0 10px rgba(243, 205, 0, 0.4);
 }
 
 /* Hide the vertical line segment below the last row */
@@ -128,7 +129,7 @@
 .timeline-node .inner-dot {
   width: 20px;
   height: 20px;
-  background-color: #FFE050;
+  background-color: #F3CD00;
   border-radius: 50%;
 }
 
@@ -142,7 +143,7 @@
   position: absolute;
   top: 16px; /* Center with the 36px node */
   height: 4px;
-  background-color: #FFE050;
+  background-color: #F3CD00;
   z-index: 5;
 }
 
@@ -162,9 +163,9 @@
   transform: translateY(-50%);
   width: 16px;
   height: 16px;
-  background-color: #FFE050;
+  background-color: #F3CD00;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(255, 224, 80, 0.8);
+  box-shadow: 0 0 10px rgba(243, 205, 0, 0.8);
 }
 
 .timeline-row.left .spice-branch-line .end-dot {
@@ -239,12 +240,12 @@
 
 @media (hover: hover) {
   .spice-details:hover .spice-title {
-    color: #FFE050;
+    color: #F3CD00;
   }
 }
 
 .spice-details.active .spice-title {
-  color: #FFE050;
+  color: #F3CD00;
 }
 
 .spice-desc {
@@ -348,8 +349,8 @@
 .category-disclaimer {
   margin: 80px auto 20px;
   max-width: 900px;
-  background-color: rgba(255, 224, 80, 0.1);
-  border-left: 4px solid #FFE050;
+  background-color: rgba(243, 205, 0, 0.1);
+  border-left: 4px solid #F3CD00;
   padding: 20px 30px;
   color: #dddddd;
   font-size: 1.05rem;

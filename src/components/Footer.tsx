@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
             <a href="https://www.linkedin.com/company/x-pact-ventures-private-limited/" target="_blank" rel="noopener noreferrer" className="text-black hover:scale-125 transition-transform duration-200">
               <Linkedin size={20} strokeWidth={2.5} />
             </a>
-            <a href="#" className="text-black hover:scale-125 transition-transform duration-200 font-black text-xl leading-none">
+            <a href="https://x.com/XPACTVENTURES" target="_blank" rel="noopener noreferrer" className="text-black hover:scale-125 transition-transform duration-200 font-black text-xl leading-none">
               X
             </a>
           </div>

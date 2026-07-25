@@ -6,7 +6,7 @@
   position: relative;
   overflow: hidden;
   color: #ffffff;
-  padding-top: 190px; /* offset below navbar further */
+  padding-top: 120px; /* offset below navbar */
   display: flex;
   flex-direction: column;
   align-items: center;
