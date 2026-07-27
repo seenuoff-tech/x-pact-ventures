@@ -74,29 +74,7 @@
   display: inline-block;
 }
 
-/* Central Timeline Axis (Top connection only) */
-.timeline-axis {
-  position: absolute;
-  top: -80px; /* Short line connecting top-pin to the first node */
-  height: 80px; 
-  left: 50%;
-  width: 4px;
-  background: #F3CD00;
-  transform: translateX(-50%);
-  box-shadow: 0 0 10px rgba(243, 205, 0, 0.4);
-}
 
-.top-pin {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
-  background-color: #F3CD00;
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(243, 205, 0, 0.6);
-}
 
 /* Timeline Layout */
 .timeline-items {
@@ -315,9 +293,7 @@
     max-width: 90%;
   }
 
-  .timeline-axis {
-    left: 30px;
-  }
+
   
   .timeline-node {
     left: 30px;
