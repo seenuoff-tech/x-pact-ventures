@@ -68,7 +68,7 @@ const SupplyDriven: React.FC = () => {
                   transition={{ duration: 0.8, delay: 0.5 }}
                   className="global-content-style"
                   style={{
-                    fontSize: '44px',
+                    fontSize: '80px',
                     fontWeight: 500,
                     color: '#333',
                     textAlign: 'center',
@@ -100,7 +100,7 @@ const SupplyDriven: React.FC = () => {
                     className="global-content-style"
                     style={{
                       color: '#333',
-                      fontSize: '44px',
+                      fontSize: '80px',
                       lineHeight: '1.6',
                       marginTop: '30px',
                       maxWidth: '450px'
@@ -348,7 +348,7 @@ const ProcessCardFixed: React.FC<{ bg: string; color: string; title: string }> =
       zIndex: 2
     }}
   >
-    <span className="global-content-style" style={{ color, textAlign: 'center', fontSize: '38px' }}>{title}</span>
+    <span className="global-content-style" style={{ color, textAlign: 'center', fontSize: '68px' }}>{title}</span>
   </motion.div>
 );
 
