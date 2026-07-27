@@ -12,9 +12,10 @@ const Header: React.FC = () => {
   const [isMobileProductOpen, setIsMobileProductOpen] = useState(false);
   const [isDesktopProductOpen, setIsDesktopProductOpen] = useState(false);
   const [isDarkBg, setIsDarkBg] = useState(false);
+  const [isTouchVisible, setIsTouchVisible] = useState(false);
   const location = useLocation();
 
-  const isVisible = isHoverVisible || isHeaderHovered;
+  const isVisible = isScrollVisible || isHoverVisible || isHeaderHovered || isTouchVisible;
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -30,10 +31,16 @@ const Header: React.FC = () => {
         setIsDarkBg(false);
       }
 
-      if (currentScrollY > 100) {
-        setIsScrollVisible(false);
-      } else {
+      if (currentScrollY < 100) {
         setIsScrollVisible(true);
+      } else if (currentScrollY < lastScrollY - 5) {
+        // Scrolling up
+        setIsScrollVisible(true);
+      } else if (currentScrollY > lastScrollY + 5) {
+        // Scrolling down
+        setIsScrollVisible(false);
+        // Also hide touch visibility when scrolling down
+        setIsTouchVisible(false);
       }
 
       lastScrollY = currentScrollY;
@@ -49,11 +56,21 @@ const Header: React.FC = () => {
       }
     };
 
+    const handleTouch = (e: TouchEvent) => {
+      if (e.touches[0].clientY < 100) {
+        setIsTouchVisible(true);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchstart', handleTouch, { passive: true });
+    window.addEventListener('touchmove', handleTouch, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchstart', handleTouch);
+      window.removeEventListener('touchmove', handleTouch);
     };
   }, []);
 
