@@ -77,8 +77,8 @@
 /* Central Timeline Axis (Top connection only) */
 .timeline-axis {
   position: absolute;
-  top: 190px;
-  height: 80px; /* Short line connecting top-pin to the first node */
+  top: -80px; /* Short line connecting top-pin to the first node */
+  height: 80px; 
   left: 50%;
   width: 4px;
   background: #F3CD00;
@@ -88,9 +88,9 @@
 
 .top-pin {
   position: absolute;
-  top: -40px;
+  top: 0;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   width: 20px;
   height: 20px;
   background-color: #F3CD00;

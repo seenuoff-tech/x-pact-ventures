@@ -66,13 +66,13 @@ const CategoryDetail: React.FC = () => {
           </div>
         </header>
 
-        {/* Timeline Axis */}
-        <div className="timeline-axis">
-          <div className="top-pin"></div>
-        </div>
-
         {/* Timeline items container */}
         <div className="timeline-items">
+          {/* Timeline Axis */}
+          <div className="timeline-axis">
+            <div className="top-pin"></div>
+          </div>
+          
           {category.items.map((item) => (
             <div key={item.id} className={`timeline-row ${item.align}`}>
               
