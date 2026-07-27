@@ -68,6 +68,7 @@ const OurStrength: React.FC = () => {
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '80px', paddingLeft: '40px' }}>
                 <p className="global-content-style" style={{
                   color: '#333',
+                  fontSize: '44px',
                   lineHeight: '1.4',
                   marginBottom: '40px'
                 }}>
@@ -114,8 +115,8 @@ const OurStrength: React.FC = () => {
               viewport={{ once: true }}
               style={{
                 fontFamily: "'Outfit', Inter, sans-serif",
-                fontSize: '40px',
-                fontWeight: 500,
+                fontSize: '48px',
+                fontWeight: 600,
                 color: YELLOW_ACCENT,
                 lineHeight: '1.3',
                 textAlign: 'center',
@@ -218,8 +219,8 @@ const OurStrength: React.FC = () => {
             viewport={{ once: true }}
             style={{
               fontFamily: "'Outfit', Inter, sans-serif",
-              fontSize: 'clamp(14px, 1.8vw, 26px)',
-              fontWeight: 400,
+              fontSize: 'clamp(20px, 2.5vw, 40px)',
+              fontWeight: 600,
               color: YELLOW_ACCENT,
               lineHeight: '1.3',
               textAlign: 'center',
@@ -278,7 +279,7 @@ const ProcessCardFixed: React.FC<{ bg: string; color: string; title: string }> =
       zIndex: 2
     }}
   >
-    <span className="global-content-style" style={{ color, textAlign: 'center' }}>{title}</span>
+    <span className="global-content-style" style={{ color, textAlign: 'center', fontSize: '38px' }}>{title}</span>
   </motion.div>
 );
 

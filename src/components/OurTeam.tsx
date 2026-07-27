@@ -57,6 +57,7 @@ const OurTeam: React.FC = () => {
               {/* Name — global Outfit font */}
               <p className="global-content-style" style={{
                 color: '#000', marginBottom: '2px', fontWeight: 700,
+                fontSize: isMobile ? '20px' : '22px'
               }}>{m.name}</p>
               {/* Role — Autography cursive */}
               <p style={{

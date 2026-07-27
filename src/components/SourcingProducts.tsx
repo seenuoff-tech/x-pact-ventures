@@ -17,7 +17,7 @@ type Card = {
 
 const cards: Card[] = [
   {
-    tag: "Agro Exports",
+    tag: "Power Grains",
     title: "Millets",
     content:
       "High-quality, nutrient-rich millets sourced directly from sustainable farms for global export.",
@@ -25,7 +25,7 @@ const cards: Card[] = [
     link: "millets-and-ancient-grains",
   },
   {
-    tag: "Agro Exports",
+    tag: "Heritage Grains",
     title: "Rice",
     content:
       "Premium varieties of rice, carefully processed and packaged to meet international quality standards.",
@@ -34,7 +34,7 @@ const cards: Card[] = [
   },
 
   {
-    tag: "Agro Exports",
+    tag: "Flavour Craft",
     title: "Spices",
     content:
       "Authentic, aromatic spices handpicked and processed to preserve their natural flavor, color, and quality.",
@@ -42,7 +42,7 @@ const cards: Card[] = [
     link: "spices-and-aromatics",
   },
   {
-    tag: "Agro Exports",
+    tag: "Tree of Life",
     title: "Coconut Products",
     content:
       "Finest coconut derivatives including oil, water, and desiccated coconut, ethically sourced and processed.",
@@ -50,8 +50,8 @@ const cards: Card[] = [
     link: "coconut-and-coir-commodities",
   },
   {
-    tag: "Eco-Friendly",
-    title: "Disposable Products",
+    tag: "Earth Care",
+    title: "Eco- Friendly Products",
     content:
       "Sustainable and biodegradable disposable products designed for environmentally conscious consumers globally.",
     video: "/videos/Eco Friendly.mp4",
@@ -109,9 +109,11 @@ export default function SourcingProducts() {
   useEffect(() => {
     const lenis = new Lenis();
 
-    gsap.ticker.add((time) => {
+    const raf = (time: number) => {
       lenis.raf(time * 1000);
-    });
+    };
+
+    gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
 
     // Safely get only the actual DOM nodes (protects against React Strict Mode duplicate refs)
@@ -169,6 +171,7 @@ export default function SourcingProducts() {
     }, sectionRef);
 
     return () => {
+      gsap.ticker.remove(raf);
       lenis.destroy();
       ctx.revert();
     };
@@ -221,8 +224,8 @@ export default function SourcingProducts() {
                 <div className="card-pill">{card.tag}</div>
                 <h3>{card.title}</h3>
                 <p>{card.content}</p>
-                <button className="card-btn" onClick={() => navigate('/products', { state: { categoryId: card.link } })}>
-                  Know More →
+                <button className="card-btn" onClick={() => navigate(`/products/${card.link}`)}>
+                  Read More →
                 </button>
               </div>
             </div>

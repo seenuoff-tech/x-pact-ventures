@@ -52,6 +52,7 @@ const Glob = () => {
     if (globeReady && globeEl.current) {
       globeEl.current.controls().autoRotate = true;
       globeEl.current.controls().autoRotateSpeed = 6.0;
+      globeEl.current.controls().enableZoom = false;
 
       globeEl.current.pointOfView({ lat: 20, lng: 0, altitude: 2 }, 4000);
 

@@ -30,7 +30,7 @@ const Home: React.FC = () => {
       <section className="relative flex flex-col lg:flex-row h-screen bg-black overflow-hidden">
         
         {/* Left Side: Globe */}
-        <div className="w-full lg:w-[60%] h-[50vh] lg:h-screen relative flex items-center justify-center z-0 order-1 pt-24 md:pt-32">
+        <div className="w-full lg:w-[60%] h-[50vh] lg:h-screen relative flex items-center justify-center z-0 order-1 pt-24 md:pt-32 lg:pr-8 xl:pr-12">
           <div
             className="absolute inset-0 z-[1] pointer-events-none"
             style={{
@@ -43,11 +43,11 @@ const Home: React.FC = () => {
         <div className="hidden lg:block absolute left-[60%] top-[15%] h-[70%] w-[1px] z-10 bg-gradient-to-b from-transparent via-yellow-400/25 to-transparent" />
 
         {/* Right Side: WE EXPORT TO */}
-        <div className="w-full lg:w-[40%] h-[50vh] lg:h-screen flex flex-col justify-center items-center bg-transparent gap-4 pb-12 lg:pb-0 z-10 relative order-2">
+        <div className="w-full lg:w-[40%] h-[50vh] lg:h-screen flex flex-col justify-center items-center bg-transparent gap-4 pb-12 lg:pb-0 z-10 relative order-2 lg:pl-8 xl:pl-12">
           <motion.p
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[#c8a800] text-[13px] font-medium tracking-[6px] uppercase m-0 opacity-85"
+            className="text-[#c8a800] text-[13px] font-medium tracking-[6px] uppercase m-0 opacity-85 text-center"
           >
             WE EXPORT TO
           </motion.p>
@@ -66,9 +66,8 @@ const Home: React.FC = () => {
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 exit={{ opacity: 0, y: -15, filter: "blur(8px)" }}
                 transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-                className="absolute text-center text-white font-extrabold tracking-tighter m-0 whitespace-nowrap"
+                className="absolute text-center text-white font-extrabold tracking-tighter m-0 whitespace-nowrap text-[48px] md:text-[64px] lg:text-[5vw] xl:text-[84px]"
                 style={{
-                  fontSize: "clamp(48px, 10vw, 96px)",
                   textShadow: "0 0 40px rgba(243,205,0,0.3)"
                 }}
               >

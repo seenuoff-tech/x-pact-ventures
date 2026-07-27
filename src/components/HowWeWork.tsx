@@ -61,6 +61,7 @@ const HowWeWork: React.FC = () => {
                     className="global-content-style"
                     style={{
                       color: '#333',
+                      fontSize: '44px',
                       lineHeight: '1.6',
                       marginTop: '30px',
                       maxWidth: '450px'
@@ -148,10 +149,11 @@ const HowWeWork: React.FC = () => {
                   className="global-content-style"
                   style={{
                     color: '#333',
+                    fontSize: '44px',
                     textAlign: 'center',
                     marginTop: '280px',
                     lineHeight: '1.4',
-                    maxWidth: '400px'
+                    maxWidth: '800px'
                   }}
                 >
                   Architecting hyper-responsive solutions tailored precisely to evolving
@@ -361,7 +363,7 @@ const ProcessCardFixed: React.FC<{ bg: string; color: string; title: string; hei
       zIndex: 2
     }}
   >
-    <span className="global-content-style" style={{ color, textAlign: 'center' }}>{title}</span>
+    <span className="global-content-style" style={{ color, textAlign: 'center', fontSize: '38px' }}>{title}</span>
   </motion.div>
 );
 
