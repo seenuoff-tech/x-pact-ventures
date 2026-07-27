@@ -68,28 +68,28 @@ const Header: React.FC = () => {
   return (
     <>
       <header 
-        className={`fixed top-4 left-0 right-0 z-50 flex justify-center px-4 transition-transform duration-300 ${isVisible ? 'translate-y-0' : 'translate-y-0 md:-translate-y-[250%]'}`}
+        className={`fixed top-4 left-0 right-0 z-50 flex justify-center px-4 transition-transform duration-300 ${isVisible ? 'translate-y-0' : 'translate-y-0 lg:-translate-y-[250%]'}`}
         onMouseEnter={() => setIsHeaderHovered(true)}
         onMouseLeave={() => setIsHeaderHovered(false)}
       >
-        <div className={`flex justify-between items-center px-6 md:px-12 py-3 rounded-full w-full max-w-7xl transition-all duration-300 backdrop-blur-lg border shadow-[0_8px_32px_rgba(0,0,0,0.1)] bg-white/80 border-white/20 ${isDarkBg ? 'md:bg-white/80 md:border-white/20' : 'md:bg-black md:border-black/20'}`}>
+        <div className={`flex justify-between items-center px-6 lg:px-12 py-3 rounded-full w-full max-w-7xl transition-all duration-300 backdrop-blur-lg border shadow-[0_8px_32px_rgba(0,0,0,0.1)] bg-white/80 border-white/20 ${isDarkBg ? 'lg:bg-white/80 lg:border-white/20' : 'lg:bg-black lg:border-black/20'}`}>
           {/* Logo - Left Side */}
           <div className="flex items-center">
             <NavLink to="/">
-              <img src="/xpackbg.png" alt="X Pact Ventures Logo" className="h-10 md:h-14 object-contain" />
+              <img src="/xpackbg.png" alt="X Pact Ventures Logo" className="h-10 lg:h-14 object-contain" />
             </NavLink>
           </div>
 
           {/* Right Side - Navigation and Actions */}
-          <div className="flex items-center space-x-4 md:space-x-10">
+          <div className="flex items-center space-x-4 lg:space-x-10">
             {/* Navigation Links - Hidden on mobile */}
-            <nav className="hidden sm:flex space-x-6 md:space-x-10 items-center">
+            <nav className="hidden lg:flex space-x-6 lg:space-x-10 items-center">
               {navLinks.map((link) => (
                 <div key={link.to} className="relative group">
                   <NavLink
                     to={link.to}
                     className={({ isActive }) =>
-                      `flex items-center text-sm md:text-base font-bold uppercase tracking-wider transition-colors py-2 ${isActive ? 'text-[#F3CD00]' : (isDarkBg ? 'text-gray-900 group-hover:text-[#F3CD00]' : 'text-white group-hover:text-[#F3CD00]')}`
+                      `flex items-center text-sm lg:text-base font-bold uppercase tracking-wider transition-colors py-2 ${isActive ? 'text-[#F3CD00]' : (isDarkBg ? 'text-gray-900 group-hover:text-[#F3CD00]' : 'text-white group-hover:text-[#F3CD00]')}`
                     }
                   >
                     {link.label}
@@ -125,7 +125,7 @@ const Header: React.FC = () => {
             {/* Hamburger Menu - Visible only on mobile */}
             <button
               onClick={toggleMenu}
-              className="sm:hidden p-2 hover:bg-gray-100/50 rounded-full transition-colors"
+              className="lg:hidden p-2 hover:bg-gray-100/50 rounded-full transition-colors"
             >
               <Menu size={20} className="text-gray-900" />
             </button>
