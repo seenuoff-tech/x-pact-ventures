@@ -10,6 +10,7 @@ const Header: React.FC = () => {
   const [isHoverVisible, setIsHoverVisible] = useState(false);
   const [isHeaderHovered, setIsHeaderHovered] = useState(false);
   const [isMobileProductOpen, setIsMobileProductOpen] = useState(false);
+  const [isDesktopProductOpen, setIsDesktopProductOpen] = useState(false);
   const [isDarkBg, setIsDarkBg] = useState(false);
   const location = useLocation();
 
@@ -68,49 +69,67 @@ const Header: React.FC = () => {
   return (
     <>
       <header 
-        className={`fixed top-4 left-0 right-0 z-50 flex justify-center px-4 transition-transform duration-300 ${isVisible ? 'translate-y-0' : 'translate-y-0 lg:-translate-y-[250%]'}`}
+        className={`fixed top-4 left-0 right-0 z-50 flex justify-center px-4 transition-transform duration-300 ${isVisible ? 'translate-y-0' : 'translate-y-0 md:-translate-y-[250%]'}`}
         onMouseEnter={() => setIsHeaderHovered(true)}
         onMouseLeave={() => setIsHeaderHovered(false)}
       >
-        <div className={`flex justify-between items-center px-6 lg:px-12 py-3 rounded-full w-full max-w-7xl transition-all duration-300 backdrop-blur-lg border shadow-[0_8px_32px_rgba(0,0,0,0.1)] bg-white/80 border-white/20 ${isDarkBg ? 'lg:bg-white/80 lg:border-white/20' : 'lg:bg-black lg:border-black/20'}`}>
+        <div className={`flex justify-between items-center px-6 md:px-12 py-3 rounded-full w-full max-w-7xl transition-all duration-300 backdrop-blur-lg border shadow-[0_8px_32px_rgba(0,0,0,0.1)] bg-white/80 border-white/20 ${isDarkBg ? 'md:bg-white/80 md:border-white/20' : 'md:bg-black md:border-black/20'}`}>
           {/* Logo - Left Side */}
           <div className="flex items-center">
             <NavLink to="/">
-              <img src="/xpackbg.png" alt="X Pact Ventures Logo" className="h-10 lg:h-14 object-contain" />
+              <img src="/xpackbg.png" alt="X Pact Ventures Logo" className="h-10 md:h-14 object-contain" />
             </NavLink>
           </div>
 
           {/* Right Side - Navigation and Actions */}
-          <div className="flex items-center space-x-4 lg:space-x-10">
+          <div className="flex items-center space-x-4 md:space-x-10">
             {/* Navigation Links - Hidden on mobile */}
-            <nav className="hidden lg:flex space-x-6 lg:space-x-10 items-center">
+            <nav className="hidden md:flex space-x-6 md:space-x-10 items-center">
               {navLinks.map((link) => (
                 <div key={link.to} className="relative group">
                   <NavLink
                     to={link.to}
+                    onClick={(e) => {
+                      if (link.label === "Product" && window.innerWidth <= 1024) {
+                        e.preventDefault();
+                        setIsDesktopProductOpen(!isDesktopProductOpen);
+                      }
+                    }}
                     className={({ isActive }) =>
-                      `flex items-center text-sm lg:text-base font-bold uppercase tracking-wider transition-colors py-2 ${isActive ? 'text-[#F3CD00]' : (isDarkBg ? 'text-gray-900 group-hover:text-[#F3CD00]' : 'text-white group-hover:text-[#F3CD00]')}`
+                      `flex items-center text-sm md:text-base font-bold uppercase tracking-wider transition-colors py-2 ${isActive ? 'text-[#F3CD00]' : (isDarkBg ? 'text-gray-900 group-hover:text-[#F3CD00]' : 'text-white group-hover:text-[#F3CD00]')}`
                     }
                   >
                     {link.label}
-                    {link.label === "Product" && <ChevronDown size={16} className="ml-1 transition-transform group-hover:rotate-180" />}
+                    {link.label === "Product" && <ChevronDown size={16} className={`ml-1 transition-transform ${isDesktopProductOpen ? 'rotate-180' : 'group-hover:rotate-180'}`} />}
                   </NavLink>
 
                   {/* Dropdown for Product */}
                   {link.label === "Product" && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                    <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 w-72 transition-all duration-300 z-50 ${isDesktopProductOpen ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible'}`}>
                       <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
                         <div className="py-2 max-h-[60vh] overflow-y-auto">
+                          <NavLink
+                            to="/products"
+                            onClick={() => setIsDesktopProductOpen(false)}
+                            className={({ isActive }) =>
+                              `block px-5 py-3 text-sm font-bold uppercase transition-colors border-b border-gray-50 ${
+                                isActive && location.pathname === '/products' ? 'bg-gray-50 text-[#F3CD00]' : 'text-gray-700 hover:bg-gray-50 hover:text-[#F3CD00]'
+                              }`
+                            }
+                          >
+                            All Products
+                          </NavLink>
                           {categoryDetails.map((category) => (
                             <NavLink
                               key={category.categoryId}
                               to={`/products/${category.categoryId}`}
-                              className={({ isActive }) =>
-                                `block px-5 py-3 text-sm font-bold uppercase transition-colors border-b border-gray-50 last:border-0 ${
-                                  isActive ? 'bg-gray-50 text-[#F3CD00]' : 'text-gray-700 hover:bg-gray-50 hover:text-[#F3CD00]'
-                                }`
-                              }
-                            >
+                                className={({ isActive }) =>
+                                  `block px-5 py-3 text-sm font-bold uppercase transition-colors border-b border-gray-50 last:border-0 ${
+                                    isActive ? 'bg-gray-50 text-[#F3CD00]' : 'text-gray-700 hover:bg-gray-50 hover:text-[#F3CD00]'
+                                  }`
+                                }
+                                onClick={() => setIsDesktopProductOpen(false)}
+                              >
                               {category.title}
                             </NavLink>
                           ))}
@@ -125,7 +144,7 @@ const Header: React.FC = () => {
             {/* Hamburger Menu - Visible only on mobile */}
             <button
               onClick={toggleMenu}
-              className="lg:hidden p-2 hover:bg-gray-100/50 rounded-full transition-colors"
+              className="md:hidden p-2 hover:bg-gray-100/50 rounded-full transition-colors"
             >
               <Menu size={20} className="text-gray-900" />
             </button>
