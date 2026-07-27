@@ -15,7 +15,7 @@ const Header: React.FC = () => {
   const [isTouchVisible, setIsTouchVisible] = useState(false);
   const location = useLocation();
 
-  const isVisible = isHoverVisible || isHeaderHovered || isTouchVisible;
+  const isVisible = isHoverVisible || isHeaderHovered || isTouchVisible || isDesktopProductOpen;
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
