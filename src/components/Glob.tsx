@@ -106,7 +106,7 @@ const Glob = () => {
           onGlobeReady={() => setGlobeReady(true)}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
         backgroundColor="rgba(0,0,0,0)"
-        polygonsData={isMobile ? [] : countries.features}
+        polygonsData={countries.features}
         polygonAltitude={({ properties }: any) => {
           const iso = properties.ISO_A2;
           if (highlightedCountries.includes(iso)) {
@@ -135,7 +135,7 @@ const Glob = () => {
           showOnlyHighlighted ? 'rgba(0,0,0,0)' : 'rgba(80,80,80,0.3)'
         }
         polygonsTransitionDuration={transitionDuration}
-        arcsData={isMobile ? [] : arcsData}
+        arcsData={arcsData}
         arcColor={() => 'white'}
         arcAltitude={0.3}
       />
