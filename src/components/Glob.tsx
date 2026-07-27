@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Globe from 'react-globe.gl';
+import { useIsMobile } from '../hooks/useIsMobile';
 import './Glob.css';
 
 const Glob = () => {
@@ -11,6 +12,7 @@ const Glob = () => {
   const [highlightedCountries, setHighlightedCountries] = useState<string[]>([]);
   const [showOnlyHighlighted, setShowOnlyHighlighted] = useState(false);
   const [globeReady, setGlobeReady] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -104,7 +106,7 @@ const Glob = () => {
           onGlobeReady={() => setGlobeReady(true)}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
         backgroundColor="rgba(0,0,0,0)"
-        polygonsData={countries.features}
+        polygonsData={isMobile ? [] : countries.features}
         polygonAltitude={({ properties }: any) => {
           const iso = properties.ISO_A2;
           if (highlightedCountries.includes(iso)) {
@@ -133,7 +135,7 @@ const Glob = () => {
           showOnlyHighlighted ? 'rgba(0,0,0,0)' : 'rgba(80,80,80,0.3)'
         }
         polygonsTransitionDuration={transitionDuration}
-        arcsData={arcsData}
+        arcsData={isMobile ? [] : arcsData}
         arcColor={() => 'white'}
         arcAltitude={0.3}
       />

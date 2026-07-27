@@ -210,7 +210,6 @@ export default function SourcingProducts() {
                   ref={(el) => {
                     videoRefs.current[i] = el;
                   }}
-                  autoPlay
                   loop
                   muted={true}
                   playsInline

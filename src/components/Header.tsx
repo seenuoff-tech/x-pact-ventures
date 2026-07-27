@@ -72,7 +72,7 @@ const Header: React.FC = () => {
         onMouseEnter={() => setIsHeaderHovered(true)}
         onMouseLeave={() => setIsHeaderHovered(false)}
       >
-        <div className={`flex justify-between items-center px-6 md:px-12 py-3 rounded-full w-full max-w-7xl transition-all duration-300 backdrop-blur-lg border shadow-[0_8px_32px_rgba(0,0,0,0.1)] ${isDarkBg ? 'bg-white/80 border-white/20' : 'bg-black border-black/20'}`}>
+        <div className={`flex justify-between items-center px-6 md:px-12 py-3 rounded-full w-full max-w-7xl transition-all duration-300 backdrop-blur-lg border shadow-[0_8px_32px_rgba(0,0,0,0.1)] bg-white/80 border-white/20 ${isDarkBg ? 'md:bg-white/80 md:border-white/20' : 'md:bg-black md:border-black/20'}`}>
           {/* Logo - Left Side */}
           <div className="flex items-center">
             <NavLink to="/">
@@ -127,7 +127,7 @@ const Header: React.FC = () => {
               onClick={toggleMenu}
               className="sm:hidden p-2 hover:bg-gray-100/50 rounded-full transition-colors"
             >
-              <Menu size={20} className={isDarkBg ? "text-gray-900" : "text-white"} />
+              <Menu size={20} className="text-gray-900" />
             </button>
           </div>
         </div>
