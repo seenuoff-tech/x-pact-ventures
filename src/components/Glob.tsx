@@ -53,10 +53,10 @@ const Glob = () => {
   useEffect(() => {
     if (globeReady && globeEl.current) {
       globeEl.current.controls().autoRotate = true;
-      globeEl.current.controls().autoRotateSpeed = 6.0;
+      globeEl.current.controls().autoRotateSpeed = isMobile ? 1.5 : 6.0;
       globeEl.current.controls().enableZoom = false;
 
-      globeEl.current.pointOfView({ lat: 20, lng: 0, altitude: 2 }, 4000);
+      globeEl.current.pointOfView({ lat: 20, lng: 0, altitude: 2 }, isMobile ? 0 : 4000);
 
       const animateCountries = (index = 0) => {
         if (index >= highlightSequence.length) {
@@ -72,14 +72,14 @@ const Glob = () => {
           lat: countryData[code].lat,
           lng: countryData[code].lng,
           altitude: 4.0,
-        }, 1500);
+        }, isMobile ? 500 : 1500);
 
-        setTimeout(() => animateCountries(index + 1), 4000);
+        setTimeout(() => animateCountries(index + 1), isMobile ? 2000 : 4000);
       };
 
-      setTimeout(() => animateCountries(), 5000);
+      setTimeout(() => animateCountries(), isMobile ? 2000 : 5000);
     }
-  }, [globeReady]);
+  }, [globeReady, isMobile]);
 
   const arcsData = highlightedCountries
     .filter(code => code !== 'IN')
@@ -92,7 +92,7 @@ const Glob = () => {
       arcStroke: 0.5,
       arcDashLength: 0.9,
       arcDashGap: 4,
-      arcDashAnimateTime: 1500,
+      arcDashAnimateTime: isMobile ? 3000 : 1500,
       arcAltitude: 0.3,
     }));
 
@@ -108,6 +108,7 @@ const Glob = () => {
         backgroundColor="rgba(0,0,0,0)"
         polygonsData={countries.features}
         polygonAltitude={({ properties }: any) => {
+          if (isMobile) return 0.01;
           const iso = properties.ISO_A2;
           if (highlightedCountries.includes(iso)) {
             const pop = properties.POP_EST;
@@ -124,6 +125,7 @@ const Glob = () => {
             : 'rgb(40, 40, 40)';
         }}
         polygonSideColor={({ properties }: any) => {
+          if (isMobile) return 'rgba(0,0,0,0)';
           const iso = properties.ISO_A2;
           return highlightedCountries.includes(iso)
             ? 'rgba(243, 205, 0, 0.5)'
@@ -134,8 +136,8 @@ const Glob = () => {
         polygonStrokeColor={() =>
           showOnlyHighlighted ? 'rgba(0,0,0,0)' : 'rgba(80,80,80,0.3)'
         }
-        polygonsTransitionDuration={transitionDuration}
-        arcsData={arcsData}
+        polygonsTransitionDuration={isMobile ? 0 : transitionDuration}
+        arcsData={isMobile ? [] : arcsData}
         arcColor={() => 'white'}
         arcAltitude={0.3}
       />
