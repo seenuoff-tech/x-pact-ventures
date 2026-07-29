@@ -147,7 +147,8 @@ const FeatureShowcase: React.FC = () => {
         {/* IMAGE BOX */}
         <div 
           ref={imageBoxRef}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex items-center justify-center z-0 overflow-hidden shadow-2xl"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex items-center justify-center z-0 overflow-hidden"
+          style={{ willChange: 'width, height, top' }}
         >
           <img 
             src="/Ship.png" 
@@ -156,7 +157,7 @@ const FeatureShowcase: React.FC = () => {
           />
           <h2 
             ref={textRef}
-            className="absolute text-white text-6xl md:text-[100px] font-black uppercase tracking-[0.2em] z-10 drop-shadow-2xl flex items-center"
+            className="absolute text-white text-6xl md:text-[100px] font-black uppercase tracking-[0.2em] z-10 flex items-center"
             style={{ textShadow: '0 4px 30px rgba(0,0,0,0.6)' }}
           >
             <span ref={whyRef} className="inline-block">Why</span>
