@@ -31,7 +31,7 @@ const HowWeWork: React.FC = () => {
         margin: '0 0 60px 0',
         letterSpacing: '-1px',
         position: 'relative',
-        zIndex: 100
+        zIndex: 10
       }}>
         How we work
       </h2>
