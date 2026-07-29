@@ -70,7 +70,7 @@ const SupplyDriven: React.FC = () => {
                     fontFamily: "'Outfit', Inter, ui-sans-serif, system-ui, sans-serif",
                     fontWeight: 400,
                     fontStyle: 'normal',
-                    fontSize: '50px',
+                    fontSize: '38px',
                     color: '#333',
                     textAlign: 'center',
                     marginTop: '280px',
@@ -103,7 +103,7 @@ const SupplyDriven: React.FC = () => {
                       fontWeight: 400,
                       fontStyle: 'normal',
                       color: '#333',
-                      fontSize: '50px',
+                      fontSize: '38px',
                       lineHeight: '1.6',
                       marginTop: '30px',
                       maxWidth: '450px'
@@ -357,7 +357,7 @@ const ProcessCardFixed: React.FC<{ bg: string; color: string; title: string }> =
       fontStyle: 'normal',
       color, 
       textAlign: 'center', 
-      fontSize: '50px' 
+      fontSize: '38px' 
     }}>{title}</span>
   </motion.div>
 );

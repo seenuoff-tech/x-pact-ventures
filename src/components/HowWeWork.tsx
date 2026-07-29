@@ -63,7 +63,7 @@ const HowWeWork: React.FC = () => {
                       fontWeight: 400,
                       fontStyle: 'normal',
                       color: '#333',
-                      fontSize: '50px',
+                      fontSize: '38px',
                       lineHeight: '1.6',
                       marginTop: '30px',
                       maxWidth: '450px'
@@ -153,7 +153,7 @@ const HowWeWork: React.FC = () => {
                     fontWeight: 400,
                     fontStyle: 'normal',
                     color: '#333',
-                    fontSize: '50px',
+                    fontSize: '38px',
                     textAlign: 'center',
                     marginTop: '280px',
                     lineHeight: '1.4',
@@ -373,7 +373,7 @@ const ProcessCardFixed: React.FC<{ bg: string; color: string; title: string; hei
       fontStyle: 'normal',
       color, 
       textAlign: 'center', 
-      fontSize: '50px' 
+      fontSize: '38px' 
     }}>{title}</span>
   </motion.div>
 );
