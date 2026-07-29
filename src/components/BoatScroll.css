@@ -146,10 +146,10 @@
 @media (max-width: 1024px) {
   .boat-content {
     flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 10vh;
-    padding-bottom: 5vh;
-    gap: 10px;
+    justify-content: space-between;
+    padding-top: 12vh;
+    padding-bottom: 12vh;
+    gap: 0;
   }
   .left-col, .right-col {
     align-items: center;
@@ -162,13 +162,14 @@
   }
   .boat-title {
     margin-bottom: 10px;
-    font-size: 50px;
+    font-size: 45px;
   }
   .boat-list li {
-    margin-bottom: 10px;
-    font-size: 15px;
+    margin-bottom: 8px;
+    font-size: 14px;
   }
   .boat-image {
+    height: 45vh;
     mix-blend-mode: normal;
   }
 }
