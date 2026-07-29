@@ -61,7 +61,7 @@ const HowWeWork: React.FC = () => {
                     className="global-content-style"
                     style={{
                       color: '#333',
-                      fontSize: '50px',
+                      fontSize: '56px',
                       lineHeight: '1.6',
                       marginTop: '30px',
                       maxWidth: '450px'
@@ -149,7 +149,7 @@ const HowWeWork: React.FC = () => {
                   className="global-content-style"
                   style={{
                     color: '#333',
-                    fontSize: '50px',
+                    fontSize: '56px',
                     textAlign: 'center',
                     marginTop: '280px',
                     lineHeight: '1.4',
@@ -363,7 +363,7 @@ const ProcessCardFixed: React.FC<{ bg: string; color: string; title: string; hei
       zIndex: 2
     }}
   >
-    <span className="global-content-style" style={{ color, textAlign: 'center', fontSize: '50px' }}>{title}</span>
+    <span className="global-content-style" style={{ color, textAlign: 'center', fontSize: '56px' }}>{title}</span>
   </motion.div>
 );
 
