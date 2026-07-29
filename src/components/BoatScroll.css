@@ -146,9 +146,10 @@
 @media (max-width: 1024px) {
   .boat-content {
     flex-direction: column;
-    justify-content: space-around;
-    padding-top: 15vh;
-    padding-bottom: 15vh;
+    justify-content: center;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    gap: 10px;
   }
   .left-col, .right-col {
     align-items: center;
@@ -160,7 +161,14 @@
     display: none;
   }
   .boat-title {
-    margin-bottom: 20px;
-    font-size: 80px;
+    margin-bottom: 10px;
+    font-size: 50px;
+  }
+  .boat-list li {
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+  .boat-image {
+    mix-blend-mode: normal;
   }
 }

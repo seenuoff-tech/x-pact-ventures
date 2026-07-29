@@ -77,12 +77,10 @@ const BoatScroll: React.FC = () => {
         textTl.fromTo(item, {
           opacity: 0,
           y: 60,
-          filter: "blur(12px)",
           scale: 0.9
         }, {
           opacity: 1,
           y: 0,
-          filter: "blur(0px)",
           scale: 1,
           duration: 1,
           ease: "power3.out"
