@@ -93,8 +93,8 @@ const FeatureShowcase: React.FC = () => {
       // 🚤 Boat/Image zooms out to a smaller centered block
       tl.to(imageBoxRef.current, {
         width: '85vw',
-        height: '28vh',
-        top: '55%',
+        height: '24vh',
+        top: '56%',
         borderRadius: '15px',
         ease: 'none',
       }, 0);
@@ -167,7 +167,7 @@ const FeatureShowcase: React.FC = () => {
         </div>
 
         {/* CONTENT CONTAINER WRAPPER */}
-        <div className="absolute inset-0 max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between pt-[120px] pb-16 lg:py-0 pointer-events-none z-10">
+        <div className="absolute inset-0 max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between pt-[100px] pb-10 lg:py-0 pointer-events-none z-10">
           
           {/* LEFT CONTENT */}
           <div 
