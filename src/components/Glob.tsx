@@ -108,7 +108,6 @@ const Glob = () => {
         backgroundColor="rgba(0,0,0,0)"
         polygonsData={countries.features}
         polygonAltitude={({ properties }: any) => {
-          if (isMobile) return 0.01;
           const iso = properties.ISO_A2;
           if (highlightedCountries.includes(iso)) {
             const pop = properties.POP_EST;
@@ -125,7 +124,6 @@ const Glob = () => {
             : 'rgb(40, 40, 40)';
         }}
         polygonSideColor={({ properties }: any) => {
-          if (isMobile) return 'rgba(0,0,0,0)';
           const iso = properties.ISO_A2;
           return highlightedCountries.includes(iso)
             ? 'rgba(243, 205, 0, 0.5)'
@@ -136,8 +134,8 @@ const Glob = () => {
         polygonStrokeColor={() =>
           showOnlyHighlighted ? 'rgba(0,0,0,0)' : 'rgba(80,80,80,0.3)'
         }
-        polygonsTransitionDuration={isMobile ? 0 : transitionDuration}
-        arcsData={isMobile ? [] : arcsData}
+        polygonsTransitionDuration={transitionDuration}
+        arcsData={arcsData}
         arcColor={() => 'white'}
         arcAltitude={0.3}
       />
