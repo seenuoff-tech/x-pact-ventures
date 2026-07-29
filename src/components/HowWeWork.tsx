@@ -373,7 +373,7 @@ const ProcessCardFixed: React.FC<{ bg: string; color: string; title: string; hei
       fontStyle: 'normal',
       color, 
       textAlign: 'center', 
-      fontSize: '38px' 
+      fontSize: '34px' 
     }}>{title}</span>
   </motion.div>
 );
