@@ -15,7 +15,7 @@ const Header: React.FC = () => {
   const [isTouchVisible, setIsTouchVisible] = useState(false);
   const location = useLocation();
 
-  const isVisible = isHoverVisible || isHeaderHovered || isTouchVisible || isDesktopProductOpen;
+  const isVisible = isScrollVisible || isHoverVisible || isHeaderHovered || isTouchVisible || isDesktopProductOpen;
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -107,9 +107,15 @@ const Header: React.FC = () => {
                   <NavLink
                     to={link.to}
                     onClick={(e) => {
-                      if (link.label === "Product" && window.innerWidth <= 1024) {
-                        e.preventDefault();
-                        setIsDesktopProductOpen(!isDesktopProductOpen);
+                      if (link.label === "Product") {
+                        const isTouchDevice = 
+                          (typeof window !== 'undefined' && 'ontouchstart' in window) || 
+                          (typeof navigator !== 'undefined' && navigator.maxTouchPoints > 0);
+                        
+                        if (isTouchDevice || window.innerWidth <= 1024) {
+                          e.preventDefault();
+                          setIsDesktopProductOpen(!isDesktopProductOpen);
+                        }
                       }
                     }}
                     className={({ isActive }) =>
