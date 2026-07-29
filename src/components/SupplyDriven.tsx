@@ -66,10 +66,11 @@ const SupplyDriven: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.5 }}
-                  className="global-content-style"
                   style={{
-                    fontSize: '56px',
-                    fontWeight: 500,
+                    fontFamily: "'Outfit', Inter, ui-sans-serif, system-ui, sans-serif",
+                    fontWeight: 400,
+                    fontStyle: 'normal',
+                    fontSize: '50px',
                     color: '#333',
                     textAlign: 'center',
                     marginTop: '280px',
@@ -97,10 +98,12 @@ const SupplyDriven: React.FC = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
-                    className="global-content-style"
                     style={{
+                      fontFamily: "'Outfit', Inter, ui-sans-serif, system-ui, sans-serif",
+                      fontWeight: 400,
+                      fontStyle: 'normal',
                       color: '#333',
-                      fontSize: '56px',
+                      fontSize: '50px',
                       lineHeight: '1.6',
                       marginTop: '30px',
                       maxWidth: '450px'
@@ -348,7 +351,14 @@ const ProcessCardFixed: React.FC<{ bg: string; color: string; title: string }> =
       zIndex: 2
     }}
   >
-    <span className="global-content-style" style={{ color, textAlign: 'center', fontSize: '56px' }}>{title}</span>
+    <span style={{ 
+      fontFamily: "'Outfit', Inter, ui-sans-serif, system-ui, sans-serif",
+      fontWeight: 400,
+      fontStyle: 'normal',
+      color, 
+      textAlign: 'center', 
+      fontSize: '50px' 
+    }}>{title}</span>
   </motion.div>
 );
 
