@@ -338,8 +338,8 @@ const ProcessCardFixed: React.FC<{ bg: string; color: string; title: string }> =
     style={{
       backgroundColor: bg,
       borderRadius: '24px',
-      width: '320px',
-      height: '80px',
+      width: '420px',
+      height: '110px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
