@@ -115,7 +115,7 @@ const OurStrength: React.FC = () => {
               viewport={{ once: true }}
               style={{
                 fontFamily: "'Outfit', Inter, sans-serif",
-                fontSize: '86px',
+                fontSize: '64px',
                 fontWeight: 600,
                 color: YELLOW_ACCENT,
                 lineHeight: '1.3',
