@@ -6,17 +6,16 @@ import "./BoatScroll.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const leftPoints = [
-  "Extensive Marketing Language",
+  "Extensive Market Knowledge",
   "Commitment to Quality",
-  "Streamlined Processes",
+  "Streamlined Process",
   "24/7 Support"
 ];
 
 const rightPoints = [
   "Strong Network",
   "Competitive Pricing",
-  "Personalized Service",
-  "End-to-End Solutions"
+  "Personalized Services"
 ];
 
 const BoatScroll: React.FC = () => {

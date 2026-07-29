@@ -146,8 +146,8 @@
 @media (max-width: 1024px) {
   .boat-content {
     flex-direction: column;
-    justify-content: center;
-    padding-top: 5vh;
+    justify-content: flex-start;
+    padding-top: 10vh;
     padding-bottom: 5vh;
     gap: 10px;
   }
