@@ -93,7 +93,7 @@ const FeatureShowcase: React.FC = () => {
       // 🚤 Boat/Image zooms out to a smaller centered block
       tl.to(imageBoxRef.current, {
         width: '80vw',
-        height: '30vh',
+        height: '22vh',
         borderRadius: '15px',
         ease: 'none',
       }, 0);
@@ -165,14 +165,14 @@ const FeatureShowcase: React.FC = () => {
         </div>
 
         {/* CONTENT CONTAINER WRAPPER */}
-        <div className="absolute inset-0 max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between py-16 lg:py-0 pointer-events-none z-10">
+        <div className="absolute inset-0 max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between pt-[110px] pb-6 lg:py-0 pointer-events-none z-10">
           
           {/* LEFT CONTENT */}
           <div 
             ref={leftContentRef}
             className="w-full lg:w-[280px] xl:w-[320px] max-w-[340px] lg:max-w-none opacity-0 pointer-events-auto"
           >
-            <ul className="space-y-3 lg:space-y-6 flex flex-col items-center lg:items-start">
+            <ul className="space-y-1 lg:space-y-6 flex flex-col items-center lg:items-start">
               {["Extensive Market Knowledge", "Commitment to Quality", "Streamlined Process", "24/7 Support"].map((item) => (
                 <li key={item} className="flex flex-col items-center lg:items-start">
                   <h3 className="text-sm md:text-lg font-black font-sans text-black tracking-wider uppercase leading-none mb-1 text-center lg:text-left">{item}</h3>
@@ -190,7 +190,7 @@ const FeatureShowcase: React.FC = () => {
             ref={rightContentRef}
             className="w-full lg:w-[280px] xl:w-[320px] max-w-[340px] lg:max-w-none opacity-0 pointer-events-auto"
           >
-            <ul className="space-y-3 lg:space-y-6 flex flex-col items-center lg:items-end">
+            <ul className="space-y-1 lg:space-y-6 flex flex-col items-center lg:items-end">
               {["Strong Network", "Competitive Pricing", "Personalized Services"].map((item) => (
                 <li key={item} className="flex flex-col items-center lg:items-end">
                   <h3 className="text-sm md:text-lg font-black font-sans text-black tracking-wider uppercase leading-none mb-1 text-center lg:text-right">{item}</h3>
