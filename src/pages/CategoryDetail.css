@@ -1,7 +1,7 @@
 /* Spices timeline page container */
 .spices-page {
   background-color: #060606;
-  min-height: 100vh;
+  min-height: 101vh;
   width: 100%;
   color: #ffffff;
   padding: 180px 0 80px 0; /* space below navbar increased */
@@ -27,9 +27,11 @@
 .spices-container {
   position: relative;
   z-index: 2;
-  width: 90%;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 5%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* Header style with Distressed Yellow Box */
@@ -135,6 +137,7 @@
 /* Timeline content blocks alignment */
 .timeline-content-block {
   width: 50%; /* Touch the center line */
+  position: relative;
 }
 
 /* Horizontal branching lines */
@@ -148,11 +151,11 @@
 
 .timeline-row.left .spice-branch-line {
   left: 60px;
-  right: calc(50% - 10px); /* Align relative to center axis of the timeline-row */
+  right: -10px; /* Align relative to center axis */
 }
 
 .timeline-row.right .spice-branch-line {
-  left: calc(50% - 10px); /* Align relative to center axis of the timeline-row */
+  left: -10px; /* Align relative to center axis */
   right: 60px;
 }
 
@@ -206,7 +209,7 @@
 
 /* Details and descriptions */
 .spice-details {
-  margin-top: 35px; /* Push description content below the timeline line */
+  padding-top: 35px; /* Push description content below the timeline line */
 }
 
 .spice-title {
@@ -227,13 +230,13 @@
 
 .timeline-row.left .spice-title {
   left: 60px; /* Align above the dot at the left end of the line */
-  right: calc(50% + 30px); /* Constrain to not cross center axis */
+  right: 30px; /* Constrain to not cross center axis */
   text-align: left;
 }
 
 .timeline-row.right .spice-title {
   right: 60px; /* Align above the dot at the right end of the line */
-  left: calc(50% + 30px); /* Constrain to not cross center axis */
+  left: 30px; /* Constrain to not cross center axis */
   text-align: right;
 }
 
@@ -259,6 +262,7 @@
   margin: 0;
   overflow: hidden;
   transition: opacity 0.4s ease, max-height 0.4s ease, margin 0.4s ease;
+  will-change: opacity, max-height, margin;
 }
 
 @media (hover: hover) {
