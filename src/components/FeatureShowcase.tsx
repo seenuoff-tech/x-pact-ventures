@@ -167,35 +167,38 @@ const FeatureShowcase: React.FC = () => {
         </div>
 
         {/* CONTENT CONTAINER WRAPPER */}
-        <div className="absolute inset-0 max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-center lg:justify-between pt-[8vh] lg:pt-0 pb-0 gap-[30vh] lg:gap-0 pointer-events-none z-10">
+        <div className="absolute inset-0 max-w-7xl mx-auto pointer-events-none z-10">
           
-          {/* LEFT CONTENT */}
+          {/* LEFT CONTENT (Top on Mobile) */}
           <div 
             ref={leftContentRef}
-            className="w-full lg:w-[280px] xl:w-[320px] max-w-[340px] lg:max-w-none opacity-0 pointer-events-auto"
+            className="absolute w-full lg:w-[280px] xl:w-[320px] 
+                       top-[18%] md:top-[22%] lg:top-1/2 lg:-translate-y-1/2 
+                       left-0 lg:left-12 
+                       opacity-0 pointer-events-auto flex justify-center lg:justify-start"
           >
-            <ul className="space-y-1 lg:space-y-6 flex flex-col items-center lg:items-start">
+            <ul className="space-y-2 lg:space-y-6 flex flex-col items-center lg:items-start">
               {["Extensive Market Knowledge", "Commitment to Quality", "Streamlined Process", "24/7 Support"].map((item) => (
                 <li key={item} className="flex flex-col items-center lg:items-start">
-                  <h3 className="text-xs md:text-lg font-black font-sans text-black tracking-wider uppercase leading-none mb-1 text-center lg:text-left">{item}</h3>
+                  <h3 className="text-[13px] md:text-lg font-black font-sans text-black tracking-wider uppercase leading-none mb-1 text-center lg:text-left">{item}</h3>
                   <div className="w-12 h-1 bg-[#F3CD00] mx-auto lg:mx-0" />
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* SPACER FOR IMAGE BOX */}
-          <div className="hidden lg:block lg:w-[42vw] xl:w-[600px] shrink-0 pointer-events-none" />
-
-          {/* RIGHT CONTENT */}
+          {/* RIGHT CONTENT (Bottom on Mobile) */}
           <div 
             ref={rightContentRef}
-            className="w-full lg:w-[280px] xl:w-[320px] max-w-[340px] lg:max-w-none opacity-0 pointer-events-auto"
+            className="absolute w-full lg:w-[280px] xl:w-[320px] 
+                       bottom-[10%] md:bottom-[15%] lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 
+                       left-0 lg:left-auto lg:right-12 
+                       opacity-0 pointer-events-auto flex justify-center lg:justify-end"
           >
-            <ul className="space-y-1 lg:space-y-6 flex flex-col items-center lg:items-end">
+            <ul className="space-y-2 lg:space-y-6 flex flex-col items-center lg:items-end">
               {["Strong Network", "Competitive Pricing", "Personalized Services"].map((item) => (
                 <li key={item} className="flex flex-col items-center lg:items-end">
-                  <h3 className="text-xs md:text-lg font-black font-sans text-black tracking-wider uppercase leading-none mb-1 text-center lg:text-right">{item}</h3>
+                  <h3 className="text-[13px] md:text-lg font-black font-sans text-black tracking-wider uppercase leading-none mb-1 text-center lg:text-right">{item}</h3>
                   <div className="w-12 h-1 bg-[#F3CD00] mx-auto lg:ml-auto lg:mr-0" />
                 </li>
               ))}
