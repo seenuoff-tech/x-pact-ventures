@@ -13,7 +13,7 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-white">
+      <div className="flex flex-col min-h-screen bg-white overflow-x-hidden w-full relative">
         <Header />
         <main className="flex-grow">
           <Routes>
