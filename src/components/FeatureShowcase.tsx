@@ -173,7 +173,7 @@ const FeatureShowcase: React.FC = () => {
           <div 
             ref={leftContentRef}
             className="absolute w-full lg:w-[280px] xl:w-[320px] 
-                       top-[18%] md:top-[22%] lg:top-1/2 lg:-translate-y-1/2 
+                       bottom-[60%] lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 
                        left-0 lg:left-12 
                        opacity-0 pointer-events-auto flex justify-center lg:justify-start"
           >
@@ -191,7 +191,7 @@ const FeatureShowcase: React.FC = () => {
           <div 
             ref={rightContentRef}
             className="absolute w-full lg:w-[280px] xl:w-[320px] 
-                       bottom-[10%] md:bottom-[15%] lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 
+                       top-[72%] lg:top-1/2 lg:-translate-y-1/2 
                        left-0 lg:left-auto lg:right-12 
                        opacity-0 pointer-events-auto flex justify-center lg:justify-end"
           >
