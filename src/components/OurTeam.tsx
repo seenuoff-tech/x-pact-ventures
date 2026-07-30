@@ -17,9 +17,9 @@ const BrushCircle: React.FC<{ size?: number }> = ({ size = 220 }) => (
 );
 
 const members = [
-  { name: 'Dinesh Kanna', role: 'Founder' },
-  { name: 'Annie Baskaran', role: 'Co-Founder' },
-  { name: 'Naveen Kumar', role: 'Co-Founder' },
+  { name: 'Dinesh Kanna', role: 'Founder', image: '/Dinesh.png', imgStyle: { objectPosition: 'center top' } },
+  { name: 'Annie Baskaran', role: 'Co-Founder', image: '/Annie.png', imgStyle: { transform: 'rotate(4deg) scale(1.05)', marginTop: '22px' } },
+  { name: 'Naveen Kumar', role: 'Co-Founder', image: '/Naveen.png', imgStyle: { marginTop: '22px' } },
 ];
 
 const OurTeam: React.FC = () => {
@@ -51,8 +51,11 @@ const OurTeam: React.FC = () => {
         }}>
           {members.map(m => (
             <div key={m.name} style={{ textAlign: 'center' }}>
-              <div style={{ width: isMobile ? '140px' : '220px', height: isMobile ? '140px' : '220px', margin: '0 auto 12px' }}>
-                <BrushCircle size={isMobile ? 140 : 220} />
+              <div style={{ width: isMobile ? '180px' : '280px', height: isMobile ? '180px' : '280px', margin: '0 auto 16px', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <img src={m.image} alt={m.name} style={{ width: '55%', height: '55%', objectFit: 'cover', borderRadius: '50%', position: 'absolute', marginTop: '8px', marginLeft: '12px', ...(m.imgStyle || {}) }} />
+                <div style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
+                  <BrushCircle size={isMobile ? 180 : 280} />
+                </div>
               </div>
               {/* Name — global Outfit font */}
               <p className="global-content-style" style={{
