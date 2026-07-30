@@ -1,25 +1,16 @@
 import React from 'react';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { User } from 'lucide-react';
 
 const FONT_HEADING = "'Autography', cursive";
 const YELLOW_ACCENT = '#F3CD00';
 
-/* Authentic brush-stroke circle */
-const BrushCircle: React.FC<{ size?: number }> = ({ size = 220 }) => (
-  <svg width={size} height={size} viewBox="0 0 220 220" fill="none">
-    <path d="M110,22 C148,18 192,48 202,88 C215,140 185,190 138,204 C90,218 42,192 26,148 C10,104 30,52 72,32 C88,25 98,22 110,22 Z"
-      stroke={YELLOW_ACCENT} strokeWidth="9" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
-    <path d="M110,34 C144,30 182,56 194,94 C207,138 180,182 138,196 C96,210 52,186 38,148 C22,106 44,60 82,42 C94,36 102,34 110,34 Z"
-      stroke={YELLOW_ACCENT} strokeWidth="5" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.55" />
-    <path d="M110,46 C140,42 172,64 184,98 C198,136 174,174 138,188 C100,202 60,180 48,148 C34,110 56,68 90,52 C98,48 104,46 110,46 Z"
-      stroke={YELLOW_ACCENT} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.3" />
-  </svg>
-);
+
 
 const members = [
   { name: 'Dinesh Kanna', role: 'Founder', image: '/Dinesh.png', imgStyle: { objectPosition: 'center top' } },
-  { name: 'Annie Baskaran', role: 'Co-Founder', image: '/Annie.png', imgStyle: { transform: 'rotate(4deg) scale(1.05)', marginTop: '22px' } },
-  { name: 'Naveen Kumar', role: 'Co-Founder', image: '/Naveen.png', imgStyle: { marginTop: '22px' } },
+  { name: 'Annie Baskaran', role: 'Co-Founder', image: '/Annie.png', imgStyle: { transform: 'rotate(4deg) scale(1.05)' } },
+  { name: 'Naveen Kumar', role: 'Co-Founder', image: '/Naveen.png', imgStyle: {} },
 ];
 
 const OurTeam: React.FC = () => {
@@ -27,17 +18,31 @@ const OurTeam: React.FC = () => {
 
   return (
     <>
-      {/* Team section — #E5E4E2 bg, same padding as before, no extra space */}
-      <section style={{ backgroundColor: '#E5E4E2', padding: isMobile ? '10px 0 20px' : '70px 0 30px' }}>
-
-        <h2 style={{
-          fontFamily: 'Montserrat, sans-serif',
-          fontSize: isMobile ? '32px' : '52px',
-          fontWeight: 1000, textAlign: 'center', color: '#000',
-          letterSpacing: '2px', marginBottom: isMobile ? '36px' : '60px',
+      {/* Team section */}
+      <section style={{ backgroundColor: '#E5E4E2', padding: isMobile ? '40px 16px 60px' : '80px 16px 100px' }}>
+        
+        {/* Yellow Background Box */}
+        <div style={{ 
+          backgroundColor: YELLOW_ACCENT, 
+          maxWidth: '1200px', 
+          margin: '0 auto', 
+          padding: isMobile ? '40px 20px 110px' : '60px 20px 180px', 
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          borderRadius: isMobile ? '32px' : '60px', // Softly rounded corners
+          boxShadow: '0 20px 40px rgba(0,0,0,0.04)' // Premium floating shadow
         }}>
-          OUR TEAM
-        </h2>
+
+          <h2 style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: isMobile ? '32px' : '52px',
+            fontWeight: 1000, textAlign: 'center', color: '#000',
+            letterSpacing: '2px', margin: 0,
+          }}>
+            OUR TEAM
+          </h2>
+        </div>
 
         {/* Team cards */}
         <div style={{
@@ -45,17 +50,27 @@ const OurTeam: React.FC = () => {
           flexDirection: isMobile ? 'column' : 'row',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: isMobile ? '32px' : '90px',
+          gap: isMobile ? '50px' : '90px',
           flexWrap: 'wrap',
           padding: '0 16px',
+          marginTop: isMobile ? '-70px' : '-110px', // Pulls the cards up to overlap the boundary (half of 140/220)
         }}>
           {members.map(m => (
-            <div key={m.name} style={{ textAlign: 'center' }}>
-              <div style={{ width: isMobile ? '180px' : '280px', height: isMobile ? '180px' : '280px', margin: '0 auto 16px', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <img src={m.image} alt={m.name} style={{ width: '55%', height: '55%', objectFit: 'cover', borderRadius: '50%', position: 'absolute', marginTop: '8px', marginLeft: '12px', ...(m.imgStyle || {}) }} />
-                <div style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
-                  <BrushCircle size={isMobile ? 180 : 280} />
-                </div>
+            <div key={m.name} style={{ textAlign: 'center', width: isMobile ? '140px' : '220px' }}>
+              <div style={{ 
+                width: isMobile ? '140px' : '220px', 
+                height: isMobile ? '140px' : '220px', 
+                margin: '0 auto 16px', 
+                position: 'relative', 
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center',
+                borderRadius: '50% 0 50% 0', // Leaf shape
+                border: '6px solid #4a4a4a', // Dark border like the reference
+                boxShadow: '0 12px 24px rgba(0,0,0,0.1)',
+                overflow: 'hidden' // Ensure the image doesn't bleed outside the border
+              }}>
+                <img src={m.image} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50% 0 50% 0', ...(m.imgStyle || {}) }} />
               </div>
               {/* Name — global Outfit font */}
               <p className="global-content-style" style={{
@@ -66,7 +81,7 @@ const OurTeam: React.FC = () => {
               <p style={{
                 fontFamily: FONT_HEADING,
                 fontSize: isMobile ? '24px' : '36px',
-                fontWeight: 400, color: YELLOW_ACCENT,
+                fontWeight: 400, color: YELLOW_ACCENT, margin: 0
               }}>{m.role}</p>
             </div>
           ))}
