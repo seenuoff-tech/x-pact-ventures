@@ -73,7 +73,7 @@ const OurStrength: React.FC = () => {
                   color: '#333',
                   fontSize: '31px',
                   lineHeight: '1.4',
-                  textAlign: 'justify',
+                  textAlign: 'left',
                   wordSpacing: '-3px',
                   marginBottom: '40px'
                 }}>

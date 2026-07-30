@@ -65,7 +65,7 @@ const HowWeWork: React.FC = () => {
                       color: '#333',
                       fontSize: '31px',
                       lineHeight: '1.6',
-                      textAlign: 'justify',
+                      textAlign: 'left',
                       wordSpacing: '-3px',
                       marginTop: '30px',
                       maxWidth: '450px'
@@ -82,7 +82,7 @@ const HowWeWork: React.FC = () => {
                     </motion.div>
                     <svg width="150" height="150" viewBox="0 0 150 150" style={{ position: 'absolute', left: 'calc(100% + 30px)', top: '40px', overflow: 'visible', zIndex: 1 }}>
                       <circle cx="0" cy="0" r="5" fill="none" stroke="#000" strokeWidth="2" />
-                      <path d="M 5 0 L 40 0 C 80 0, 80 120, 40 120 L 0 120" stroke="#000" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M 5 0 L 30 0 C 60 0, 60 120, 30 120 L 0 120" stroke="#000" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                       <path d="M 15 105 L 0 120 L 15 135" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                     </svg>
                   </div>
@@ -93,7 +93,7 @@ const HowWeWork: React.FC = () => {
                     </motion.div>
                     <svg width="150" height="150" viewBox="0 0 150 150" style={{ position: 'absolute', right: 'calc(100% + 30px)', top: '40px', overflow: 'visible', zIndex: 1 }}>
                       <circle cx="150" cy="0" r="5" fill="none" stroke="#000" strokeWidth="2" />
-                      <path d="M 145 0 L 110 0 C 70 0, 70 120, 110 120 L 150 120" stroke="#000" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M 145 0 L 120 0 C 90 0, 90 120, 120 120 L 150 120" stroke="#000" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                       <path d="M 135 105 L 150 120 L 135 135" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                     </svg>
                   </div>
@@ -156,7 +156,7 @@ const HowWeWork: React.FC = () => {
                     fontStyle: 'normal',
                     color: '#333',
                     fontSize: '31px',
-                    textAlign: 'justify',
+                    textAlign: 'left',
                     wordSpacing: '-3px',
                     marginTop: '280px',
                     lineHeight: '1.4',

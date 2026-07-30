@@ -146,16 +146,16 @@
 @media (max-width: 1024px) {
   .boat-section {
     height: auto;
-    padding: 60px 0;
+    padding: 20px 0;
   }
   .boat-content {
     position: relative;
     height: auto;
     flex-direction: column;
     justify-content: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    gap: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap: 15px;
   }
   .left-col, .right-col {
     align-items: center;
@@ -181,7 +181,7 @@
     height: auto;
     width: 90%;
     border-radius: 16px;
-    margin: 20px auto;
+    margin: 10px auto;
     mix-blend-mode: normal;
   }
 }
