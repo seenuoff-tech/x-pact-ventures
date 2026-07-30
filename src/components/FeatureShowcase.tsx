@@ -167,7 +167,7 @@ const FeatureShowcase: React.FC = () => {
         </div>
 
         {/* CONTENT CONTAINER WRAPPER */}
-        <div className="absolute inset-0 max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between pt-[24vh] pb-[15vh] lg:pt-0 lg:pb-0 pointer-events-none z-10">
+        <div className="absolute inset-0 max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-center lg:justify-between pt-[8vh] lg:pt-0 pb-0 gap-[30vh] lg:gap-0 pointer-events-none z-10">
           
           {/* LEFT CONTENT */}
           <div 
