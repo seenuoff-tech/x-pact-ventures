@@ -298,8 +298,13 @@
     left: 30px;
   }
 
+  .timeline-row {
+    margin-bottom: 60px; /* Reduce gap on mobile */
+  }
+
   .timeline-row::after {
     left: 30px; /* Align connection lines to the left nodes */
+    bottom: -60px;
   }
   
   .timeline-content-block {
