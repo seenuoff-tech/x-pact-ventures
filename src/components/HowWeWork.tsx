@@ -40,7 +40,7 @@ const HowWeWork: React.FC = () => {
       <div className="mobile-only-view">
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', overflow: 'hidden', height: '380px' }}>
           <div style={{ width: '1100px', transform: 'scale(0.32)', transformOrigin: 'top center', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '30px' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '160px', width: '100%', maxWidth: '1000px' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '100px', width: '100%', maxWidth: '1000px' }}>
 
               {/* LEFT SIDE: Text and Cards */}
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingTop: '20px', paddingLeft: '40px' }}>
@@ -63,8 +63,10 @@ const HowWeWork: React.FC = () => {
                       fontWeight: 400,
                       fontStyle: 'normal',
                       color: '#333',
-                      fontSize: '38px',
+                      fontSize: '31px',
                       lineHeight: '1.6',
+                      textAlign: 'justify',
+                      wordSpacing: '-3px',
                       marginTop: '30px',
                       maxWidth: '450px'
                     }}
@@ -73,7 +75,7 @@ const HowWeWork: React.FC = () => {
                   </motion.p>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '80px', position: 'relative' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '80px', position: 'relative', width: 'fit-content' }}>
                   <div style={{ position: 'relative' }}>
                     <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
                       <ProcessCardFixed bg="#F3CD00" color="#000" title="Specific soil selection" />
@@ -87,7 +89,7 @@ const HowWeWork: React.FC = () => {
 
                   <div style={{ position: 'relative' }}>
                     <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
-                      <ProcessCardFixed bg="#F3CD00" color="#fff" title="Organic / Conventional farming" height="130px" />
+                      <ProcessCardFixed bg="#F3CD00" color="#fff" title="Organic / Conventional farming" height="100px" />
                     </motion.div>
                     <svg width="150" height="150" viewBox="0 0 150 150" style={{ position: 'absolute', right: 'calc(100% + 30px)', top: '40px', overflow: 'visible', zIndex: 1 }}>
                       <circle cx="150" cy="0" r="5" fill="none" stroke="#000" strokeWidth="2" />
@@ -153,8 +155,9 @@ const HowWeWork: React.FC = () => {
                     fontWeight: 400,
                     fontStyle: 'normal',
                     color: '#333',
-                    fontSize: '38px',
-                    textAlign: 'center',
+                    fontSize: '31px',
+                    textAlign: 'justify',
+                    wordSpacing: '-3px',
                     marginTop: '280px',
                     lineHeight: '1.4',
                     maxWidth: '800px'
@@ -348,13 +351,13 @@ const ProcessCard: React.FC<{ bg: string; color: string; title: string }> = ({ b
   </motion.div>
 );
 
-const ProcessCardFixed: React.FC<{ bg: string; color: string; title: string; height?: string }> = ({ bg, color, title, height = '110px' }) => (
+const ProcessCardFixed: React.FC<{ bg: string; color: string; title: string; height?: string }> = ({ bg, color, title, height = '80px' }) => (
   <motion.div
     transition={{ duration: 0.4, ease: "easeOut" }}
     style={{
       backgroundColor: bg,
       borderRadius: '24px',
-      width: '420px',
+      width: '320px',
       height: height,
       display: 'flex',
       alignItems: 'center',
@@ -373,7 +376,7 @@ const ProcessCardFixed: React.FC<{ bg: string; color: string; title: string; hei
       fontStyle: 'normal',
       color, 
       textAlign: 'center', 
-      fontSize: '31px' 
+      fontSize: '28px' 
     }}>{title}</span>
   </motion.div>
 );

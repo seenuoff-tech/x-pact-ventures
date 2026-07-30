@@ -20,7 +20,7 @@ const SupplyDriven: React.FC = () => {
       <div className="mobile-only-view">
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', overflow: 'hidden', height: '380px' }}>
           <div style={{ width: '1100px', transform: 'scale(0.32)', transformOrigin: 'top center', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '5px' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '160px', width: '100%', maxWidth: '1000px' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '100px', width: '100%', maxWidth: '1000px' }}>
 
               {/* LEFT SIDE: Image */}
               <div style={{ flex: '0 0 45%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -70,9 +70,10 @@ const SupplyDriven: React.FC = () => {
                     fontFamily: "'Outfit', Inter, ui-sans-serif, system-ui, sans-serif",
                     fontWeight: 400,
                     fontStyle: 'normal',
-                    fontSize: '38px',
+                    fontSize: '31px',
                     color: '#333',
-                    textAlign: 'center',
+                    textAlign: 'justify',
+                    wordSpacing: '-3px',
                     marginTop: '280px',
                     lineHeight: '1.4',
                     maxWidth: '400px'
@@ -103,8 +104,10 @@ const SupplyDriven: React.FC = () => {
                       fontWeight: 400,
                       fontStyle: 'normal',
                       color: '#333',
-                      fontSize: '38px',
+                      fontSize: '31px',
                       lineHeight: '1.6',
+                      textAlign: 'justify',
+                      wordSpacing: '-3px',
                       marginTop: '30px',
                       maxWidth: '450px'
                     }}
@@ -113,7 +116,7 @@ const SupplyDriven: React.FC = () => {
                   </motion.p>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '80px', position: 'relative' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '80px', position: 'relative', width: 'fit-content' }}>
                   <div style={{ position: 'relative' }}>
                     <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
                       <ProcessCardFixed bg="#F3CD00" color="#000" title="Export Quality Products" />
@@ -338,8 +341,8 @@ const ProcessCardFixed: React.FC<{ bg: string; color: string; title: string }> =
     style={{
       backgroundColor: bg,
       borderRadius: '24px',
-      width: '420px',
-      height: '110px',
+      width: '320px',
+      height: '80px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -357,7 +360,7 @@ const ProcessCardFixed: React.FC<{ bg: string; color: string; title: string }> =
       fontStyle: 'normal',
       color, 
       textAlign: 'center', 
-      fontSize: '31px' 
+      fontSize: '28px' 
     }}>{title}</span>
   </motion.div>
 );

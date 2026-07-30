@@ -121,7 +121,7 @@
 .boat-image {
   position: absolute;
   left: 50%;
-  bottom: -15vh;
+  bottom: -35vh;
   height: 90vh;
   width: auto;
   max-width: 90vw;
@@ -144,12 +144,18 @@
 }
 
 @media (max-width: 1024px) {
+  .boat-section {
+    height: auto;
+    padding: 60px 0;
+  }
   .boat-content {
+    position: relative;
+    height: auto;
     flex-direction: column;
-    justify-content: space-between;
-    padding-top: 110px; /* Explicitly clear the white fixed header */
-    padding-bottom: 30px;
-    gap: 0;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: 40px;
   }
   .left-col, .right-col {
     align-items: center;
@@ -161,15 +167,21 @@
     display: none;
   }
   .boat-title {
-    margin-bottom: 5px;
-    font-size: 28px;
+    display: none; /* Hide Why Us! on mobile if it looks repetitive, or just keep it small */
   }
   .boat-list li {
-    margin-bottom: 4px;
-    font-size: 13px;
+    margin-bottom: 12px;
+    font-size: 14px;
   }
   .boat-image {
-    height: 30vh;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none !important;
+    height: auto;
+    width: 90%;
+    border-radius: 16px;
+    margin: 20px auto;
     mix-blend-mode: normal;
   }
 }

@@ -66,10 +66,15 @@ const OurStrength: React.FC = () => {
               </div>
 
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '80px', paddingLeft: '40px' }}>
-                <p className="global-content-style" style={{
+                <p style={{
+                  fontFamily: "'Outfit', Inter, ui-sans-serif, system-ui, sans-serif",
+                  fontWeight: 400,
+                  fontStyle: 'normal',
                   color: '#333',
-                  fontSize: '80px',
+                  fontSize: '31px',
                   lineHeight: '1.4',
+                  textAlign: 'justify',
+                  wordSpacing: '-3px',
                   marginBottom: '40px'
                 }}>
                   We are directly connected with multiple farmers, enabling:
@@ -279,7 +284,14 @@ const ProcessCardFixed: React.FC<{ bg: string; color: string; title: string }> =
       zIndex: 2
     }}
   >
-    <span className="global-content-style" style={{ color, textAlign: 'center', fontSize: '68px' }}>{title}</span>
+    <span style={{ 
+      fontFamily: "'Outfit', Inter, ui-sans-serif, system-ui, sans-serif",
+      fontWeight: 400,
+      fontStyle: 'normal',
+      color, 
+      textAlign: 'center', 
+      fontSize: '28px' 
+    }}>{title}</span>
   </motion.div>
 );
 

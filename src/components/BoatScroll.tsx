@@ -44,16 +44,25 @@ const BoatScroll: React.FC = () => {
       ease: "sine.inOut"
     });
 
-    // 3. Scroll-based Forward Movement
-    const scrollTween = gsap.to(boat, {
-      scrollTrigger: {
-        trigger: container,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1.2,
-      },
-      y: () => -window.innerHeight * 1.3, // Move up by 1.3x screen height
-      ease: "none"
+    // Use matchMedia to only apply the scroll animation on desktop
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1025px)", () => {
+      // 3. Scroll-based Forward Movement (Desktop only)
+      const scrollTween = gsap.to(boat, {
+        scrollTrigger: {
+          trigger: container,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1.2,
+        },
+        y: () => -window.innerHeight * 1.3, // Move up by 1.3x screen height
+        ease: "none"
+      });
+
+      return () => {
+        scrollTween.kill();
+      };
     });
 
     // 4. Premium Text Reveal
@@ -64,7 +73,7 @@ const BoatScroll: React.FC = () => {
       const textTl = gsap.timeline({
         scrollTrigger: {
           trigger: container,
-          start: "top 40%",
+          start: "top 70%",
           end: "bottom 70%",
           scrub: 1.5,
         }
@@ -89,7 +98,7 @@ const BoatScroll: React.FC = () => {
 
     return () => {
       swayTween.kill();
-      scrollTween.kill();
+      mm.revert(); // clean up matchMedia
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, []);
@@ -112,6 +121,14 @@ const BoatScroll: React.FC = () => {
           </ul>
         </div>
 
+        <img
+          ref={boatRef}
+          src="/ship.png"
+          alt="Premium Boat"
+          className="boat-image"
+          onLoad={() => ScrollTrigger.refresh()}
+        />
+
         {/* Right Side */}
         <div className="boat-text-col right-col">
           <h2 className="boat-title highlight">Us !</h2>
@@ -122,14 +139,6 @@ const BoatScroll: React.FC = () => {
           </ul>
         </div>
       </div>
-
-      <img
-        ref={boatRef}
-        src="/ship.png"
-        alt="Premium Boat"
-        className="boat-image"
-        onLoad={() => ScrollTrigger.refresh()}
-      />
     </section>
   );
 };
