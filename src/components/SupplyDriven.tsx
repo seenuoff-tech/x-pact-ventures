@@ -73,7 +73,7 @@ const SupplyDriven: React.FC = () => {
                     fontSize: '31px',
                     color: '#333',
                     textAlign: 'left',
-                    wordSpacing: '-3px',
+                    wordSpacing: '0px',
                     marginTop: '280px',
                     lineHeight: '1.4',
                     maxWidth: '400px'
@@ -107,7 +107,7 @@ const SupplyDriven: React.FC = () => {
                       fontSize: '31px',
                       lineHeight: '1.6',
                       textAlign: 'left',
-                      wordSpacing: '-3px',
+                      wordSpacing: '0px',
                       marginTop: '30px',
                       maxWidth: '450px'
                     }}

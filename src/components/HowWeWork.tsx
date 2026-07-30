@@ -66,7 +66,7 @@ const HowWeWork: React.FC = () => {
                       fontSize: '31px',
                       lineHeight: '1.6',
                       textAlign: 'left',
-                      wordSpacing: '-3px',
+                      wordSpacing: '0px',
                       marginTop: '30px',
                       maxWidth: '450px'
                     }}
@@ -157,7 +157,7 @@ const HowWeWork: React.FC = () => {
                     color: '#333',
                     fontSize: '31px',
                     textAlign: 'left',
-                    wordSpacing: '-3px',
+                    wordSpacing: '0px',
                     marginTop: '280px',
                     lineHeight: '1.4',
                     maxWidth: '800px'

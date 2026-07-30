@@ -74,7 +74,7 @@ const OurStrength: React.FC = () => {
                   fontSize: '31px',
                   lineHeight: '1.4',
                   textAlign: 'left',
-                  wordSpacing: '-3px',
+                  wordSpacing: '0px',
                   marginBottom: '40px'
                 }}>
                   We are directly connected with multiple farmers, enabling:
