@@ -8,7 +8,7 @@ const YELLOW_ACCENT = '#F3CD00';
 
 
 const members = [
-  { name: 'Dinesh Kumar', role: 'Founder', image: '/Dineshkumar.png', imgStyle: { objectPosition: 'center top' }, linkedin: 'https://www.linkedin.com/in/nameisdeekay' },
+  { name: 'Dinesh Kanna', role: 'Founder', image: '/Dineshkumar.png', imgStyle: { objectPosition: 'center top' }, linkedin: 'https://www.linkedin.com/in/nameisdeekay' },
   { name: 'Annie Baskaran', role: 'Co-Founder', image: '/Annie (2).png', imgStyle: { transform: 'rotate(4deg) scale(1.05)', objectPosition: 'center top' }, linkedin: 'https://www.linkedin.com/in/annie-baskaran-a0ba7a360' },
   { name: 'Naveen Kumar', role: 'Co-Founder', image: '/Naveen.png', imgStyle: {}, linkedin: 'https://www.linkedin.com/in/naveen-kumar-murugan-b94551103' },
 ];
