@@ -58,7 +58,7 @@ const Contact: React.FC = () => {
         <div className="flex flex-col justify-center space-y-8 p-8">
           <div>
             <h3 className="text-xl font-black font-sans tracking-wider uppercase mb-2">Email Us</h3>
-            <p className="text-gray-600 text-lg font-sans">info@xpactventures.com</p>
+            <p className="text-gray-600 text-lg font-sans">support@xpactventures.com</p>
           </div>
           <div>
             <h3 className="text-xl font-black font-sans tracking-wider uppercase mb-2">Office</h3>

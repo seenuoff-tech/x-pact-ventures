@@ -137,11 +137,11 @@ const HowWeWork: React.FC = () => {
                     </div>
                   </motion.div>
                   {/* SVG Arrow from image */}
-                  <svg width="100" height="300" viewBox="0 0 100 300" style={{ position: 'absolute', bottom: '-270px', left: '50%', transform: 'translateX(-50%)', zIndex: 1, overflow: 'visible' }}>
-                    <line x1="50" y1="0" x2="50" y2="230" stroke="#000" strokeWidth="2" strokeLinecap="round" />
-                    <path d="M 35 210 L 50 230 L 65 210" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <circle cx="50" cy="230" r="40" stroke="#eee" strokeWidth="1.5" fill="none" />
-                    <circle cx="50" cy="230" r="60" stroke="#f5f5f5" strokeWidth="1.5" fill="none" />
+                  <svg width="100" height="600" viewBox="0 0 100 600" style={{ position: 'absolute', top: '0px', left: '50%', transform: 'translateX(-50%)', zIndex: 1, overflow: 'visible' }}>
+                    <line x1="50" y1="0" x2="50" y2="530" stroke="#000" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M 35 510 L 50 530 L 65 510" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <circle cx="50" cy="530" r="40" stroke="#eee" strokeWidth="1.5" fill="none" />
+                    <circle cx="50" cy="530" r="60" stroke="#f5f5f5" strokeWidth="1.5" fill="none" />
                   </svg>
                 </div>
 
@@ -254,12 +254,12 @@ const HowWeWork: React.FC = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                zIndex: 10
+                zIndex: 1
               }}>
                 <svg width="100" height="220" style={{ overflow: 'visible' }}>
                   <circle cx="50" cy="150" r="40" stroke="#eee" strokeWidth="1.5" fill="none" />
                   <circle cx="50" cy="150" r="60" stroke="#f5f5f5" strokeWidth="1.5" fill="none" />
-                  <line x1="50" y1="0" x2="50" y2="150" stroke="#000" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="50" y1="-100" x2="50" y2="150" stroke="#000" strokeWidth="2" strokeLinecap="round" />
                   <path d="M 35 130 L 50 150 L 65 130" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                 </svg>
                 <motion.p

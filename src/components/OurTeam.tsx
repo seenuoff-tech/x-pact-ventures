@@ -1,6 +1,6 @@
 import React from 'react';
 import { useIsMobile } from '../hooks/useIsMobile';
-import { User } from 'lucide-react';
+import { User, Linkedin } from 'lucide-react';
 
 const FONT_HEADING = "'Autography', cursive";
 const YELLOW_ACCENT = '#F3CD00';
@@ -8,9 +8,9 @@ const YELLOW_ACCENT = '#F3CD00';
 
 
 const members = [
-  { name: 'Dinesh Kanna', role: 'Founder', image: '/Dinesh.png', imgStyle: { objectPosition: 'center top' } },
-  { name: 'Annie Baskaran', role: 'Co-Founder', image: '/Annie.png', imgStyle: { transform: 'rotate(4deg) scale(1.05)' } },
-  { name: 'Naveen Kumar', role: 'Co-Founder', image: '/Naveen.png', imgStyle: {} },
+  { name: 'Dinesh Kumar', role: 'Founder', image: '/Dineshkumar.png', imgStyle: { objectPosition: 'center top' }, linkedin: 'https://www.linkedin.com/in/nameisdeekay' },
+  { name: 'Annie Baskaran', role: 'Co-Founder', image: '/Annie (2).png', imgStyle: { transform: 'rotate(4deg) scale(1.05)', objectPosition: 'center top' }, linkedin: 'https://www.linkedin.com/in/annie-baskaran-a0ba7a360' },
+  { name: 'Naveen Kumar', role: 'Co-Founder', image: '/Naveen.png', imgStyle: {}, linkedin: 'https://www.linkedin.com/in/naveen-kumar-murugan-b94551103' },
 ];
 
 const OurTeam: React.FC = () => {
@@ -26,7 +26,7 @@ const OurTeam: React.FC = () => {
           backgroundColor: YELLOW_ACCENT, 
           maxWidth: '1200px', 
           margin: '0 auto', 
-          padding: isMobile ? '40px 20px 110px' : '60px 20px 180px', 
+          padding: isMobile ? '30px 20px 80px' : '40px 20px 130px', // Reduced height
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -81,8 +81,25 @@ const OurTeam: React.FC = () => {
               <p style={{
                 fontFamily: FONT_HEADING,
                 fontSize: isMobile ? '24px' : '36px',
-                fontWeight: 400, color: YELLOW_ACCENT, margin: 0
+                fontWeight: 400, color: YELLOW_ACCENT, margin: 0,
+                marginBottom: '12px'
               }}>{m.role}</p>
+              {/* LinkedIn Icon */}
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <a href={m.linkedin || "#"} target="_blank" rel="noopener noreferrer" style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#000',
+                  textDecoration: 'none',
+                  transition: 'transform 0.2s',
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.25)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                  <Linkedin size={22} strokeWidth={2.5} />
+                </a>
+              </div>
             </div>
           ))}
         </div>

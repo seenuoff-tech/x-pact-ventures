@@ -11,11 +11,10 @@ const Header: React.FC = () => {
   const [isHeaderHovered, setIsHeaderHovered] = useState(false);
   const [isMobileProductOpen, setIsMobileProductOpen] = useState(false);
   const [isDesktopProductOpen, setIsDesktopProductOpen] = useState(false);
-  const [isDarkBg, setIsDarkBg] = useState(false);
   const [isTouchVisible, setIsTouchVisible] = useState(false);
   const location = useLocation();
 
-  const isVisible = isHoverVisible || isHeaderHovered || isTouchVisible || isDesktopProductOpen;
+  const isVisible = isScrollVisible || isHoverVisible || isHeaderHovered || isTouchVisible || isDesktopProductOpen;
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -25,21 +24,10 @@ const Header: React.FC = () => {
       
       setIsScrolled(currentScrollY > 20);
 
-      if (window.location.pathname === '/' && currentScrollY < window.innerHeight - 80) {
-        setIsDarkBg(true);
-      } else {
-        setIsDarkBg(false);
-      }
-
       if (currentScrollY < 100) {
         setIsScrollVisible(true);
-      } else if (currentScrollY < lastScrollY - 5) {
-        // Scrolling up
-        setIsScrollVisible(true);
-      } else if (currentScrollY > lastScrollY + 5) {
-        // Scrolling down
+      } else {
         setIsScrollVisible(false);
-        // Also hide touch visibility when scrolling down
         setIsTouchVisible(false);
       }
 
@@ -90,7 +78,7 @@ const Header: React.FC = () => {
         onMouseEnter={() => setIsHeaderHovered(true)}
         onMouseLeave={() => setIsHeaderHovered(false)}
       >
-        <div className={`flex justify-between items-center px-6 md:px-12 py-3 rounded-full w-full max-w-7xl transition-all duration-300 backdrop-blur-lg border shadow-[0_8px_32px_rgba(0,0,0,0.1)] bg-white/80 border-white/20 ${isDarkBg ? 'md:bg-white/80 md:border-white/20' : 'md:bg-black md:border-black/20'}`}>
+        <div className={`flex justify-between items-center px-6 md:px-12 py-3 rounded-full w-full max-w-7xl transition-all duration-300 glass-panel`}>
           {/* Logo - Left Side */}
           <div className="flex items-center">
             <NavLink to="/">
@@ -119,7 +107,7 @@ const Header: React.FC = () => {
                       }
                     }}
                     className={({ isActive }) =>
-                      `flex items-center text-sm md:text-base font-bold uppercase tracking-wider transition-colors py-2 ${isActive ? 'text-[#F3CD00]' : (isDarkBg ? 'text-gray-900 group-hover:text-[#F3CD00]' : 'text-white group-hover:text-[#F3CD00]')}`
+                      `flex items-center text-sm md:text-base font-bold uppercase tracking-wider transition-colors py-2 ${isActive ? 'text-[#F3CD00]' : 'text-white group-hover:text-[#F3CD00]'}`
                     }
                   >
                     {link.label}
@@ -167,9 +155,9 @@ const Header: React.FC = () => {
             {/* Hamburger Menu - Visible only on mobile */}
             <button
               onClick={toggleMenu}
-              className="md:hidden p-2 hover:bg-gray-100/50 rounded-full transition-colors"
+              className="md:hidden p-2 hover:bg-white/10 rounded-full transition-colors"
             >
-              <Menu size={20} className="text-gray-900" />
+              <Menu size={20} className="text-white" />
             </button>
           </div>
         </div>

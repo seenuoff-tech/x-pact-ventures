@@ -56,7 +56,7 @@ const Glob = () => {
       globeEl.current.controls().autoRotateSpeed = isMobile ? 1.5 : 6.0;
       globeEl.current.controls().enableZoom = false;
 
-      globeEl.current.pointOfView({ lat: 20, lng: 0, altitude: 2 }, isMobile ? 0 : 4000);
+      globeEl.current.pointOfView({ lat: 20, lng: 0, altitude: 2.5 }, isMobile ? 0 : 4000);
 
       const animateCountries = (index = 0) => {
         if (index >= highlightSequence.length) {
@@ -71,7 +71,7 @@ const Glob = () => {
         globeEl.current.pointOfView({
           lat: countryData[code].lat,
           lng: countryData[code].lng,
-          altitude: 4.0,
+          altitude: 4.5,
         }, isMobile ? 500 : 1500);
 
         setTimeout(() => animateCountries(index + 1), isMobile ? 2000 : 4000);
@@ -111,7 +111,7 @@ const Glob = () => {
           const iso = properties.ISO_A2;
           if (highlightedCountries.includes(iso)) {
             const pop = properties.POP_EST;
-            return pop ? Math.max(0.05, Math.sqrt(+pop) * 3.5e-5) : 0.05;
+            return pop ? Math.max(0.05, Math.sqrt(+pop) * 2.2e-5) : 0.05;
           }
           return 0.01;
         }}
