@@ -37,7 +37,7 @@ const SupplyDriven: React.FC = () => {
                       width: '100%',
                       height: '100%',
                       backgroundColor: 'transparent',
-                      borderRadius: '175px 0 175px 0',
+                      borderRadius: '50% 0 50% 0',
                       border: `6px solid #3b3c36`,
                       overflow: 'hidden',
                       display: 'flex',
@@ -47,7 +47,7 @@ const SupplyDriven: React.FC = () => {
                     }}
                   >
                     <div style={{
-                      width: '100%', height: '100%', backgroundColor: 'transparent', borderRadius: '180px 0 180px 0', overflow: 'hidden'
+                      width: '100%', height: '100%', backgroundColor: 'transparent', borderRadius: '50% 0 50% 0', overflow: 'hidden'
                     }}>
                       <img src={hww2} alt="Farmer" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
@@ -207,7 +207,7 @@ const SupplyDriven: React.FC = () => {
                 width: 'clamp(260px, 24vw, 400px)',
                 height: 'clamp(260px, 24vw, 400px)',
                 backgroundColor: 'transparent',
-                borderRadius: 'clamp(130px, 12.5vw, 200px) 0 clamp(130px, 12.5vw, 200px) 0',
+                borderRadius: '50% 0 50% 0',
                 border: `6px solid #3b3c36`,
                 overflow: 'hidden',
                 display: 'flex',
@@ -221,7 +221,7 @@ const SupplyDriven: React.FC = () => {
                 width: '100%',
                 height: '100%',
                 backgroundColor: 'transparent',
-                borderRadius: '180px 0 180px 0',
+                borderRadius: '50% 0 50% 0',
                 overflow: 'hidden',
                 display: 'flex',
                 justifyContent: 'center',
