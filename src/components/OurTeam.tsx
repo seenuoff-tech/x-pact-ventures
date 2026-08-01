@@ -9,7 +9,7 @@ const YELLOW_ACCENT = '#F3CD00';
 
 const members = [
   { name: 'Dinesh Kanna', role: 'Founder', image: '/Dineshkumar.png', imgStyle: { objectPosition: 'center top' }, linkedin: 'https://www.linkedin.com/in/nameisdeekay' },
-  { name: 'Annie Baskaran', role: 'Co-Founder', image: '/Annie (2).png', imgStyle: { transform: 'rotate(4deg) scale(1.05)', objectPosition: 'center top' }, linkedin: 'https://www.linkedin.com/in/annie-baskaran-a0ba7a360' },
+  { name: 'Annie Baskaran', role: 'Co-Founder', image: '/Annie (2).png', imgStyle: { objectPosition: 'center top' }, linkedin: 'https://www.linkedin.com/in/annie-baskaran-a0ba7a360' },
   { name: 'Naveen Kumar', role: 'Co-Founder', image: '/Naveen.png', imgStyle: {}, linkedin: 'https://www.linkedin.com/in/naveen-kumar-murugan-b94551103' },
 ];
 
@@ -68,9 +68,10 @@ const OurTeam: React.FC = () => {
                 borderRadius: '50% 0 50% 0', // Leaf shape
                 border: '6px solid #4a4a4a', // Dark border like the reference
                 boxShadow: '0 12px 24px rgba(0,0,0,0.1)',
-                overflow: 'hidden' // Ensure the image doesn't bleed outside the border
+                overflow: 'hidden', // Ensure the image doesn't bleed outside the border
+                backgroundColor: '#000'
               }}>
-                <img src={m.image} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50% 0 50% 0', ...(m.imgStyle || {}) }} />
+                <img src={m.image} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50% 0 50% 0', display: 'block', ...(m.imgStyle || {}) }} />
               </div>
               {/* Name — global Outfit font */}
               <p className="global-content-style" style={{
@@ -82,10 +83,12 @@ const OurTeam: React.FC = () => {
                 fontFamily: FONT_HEADING,
                 fontSize: isMobile ? '24px' : '36px',
                 fontWeight: 400, color: YELLOW_ACCENT, margin: 0,
-                marginBottom: '12px'
+                lineHeight: 1,
+                marginTop: '-4px',
+                marginBottom: '2px'
               }}>{m.role}</p>
               {/* LinkedIn Icon */}
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-3px' }}>
                 <a href={m.linkedin || "#"} target="_blank" rel="noopener noreferrer" style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -97,7 +100,7 @@ const OurTeam: React.FC = () => {
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.25)'}
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                 >
-                  <Linkedin size={22} strokeWidth={2.5} />
+                  <Linkedin size={20} strokeWidth={2.5} />
                 </a>
               </div>
             </div>

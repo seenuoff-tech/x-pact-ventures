@@ -92,7 +92,7 @@ const SupplyDriven: React.FC = () => {
                     viewport={{ once: true }}
                   >
                     <h3 style={{ fontFamily: FONT_HEADING, fontSize: '110px', fontWeight: 400, color: '#000', margin: 0, lineHeight: 0.9 }}>Supply</h3>
-                    <h4 style={{ fontFamily: FONT_SUBHEADING, fontSize: '80px', fontWeight: 400, color: '#F3CD00', margin: 0, marginTop: '-15px', position: 'relative', zIndex: 10 }}>Driven</h4>
+                    <h4 style={{ fontFamily: FONT_SUBHEADING, fontSize: '80px', fontWeight: 400, color: '#F3CD00', margin: 0, marginTop: '-55px', position: 'relative', zIndex: 10 }}>Driven</h4>
                   </motion.div>
                   <motion.p
                     initial={{ opacity: 0, x: -30 }}
@@ -177,7 +177,7 @@ const SupplyDriven: React.FC = () => {
               style={{ marginBottom: '50px', marginTop: '-50px' }}
             >
               <h3 style={{ fontFamily: FONT_HEADING, fontSize: 'clamp(72px, 7.3vw, 110px)', fontWeight: 400, color: '#000', margin: 0, lineHeight: 0.9 }}>Supply</h3>
-              <h4 style={{ fontFamily: FONT_SUBHEADING, fontSize: 'clamp(44px, 4.5vw, 68px)', fontWeight: 400, color: '#F3CD00', margin: 0, marginTop: '-10px', position: 'relative', zIndex: 10 }}>Driven</h4>
+              <h4 style={{ fontFamily: FONT_SUBHEADING, fontSize: 'clamp(44px, 4.5vw, 68px)', fontWeight: 400, color: '#F3CD00', margin: 0, marginTop: 'clamp(-45px, -3.5vw, -30px)', position: 'relative', zIndex: 10 }}>Driven</h4>
             </motion.div>
             <motion.p
               initial={{ opacity: 0, x: -30 }}
