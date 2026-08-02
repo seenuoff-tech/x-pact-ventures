@@ -59,7 +59,7 @@ const cards: Card[] = [
   },
   {
     tag: "Biofuel",
-    title: "Briquette",
+    title: "Briquettes",
     content:
       "High-efficiency, eco-friendly briquettes serving as a sustainable alternative energy source for industries.",
     video: "/videos/Briquettes.mp4",
