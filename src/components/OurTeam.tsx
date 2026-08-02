@@ -75,20 +75,20 @@ const OurTeam: React.FC = () => {
               </div>
               {/* Name — global Outfit font */}
               <p className="global-content-style" style={{
-                color: '#000', marginBottom: '2px', fontWeight: 700,
+                color: '#000', marginBottom: '8px', fontWeight: 700,
                 fontSize: isMobile ? '20px' : '22px'
               }}>{m.name}</p>
               {/* Role — Autography cursive */}
               <p style={{
                 fontFamily: FONT_HEADING,
-                fontSize: isMobile ? '24px' : '36px',
+                fontSize: isMobile ? '28px' : '38px',
                 fontWeight: 400, color: YELLOW_ACCENT, margin: 0,
-                lineHeight: 1,
-                marginTop: '-4px',
-                marginBottom: '2px'
+                lineHeight: 1.2,
+                marginTop: '4px',
+                marginBottom: '10px'
               }}>{m.role}</p>
               {/* LinkedIn Icon */}
-              <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-3px' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', marginTop: '6px' }}>
                 <a href={m.linkedin || "#"} target="_blank" rel="noopener noreferrer" style={{
                   display: 'flex',
                   alignItems: 'center',

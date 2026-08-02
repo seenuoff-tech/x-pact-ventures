@@ -36,7 +36,7 @@ const HowWeWork: React.FC = () => {
         How we work
       </h2>
 
-      {/* ══ MOBILE LA      {/* ══ MOBILE LAYOUT ══ */}
+      {/* ══ MOBILE LAYOUT ══ */}
       <div className="mobile-only-view">
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', overflow: 'hidden', height: '380px' }}>
           <div style={{ width: '1100px', transform: 'scale(0.32)', transformOrigin: 'top center', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '30px' }}>
@@ -51,7 +51,7 @@ const HowWeWork: React.FC = () => {
                     viewport={{ once: true }}
                   >
                     <h3 style={{ fontFamily: FONT_HEADING, fontSize: '110px', fontWeight: 400, color: '#000', margin: 0, lineHeight: 0.9 }}>Demand</h3>
-                    <h4 style={{ fontFamily: FONT_SUBHEADING, fontSize: '80px', fontWeight: 400, color: '#F3CD00', margin: 0, marginTop: '-15px', position: 'relative', zIndex: 10 }}>Driven</h4>
+                    <h4 style={{ fontFamily: FONT_SUBHEADING, fontSize: '80px', fontWeight: 400, color: '#F3CD00', margin: 0, marginTop: '-55px', position: 'relative', zIndex: 10 }}>Driven</h4>
                   </motion.div>
                   <motion.p
                     initial={{ opacity: 0, x: -30 }}
@@ -80,10 +80,10 @@ const HowWeWork: React.FC = () => {
                     <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
                       <ProcessCardFixed bg="#F3CD00" color="#000" title="Specific soil selection" />
                     </motion.div>
-                    <svg width="150" height="150" viewBox="0 0 150 150" style={{ position: 'absolute', left: 'calc(100% + 30px)', top: '40px', overflow: 'visible', zIndex: 1 }}>
-                      <circle cx="0" cy="0" r="5" fill="none" stroke="#000" strokeWidth="2" />
-                      <path d="M 5 0 L 30 0 C 60 0, 60 120, 30 120 L 0 120" stroke="#000" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                      <path d="M 15 105 L 0 120 L 15 135" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <svg width="150" height="150" viewBox="0 0 150 150" style={{ position: 'absolute', right: 'calc(100% + 30px)', top: '40px', overflow: 'visible', zIndex: 1 }}>
+                      <circle cx="150" cy="0" r="5" fill="none" stroke="#000" strokeWidth="2" />
+                      <path d="M 145 0 L 120 0 C 90 0, 90 120, 120 120 L 150 120" stroke="#000" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M 135 105 L 150 120 L 135 135" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                     </svg>
                   </div>
 
@@ -91,10 +91,10 @@ const HowWeWork: React.FC = () => {
                     <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
                       <ProcessCardFixed bg="#F3CD00" color="#fff" title="Organic / Conventional farming" height="100px" />
                     </motion.div>
-                    <svg width="150" height="150" viewBox="0 0 150 150" style={{ position: 'absolute', right: 'calc(100% + 30px)', top: '40px', overflow: 'visible', zIndex: 1 }}>
-                      <circle cx="150" cy="0" r="5" fill="none" stroke="#000" strokeWidth="2" />
-                      <path d="M 145 0 L 120 0 C 90 0, 90 120, 120 120 L 150 120" stroke="#000" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                      <path d="M 135 105 L 150 120 L 135 135" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <svg width="150" height="150" viewBox="0 0 150 150" style={{ position: 'absolute', left: 'calc(100% + 30px)', top: '40px', overflow: 'visible', zIndex: 1 }}>
+                      <circle cx="0" cy="0" r="5" fill="none" stroke="#000" strokeWidth="2" />
+                      <path d="M 5 0 L 30 0 C 60 0, 60 120, 30 120 L 0 120" stroke="#000" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M 20 105 L 0 120 L 20 135" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                     </svg>
                   </div>
 
@@ -160,7 +160,7 @@ const HowWeWork: React.FC = () => {
                     wordSpacing: '0px',
                     marginTop: '280px',
                     lineHeight: '1.4',
-                    maxWidth: '800px'
+                    maxWidth: '400px'
                   }}
                 >
                   Architecting hyper-responsive solutions tailored precisely to evolving
@@ -190,10 +190,10 @@ const HowWeWork: React.FC = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                style={{ lineHeight: '0.7', marginBottom: '60px', marginTop: '-60px' }}
+                style={{ marginBottom: '50px', marginTop: '-50px' }}
               >
-                <h3 style={{ fontFamily: FONT_HEADING, fontSize: 'clamp(80px, 8vw, 130px)', fontWeight: 400, color: '#000', margin: 0 }}>Demand</h3>
-                <h4 style={{ fontFamily: FONT_SUBHEADING, fontSize: 'clamp(42px, 4vw, 64px)', fontWeight: 400, color: '#F3CD00', margin: 0, marginTop: '-10px', position: 'relative', zIndex: 10 }}>Driven</h4>
+                <h3 style={{ fontFamily: FONT_HEADING, fontSize: 'clamp(72px, 7.3vw, 110px)', fontWeight: 400, color: '#000', margin: 0, lineHeight: 0.9 }}>Demand</h3>
+                <h4 style={{ fontFamily: FONT_SUBHEADING, fontSize: 'clamp(44px, 4.5vw, 68px)', fontWeight: 400, color: '#F3CD00', margin: 0, marginTop: 'clamp(-45px, -3.5vw, -30px)', position: 'relative', zIndex: 10 }}>Driven</h4>
               </motion.div>
               <motion.p
                 initial={{ opacity: 0, x: 20 }}
