@@ -22,7 +22,7 @@ const Contact: React.FC = () => {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "YOUR_ACCESS_KEY_HERE",
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "44e1cef1-eff8-470a-913c-feda2014350a",
           name: formData.name,
           email: formData.email,
           message: formData.message,
@@ -31,7 +31,7 @@ const Contact: React.FC = () => {
 
       const result = await response.json();
       if (result.success) {
-        setSubmitMessage("Thank you! Your message has been sent.");
+        setSubmitMessage("Your data submitted successfully");
         setFormData({ name: '', email: '', message: '' });
       } else {
         setSubmitMessage("Something went wrong. Please try again later.");
@@ -133,7 +133,7 @@ const Contact: React.FC = () => {
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
             {submitMessage && (
-              <div className={`mt-4 p-4 rounded-xl text-center font-bold ${submitMessage.includes("Thank you") ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+              <div className={`mt-4 p-4 rounded-xl text-center font-bold ${submitMessage.includes("successfully") ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
                 {submitMessage}
               </div>
             )}
